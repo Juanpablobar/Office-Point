@@ -1,0 +1,85 @@
+.index-categories{
+	width: 98%;
+	@include margin;
+	margin-top: 1em; 
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-gap: 1.25em;  
+	.index-categories-item{
+		cursor: pointer; 
+		img{
+			width: 100%;
+		}
+		.index-categories-text{
+			height: 85%;  
+			width: 80%;        
+			margin-top: 5%;    
+			margin-bottom: 5%; 
+			@include margin; 
+			display: flex; 
+			.index-categories-text-sub{				
+				h2{
+					font: 700 13px $lato;
+					line-height: 21px;
+				}
+				h1{
+					font: 700 20px $rale;
+					line-height: 25px;
+					margin-top: -.1em;
+				}
+				a{
+					display: flex;
+					font: 700 12px $lato;
+					line-height: 21px;
+					cursor: pointer;
+					svg{
+						width: 11px !important;  
+						color: inherit;
+						margin-left: .5em;
+					}
+				}
+			}
+		}
+		// Posición texto vertical
+		.index-categories-text-top{
+			align-items: flex-start;
+		}
+		.index-categories-text-center{
+			align-items: center;
+		}
+		.index-categories-text-bottom{
+			align-items: flex-end;
+		}
+		// Posición texto horizontal
+		.index-categories-text-left{
+			justify-content: flex-start;
+		}
+		.index-categories-text-center{
+			justify-content: center;
+		}
+		.index-categories-text-right{
+			justify-content: flex-end;
+		}
+	}      
+	// Alto del cuadro
+	.categories-height1{
+		height: 18em;
+	}
+	.categories-height2{
+		height: 37.25em !important;
+		grid-row: span 3;	
+	}
+	// Ancho del cuadro
+	.categories-width1{
+		grid-column: span 1;
+	}
+	.categories-width2{
+		grid-column: span 2;
+	}
+	.categories-width3{
+		grid-column: span 3;
+	}
+	.categories-width4{
+		grid-column: span 4;
+	}
+}                                                                                                                               

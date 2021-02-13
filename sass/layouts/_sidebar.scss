@@ -1,0 +1,122 @@
+.sidebar{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	background: rgba(0,0,0,.3);
+	z-index: 99998;
+	top: 0;
+	left: 0; 
+}      
+.sidebar-content,.sidebar-content2{
+	width: 30%;
+	background: white;       
+	height: 100%;         
+	position: fixed;
+	top: 0;
+	z-index: 99999;
+	.sidebar-first{
+		@include flex;   
+		justify-content: space-between;  
+		margin-top: 1em;    
+		h1{ 
+			font: 600 25px $rale;
+			color: #666;   
+			margin-left: 1em; 
+		} 
+		span{
+			display: block;
+			@include flex;
+			font-size: 1.1em;  
+			cursor: pointer;
+			margin-right: 1em;   
+			i{
+				padding: 1em;    
+				color: #666;  
+				&:hover{
+					color: $c2
+				}
+			}
+		} 
+	}                     
+	.sidebar-category{
+		width: 85%;
+		@include margin;
+		margin-bottom: 1.5em;  
+		border-top: 1px solid #e9e9e9;
+		padding-top: 1.5em;
+		.sidebar-category-first{
+			width: 100%;
+			@include flex; 
+			justify-content: flex-start;
+			padding-left: .5em;
+			.sidebar-plus{
+				text-align: center;    
+				span{
+					width: 8px;
+					height: 8px;
+					background: transparent;
+					display: block;    
+					margin-right: .75em;
+					border-bottom: 1px solid #666;
+					border-right: 1px solid #666;
+					transform: rotate(45deg);
+					margin-top: -.25em;   
+					cursor: pointer;   
+				} 
+			}
+			.sidebar-span{
+				span{
+					border-bottom: 1px solid $c2 !important;
+					border-right: 1px solid $c2 !important;
+					transform: rotate(-135deg) !important;
+					margin-top: .25em;   
+				}
+			}    
+			.sidebar-text{
+				a{
+					font: 600 18px $rale;   
+					color: #666; 
+					margin-bottom: .5em;    
+				}
+			}
+		}    
+		.sub-category-prev{
+			width: 100%;
+			height: auto;   
+			.sidebar-subcategory{
+				height: auto;
+				margin: .5em 0;
+				margin-left: 3em;  
+				a{
+					color: #555;
+					font: 400 16px $rale;   
+				}
+			} 
+		}
+	}     
+}  
+.sidebar-content{
+	animation: sidebar .3s linear forwards;
+}
+
+.sidebar-content2{
+	animation: sidebar2 .3s linear forwards;
+}
+
+@keyframes sidebar{
+	0%{
+		transform: translate(0%)
+	}
+	100%{
+		transform: translate(-100%)
+	}
+}           
+
+@keyframes sidebar2{
+	0%{
+		transform: translate(-100%)
+	}
+	100%{
+		transform: translate(0%)
+	}
+}                                                                                                                                     

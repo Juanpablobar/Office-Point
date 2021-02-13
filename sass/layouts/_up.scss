@@ -1,0 +1,59 @@
+.up{
+	background: #383838;
+	font-size:1.3em;
+	color: #fff;
+	cursor:pointer;
+	position: fixed;
+	right:10px;
+    border-radius: 10em;
+    z-index: 99999;   
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    transition: .3s all;
+	animation: up .5s linear forwards;
+	@include flex;
+	svg{
+    width: 1em;
+    position: relative;     
+	}  
+}         
+
+.up2{
+	background: #383838;
+	font-size:1.3em;
+	color: #fff;
+	cursor:pointer;
+	position: fixed;
+	right:10px;
+    border-radius: 10em;
+    z-index: 99999;   
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    transition: .3s all;
+	animation: up2 .5s linear forwards;
+	@include flex;
+	svg{
+    width: 1em;
+    position: relative;
+	}  
+} 
+
+@keyframes up{
+	0%{
+		bottom: 15px;
+	}
+	100%{
+		bottom: -100px;
+	}
+}
+
+@keyframes up2{
+	0%{
+		bottom: -100px;
+	}
+	100%{
+		bottom: 15px;
+	}
+}                                                               

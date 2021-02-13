@@ -1,0 +1,50 @@
+.contact-form{
+	width: 70%;
+	@include margin;
+	margin-top: 4em;
+	margin-bottom: 8em;
+	h1{
+		font: 700 28px $rale;
+		color: #333;
+		line-height: 32px;
+		text-align: center;
+	}
+	form{
+		margin-top: 2em;
+		width: 100%;
+		.contact-form-input{
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			grid-gap: 1.5em;  
+			input{
+				outline: none;
+				border: 1px solid #ddd;
+				border-radius: .25em;
+				padding: 1em;
+				font: 500 14px $lato;
+				color: #333;
+				&:nth-child(3){
+					grid-column: span 2;
+					height: 8em;
+				}
+			}
+		}
+		button{
+			outline: none;
+			border: 0;
+			border-radius: .25em;
+			background: $c2;
+			color: white;
+			font: 500 13px $rale;
+			padding: 1em 5em;
+			display: block;
+			margin-left: 50%;
+			transform: translate(-50%);
+			margin-top: 2.5em;
+			cursor: pointer;
+			&:hover{
+				background: #e45959
+			}
+		}
+	}
+}                                                                                

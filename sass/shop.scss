@@ -1,0 +1,17 @@
+@import 'layouts';
+
+.breadcrumb-shop{
+	margin-top: 2em;
+	h1{
+		font: 700 50px $rale;
+		text-align: left; 
+		margin-top: 0;
+		margin-left: 3%;
+	}
+}
+
+@import 'shop/filter';
+
+@import 'shop/products';
+
+@import 'responsive';                          

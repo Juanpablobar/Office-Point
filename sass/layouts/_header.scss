@@ -1,0 +1,144 @@
+header{         
+	@include initial;       
+	nav{
+		@include initial;
+		height: 6em;      
+		display: flex;
+		align-items: center;
+		-webkit-box-shadow: 0px 1px 1px 0px rgba(170, 170, 170, 0.25);
+		-moz-box-shadow:    0px 1px 1px 0px rgba(170, 170, 170, 0.25);
+		box-shadow:         0px 1px 1px 0px rgba(170, 170, 170, 0.25);		
+		.nav-toggle{
+			width: 5%;
+			@include flex;
+			a{
+				cursor: pointer;  
+				span{
+					width: 22px; 
+					height: 2px !important;
+					margin-bottom: 4px;
+					display: block;
+					background: #666;       
+				}
+			}  
+		}               
+		.nav-brand{
+			@include flex;
+			width: 23%;
+			justify-content: flex-start;
+			margin-left: 2%;  
+			img{
+				width: 5em;    
+			}
+		}       
+		.nav-links{
+			width: 40%;
+			@include flex;
+			a{
+				color: #666; 
+				padding: 1em;    
+				display: block;
+				font-size: 13.5px;    
+				font-weight: 600;  
+				font-family: $lato;
+				&::after{
+					width: 0%;
+					height: 2px;
+					background: $c2;
+					content: '';
+					display: block;  
+					transition: .3s all;        
+				} 
+				&:hover{
+					color: $c2;
+				}
+				&:hover::after{
+					width: 100%;  
+				}
+			}
+			.nav-a{
+				color: $c2;
+				&::after{
+					width: 100%;
+					height: 2px;
+					background: $c2;
+					content: '';
+					display: block;  
+					transition: .3s all;        
+				} 
+			} 
+		}  
+		.nav-icons{
+			width: 30%;
+			@include flex;
+			.nav-search{
+				@include flex; 
+				padding: .75em;
+				input{
+					border: 0;
+					outline: none;
+					padding: 1em; 
+					width: 8.25em;   
+					position: relative;
+					font-size: 13.5px;    
+					font-weight: 400;  
+					font-family: $lato;
+					color: #666;
+				}
+				button{
+					border: 0;
+					outline: none;
+					@include flex;
+					background: transparent;
+					cursor: pointer;
+					color: #666;
+					svg{
+						width: 19px !important;
+						height: 19px !important;
+					}
+				}
+			}
+			a{
+				@include flex;
+				position: relative;
+				padding: .75em;
+				svg{
+					width: 20px !important; 
+					height: 20px !important;
+					fill: #666 !important;
+					
+				}
+				span{
+					display: block;
+					color: white;
+					background: $c2;
+					border-radius: 10em;
+					font-size: 10px;
+					width: 15px;
+					height: 15px;
+					@include flex;
+					position: absolute;
+					right: .5em;
+					bottom: .5em;
+				}
+				&:nth-child(2) span{
+					right: .65em;
+				}
+			}
+			h1{
+				font-size: 12px;
+				line-height: 20px;
+				color: #666;
+				@include flex;
+				font-weight: 600;
+				margin-left: 1em;
+				a{
+					display: block;
+					color: $c2;
+				}
+			}
+		}
+	}
+}                                                         
+
+@import 'sidebar';

@@ -1,0 +1,20 @@
+.breadcrumb{
+	width: 100%;
+	text-align: center;
+	margin-top: 5em;
+	h1{
+		font: 700 28px $rale;
+		line-height: 35px;
+		color: #333;
+	}
+	h2{
+		font: 500 14px $rale;
+		line-height: 22px;
+		color: #999;
+		margin-top: -.5em;
+		a{
+			color: #333;
+			font-weight: 600;
+		}
+	}
+}                        
