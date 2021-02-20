@@ -157,6 +157,10 @@ li {
 .ldio-7o49em5fo3g div {
   box-sizing: content-box; }
 
+.header {
+  position: fixed !important;
+  z-index: 101; }
+
 header {
   width: 100%;
   display: block;
@@ -245,6 +249,8 @@ header {
           font-weight: 400;
           font-family: "Lato";
           color: #666; }
+        header nav .nav-icons .nav-search .nav-search2 {
+          animation: search2 .5s linear forwards; }
         header nav .nav-icons .nav-search button {
           border: 0;
           outline: none;
@@ -295,7 +301,158 @@ header {
         header nav .nav-icons h1 a {
           display: block;
           color: #ff6363; }
+    header nav .nav-search-responsive {
+      display: none;
+      width: 60%; }
+      header nav .nav-search-responsive form {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center; }
+        header nav .nav-search-responsive form div {
+          width: 100%;
+          position: relative;
+          border: 2px solid #814090;
+          border-radius: 10em;
+          padding: 0; }
+          header nav .nav-search-responsive form div input {
+            padding: 0 5%;
+            width: 90%;
+            display: block;
+            font: 500 14px "Raleway";
+            color: #333;
+            outline: none;
+            background: #e6e6e6;
+            border-radius: 10em;
+            border: 0;
+            height: 3em; }
+            header nav .nav-search-responsive form div input:focus {
+              background: white; }
+          header nav .nav-search-responsive form div button {
+            border: 0;
+            outline: none;
+            height: 3.2em;
+            background: #814090;
+            position: absolute;
+            top: 0;
+            right: -1px;
+            border-radius: 10em;
+            padding: 0 1.5em;
+            cursor: pointer; }
+            header nav .nav-search-responsive form div button svg {
+              width: 16px;
+              color: white;
+              display: block; }
+    header nav .nav-toggle-responsive {
+      width: 20%;
+      display: none;
+      height: 100%;
+      margin-right: 0%; }
+      header nav .nav-toggle-responsive a {
+        width: auto;
+        display: block;
+        cursor: pointer; }
+        header nav .nav-toggle-responsive a span {
+          height: 4px;
+          width: 30px;
+          margin-bottom: 5px;
+          background: #814090;
+          display: block; }
 
+.sidebar-second-black {
+  display: none;
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99; }
+
+.sidebar-second {
+  animation: sidebar-second .5s linear forwards; }
+
+.sidebar-second2 {
+  animation: sidebar-second2 .5s linear forwards; }
+
+.sidebar-second, .sidebar-second2 {
+  display: none;
+  position: fixed;
+  overflow-y: auto;
+  top: 5em;
+  right: 0;
+  width: 27em;
+  z-index: 100;
+  height: 100%;
+  background: #e6e6e6; }
+  .sidebar-second .sidebar-second-item, .sidebar-second2 .sidebar-second-item {
+    width: 100%;
+    border-top: 1px solid #ccc; }
+    .sidebar-second .sidebar-second-item:hover, .sidebar-second2 .sidebar-second-item:hover {
+      background: #ddd; }
+    .sidebar-second .sidebar-second-item a, .sidebar-second2 .sidebar-second-item a {
+      font: 700 18px "Raleway";
+      padding: 1em 5%;
+      line-height: 22px;
+      text-transform: uppercase;
+      color: #444;
+      display: flex;
+      width: 90%; }
+      .sidebar-second .sidebar-second-item a svg, .sidebar-second2 .sidebar-second-item a svg {
+        width: 18px; }
+      .sidebar-second .sidebar-second-item a i, .sidebar-second .sidebar-second-item a svg, .sidebar-second2 .sidebar-second-item a i, .sidebar-second2 .sidebar-second-item a svg {
+        margin-right: .75em; }
+      .sidebar-second .sidebar-second-item a span, .sidebar-second2 .sidebar-second-item a span {
+        display: block;
+        font: 400 11px "Lato";
+        color: white;
+        background: #814090;
+        border-radius: 10em;
+        height: 20px;
+        width: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        top: -1em;
+        right: -.5em; }
+
+@keyframes search {
+  0% {
+    width: 500%;
+    position: relative;
+    right: 450%;
+    background: white; }
+  99% {
+    width: 0%;
+    right: 0;
+    background: white; }
+  100% {
+    z-index: -1;
+    width: 0%;
+    right: 0;
+    background: white; } }
+@keyframes search2 {
+  0% {
+    width: 0%;
+    z-index: -1;
+    right: 0; }
+  100% {
+    width: 500%;
+    z-index: 1;
+    background: white;
+    border: 1px solid #eee;
+    position: relative;
+    right: 450%; } }
+@keyframes sidebar-second2 {
+  0% {
+    transform: translateX(100%); }
+  100% {
+    transform: translateX(0%); } }
+@keyframes sidebar-second {
+  0% {
+    transform: translateX(0%); }
+  100% {
+    transform: translateX(100%); } }
 .sidebar {
   width: 100%;
   height: 100%;
@@ -303,10 +460,11 @@ header {
   background: rgba(0, 0, 0, 0.3);
   z-index: 99998;
   top: 0;
-  left: 0; }
+  left: 0;
+  display: none; }
 
 .sidebar-content, .sidebar-content2 {
-  width: 30%;
+  width: 25em;
   background: white;
   height: 100%;
   position: fixed;
@@ -730,14 +888,168 @@ footer {
     width: 95%; }
 
   .contact-icons {
-    width: 90%; } }
+    width: 90%; }
+
+  .single-features .owl-carousel .owl-nav .owl-prev {
+    left: -7.5%; }
+  .single-features .owl-carousel .owl-nav .owl-next {
+    right: -7.5%; }
+
+  .wishlist {
+    width: 95%; }
+    .wishlist .wishlist-product .wishlist-product-item {
+      position: relative; }
+      .wishlist .wishlist-product .wishlist-product-item:nth-child(4) span {
+        position: absolute;
+        top: -.5em;
+        right: 0; }
+    .wishlist .wishlist-product form {
+      position: relative; }
+      .wishlist .wishlist-product form span {
+        position: absolute;
+        top: -.5em;
+        right: 0em; }
+      .wishlist .wishlist-product form button {
+        width: 100%; }
+
+  .cart-buttons {
+    width: 95%; }
+
+  .cart-finish {
+    width: 95%; }
+
+  header nav .nav-brand {
+    width: 15%;
+    margin-left: 2%; }
+  header nav .nav-icons .nav-search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .75em; }
+    header nav .nav-icons .nav-search input {
+      animation: search 0.5s linear forwards; }
+
+  .about-info {
+    width: 95%; }
+
+  .about-brands h1 {
+    font: 700 35px "Raleway"; }
+  .about-brands img {
+    width: 95%;
+    margin-left: 2.5%;
+    margin-right: 2.5%; }
+  .about-brands .about-brands-img-prev .about-brands-img {
+    width: 85%; } }
+@media screen and (max-width: 1100px) {
+  .single-product {
+    width: 95%;
+    margin-top: 4em; }
+
+  .single-description {
+    width: 95%; } }
+@media screen and (max-width: 1070px) {
+  @keyframes search {
+    0% {
+      width: 550%;
+      position: relative;
+      right: 500%;
+      background: white; }
+    99% {
+      width: 0%;
+      right: 0;
+      background: white; }
+    100% {
+      z-index: -1;
+      width: 0%;
+      right: 0;
+      background: white; } }
+  @keyframes search2 {
+    0% {
+      width: 0%;
+      z-index: -1;
+      right: 0; }
+    100% {
+      width: 550%;
+      z-index: 1;
+      background: white;
+      border: 1px solid #eee;
+      position: relative;
+      right: 500%; } } }
+@media screen and (max-width: 1030px) {
+  @keyframes search {
+    0% {
+      width: 600%;
+      position: relative;
+      right: 550%;
+      background: white; }
+    99% {
+      width: 0%;
+      right: 0;
+      background: white; }
+    100% {
+      z-index: -1;
+      width: 0%;
+      right: 0;
+      background: white; } }
+  @keyframes search2 {
+    0% {
+      width: 0%;
+      z-index: -1;
+      right: 0; }
+    100% {
+      width: 600%;
+      z-index: 1;
+      background: white;
+      border: 1px solid #eee;
+      position: relative;
+      right: 550%; } } }
 @media screen and (max-width: 1000px) {
   .contact-icons {
     width: 85%;
     display: grid;
     grid-template-columns: 1fr 1fr; }
     .contact-icons .contact-icons-item {
-      margin-bottom: 4em; } }
+      margin-bottom: 4em; }
+
+  .single-description-img {
+    width: 10% !important; }
+
+  .single-description-text {
+    width: 90% !important; }
+
+  .nav-icons h1 {
+    display: none !important; }
+
+  .nav-brand {
+    width: 23% !important; }
+
+  @keyframes search {
+    0% {
+      width: 400%;
+      position: relative;
+      right: 350%;
+      background: white; }
+    99% {
+      width: 0%;
+      right: 0;
+      background: white; }
+    100% {
+      z-index: -1;
+      width: 0%;
+      right: 0;
+      background: white; } }
+  @keyframes search2 {
+    0% {
+      width: 0%;
+      z-index: -1;
+      right: 0; }
+    100% {
+      width: 400%;
+      z-index: 1;
+      background: white;
+      border: 1px solid #eee;
+      position: relative;
+      right: 350%; } } }
 @media screen and (max-width: 900px) {
   .pre-footer .pre-footer-cont {
     grid-template-columns: repeat(2, 1fr);
@@ -774,14 +1086,276 @@ footer {
     footer .footer .footer-last h3 {
       line-height: 28px !important; }
     footer .footer .footer-last .footer-last-cards {
-      padding-right: 0em; } }
+      padding-right: 0em; }
+
+  .cart-finish .cart-coupons form {
+    display: block; }
+    .cart-finish .cart-coupons form input {
+      width: 20em; }
+    .cart-finish .cart-coupons form button {
+      width: 20em;
+      margin-top: .25em;
+      margin-left: 0;
+      padding: .75em 1em; }
+
+  .about-info {
+    width: 75%;
+    display: block; }
+    .about-info .about-info-item {
+      margin: 0;
+      margin-bottom: 3em; }
+      .about-info .about-info-item img {
+        height: auto; }
+
+  .about-why-us .about-why-us-benefits {
+    width: 95%; }
+    .about-why-us .about-why-us-benefits .about-why-us-video {
+      width: 30em; } }
+@media screen and (max-width: 865px) {
+  @keyframes search {
+    0% {
+      width: 450%;
+      position: relative;
+      right: 400%;
+      background: white; }
+    99% {
+      width: 0%;
+      right: 0;
+      background: white; }
+    100% {
+      z-index: -1;
+      width: 0%;
+      right: 0;
+      background: white; } }
+  @keyframes search2 {
+    0% {
+      width: 0%;
+      z-index: -1;
+      right: 0; }
+    100% {
+      width: 450%;
+      z-index: 1;
+      background: white;
+      border: 1px solid #eee;
+      position: relative;
+      right: 400%; } } }
+@media screen and (max-width: 850px) {
+  .single-product {
+    display: block;
+    margin-top: 1em; }
+    .single-product .single-product-img {
+      width: 70% !important;
+      margin-left: auto;
+      margin-right: auto; }
+      .single-product .single-product-img .owl-carousel .owl-item a {
+        width: 80%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto; }
+      .single-product .single-product-img .single-product-img-links {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: .5em;
+        justify-content: center; }
+        .single-product .single-product-img .single-product-img-links a {
+          width: 6em;
+          margin: 0 1em; }
+    .single-product .single-product-text {
+      width: 100%;
+      margin-top: 4em; }
+      .single-product .single-product-text form button:nth-child(3) {
+        width: 20em; }
+      .single-product .single-product-text .single-text-desc h5 {
+        width: 40%; }
+
+  .single-features .owl-carousel .owl-prev {
+    left: -9% !important; }
+  .single-features .owl-carousel .owl-next {
+    right: -9% !important; }
+
+  .wishlist-product-item .input-group button {
+    width: 30px; }
+  .wishlist-product-item .input-group input {
+    width: 30px; } }
+@media screen and (max-width: 810px) {
+  @keyframes search {
+    0% {
+      width: 475%;
+      position: relative;
+      right: 425%;
+      background: white; }
+    99% {
+      width: 0%;
+      right: 0;
+      background: white; }
+    100% {
+      z-index: -1;
+      width: 0%;
+      right: 0;
+      background: white; } }
+  @keyframes search2 {
+    0% {
+      width: 0%;
+      z-index: -1;
+      right: 0; }
+    100% {
+      width: 475%;
+      z-index: 1;
+      background: white;
+      border: 1px solid #eee;
+      position: relative;
+      right: 425%; } } }
 @media screen and (max-width: 800px) {
   .contact-form {
-    width: 90%; } }
+    width: 90%; }
+
+  .about-brands .about-brands-img-prev .about-brands-img img {
+    width: 4.5em; } }
+@media screen and (max-width: 785px) {
+  @keyframes search {
+    0% {
+      width: 500%;
+      position: relative;
+      right: 450%;
+      background: white; }
+    99% {
+      width: 0%;
+      right: 0;
+      background: white; }
+    100% {
+      z-index: -1;
+      width: 0%;
+      right: 0;
+      background: white; } }
+  @keyframes search2 {
+    0% {
+      width: 0%;
+      z-index: -1;
+      right: 0; }
+    100% {
+      width: 500%;
+      z-index: 1;
+      background: white;
+      border: 1px solid #eee;
+      position: relative;
+      right: 450%; } } }
+@media screen and (max-width: 765px) {
+  @keyframes search {
+    0% {
+      width: 525%;
+      position: relative;
+      right: 475%;
+      background: white; }
+    99% {
+      width: 0%;
+      right: 0;
+      background: white; }
+    100% {
+      z-index: -1;
+      width: 0%;
+      right: 0;
+      background: white; } }
+  @keyframes search2 {
+    0% {
+      width: 0%;
+      z-index: -1;
+      right: 0; }
+    100% {
+      width: 525%;
+      z-index: 1;
+      background: white;
+      border: 1px solid #eee;
+      position: relative;
+      right: 475%; } } }
+@media screen and (max-width: 750px) {
+  header nav .nav-brand img {
+    width: 4em; }
+  header nav .nav-links a {
+    padding: 1em .75em; }
+
+  @keyframes search {
+    0% {
+      width: 550%;
+      position: relative;
+      right: 500%;
+      background: white; }
+    99% {
+      width: 0%;
+      right: 0;
+      background: white; }
+    100% {
+      z-index: -1;
+      width: 0%;
+      right: 0;
+      background: white; } }
+  @keyframes search2 {
+    0% {
+      width: 0%;
+      z-index: -1;
+      right: 0; }
+    100% {
+      width: 550%;
+      z-index: 1;
+      background: white;
+      border: 1px solid #eee;
+      position: relative;
+      right: 500%; } }
+  .about-why-us .about-why-us-benefits .about-why-us-carac {
+    margin-left: 1em; } }
+@media screen and (max-width: 725px) {
+  @keyframes search {
+    0% {
+      width: 600%;
+      position: relative;
+      right: 550%;
+      background: white; }
+    99% {
+      width: 0%;
+      right: 0;
+      background: white; }
+    100% {
+      z-index: -1;
+      width: 0%;
+      right: 0;
+      background: white; } }
+  @keyframes search2 {
+    0% {
+      width: 0%;
+      z-index: -1;
+      right: 0; }
+    100% {
+      width: 600%;
+      z-index: 1;
+      background: white;
+      border: 1px solid #eee;
+      position: relative;
+      right: 550%; } } }
 @media screen and (max-width: 700px) {
   .pre-footer .pre-footer-cont {
     grid-template-columns: repeat(2, 1fr);
-    width: 75%; } }
+    width: 75%; }
+
+  header .nav .nav-icons {
+    justify-content: flex-end; }
+    header .nav .nav-icons .nav-search {
+      display: none; }
+  header .nav .nav-brand {
+    width: 30% !important; } }
+@media screen and (max-width: 650px) {
+  .wishlist .wishlist-head .wishlist-head-item h2 {
+    font-size: 18px; }
+
+  .wishlist-product-item .input-group button {
+    width: 25px; }
+  .wishlist-product-item .input-group input {
+    width: 25px; }
+
+  header .nav .nav-links a {
+    font-size: 12.5px; }
+
+  .about-brands .about-brands-img-prev .about-brands-img img {
+    width: 3.5em; } }
 @media screen and (max-width: 600px) {
   body {
     background: #e6e6e6; }
@@ -938,10 +1512,387 @@ footer {
         background: #814090; }
 
   .breadcrumb {
-    margin-top: 2em; } }
+    margin-bottom: 3em;
+    margin-top: 0;
+    background: #814090;
+    padding: .25em 0; }
+    .breadcrumb h1 {
+      color: white;
+      padding: 0 .5em;
+      font-size: 35px;
+      line-height: 47px;
+      text-align: left; }
+    .breadcrumb h2 {
+      display: none; }
+
+  .single-product {
+    width: 95%; }
+    .single-product .single-product-img {
+      width: 100% !important; }
+      .single-product .single-product-img .owl-carousel {
+        width: 100% !important; }
+        .single-product .single-product-img .owl-carousel .owl-item a {
+          width: 95% !important; }
+        .single-product .single-product-img .owl-carousel .owl-item .heart-hide {
+          display: block; }
+      .single-product .single-product-img .single-product-img-links {
+        background: white;
+        width: 95%; }
+        .single-product .single-product-img .single-product-img-links a {
+          width: 5em; }
+    .single-product .single-product-text .single-product-stars h2 {
+      color: #999; }
+    .single-product .single-product-text form {
+      display: block; }
+      .single-product .single-product-text form .input-group {
+        justify-content: flex-start !important;
+        margin-bottom: 1em; }
+        .single-product .single-product-text form .input-group input {
+          width: 100px; }
+      .single-product .single-product-text form button:nth-child(3) {
+        margin: 0 0em;
+        background: #814090;
+        width: 100%;
+        margin-bottom: 1em; }
+        .single-product .single-product-text form button:nth-child(3):hover {
+          background: #814090; }
+      .single-product .single-product-text form button:nth-child(4) {
+        display: none; }
+      .single-product .single-product-text form .disabled {
+        background: #f5f5f5 !important;
+        color: #666 !important; }
+    .single-product .single-product-text .single-text-desc {
+      margin-top: 0; }
+    .single-product .single-product-text .single-text-desc1 {
+      border-top: 0px solid #f4f4f4; }
+
+  .single-description .single-descriptions-links::after {
+    width: 0%; }
+  .single-description .single-descriptions-links a {
+    background: transparent;
+    font-size: 15px;
+    padding: 0 .5em; }
+  .single-description .owl-carousel {
+    padding-bottom: 1em; }
+    .single-description .owl-carousel .owl-item h1 {
+      font: 700 18px "Raleway";
+      line-height: 30px; }
+    .single-description .owl-carousel .owl-item h2 {
+      font: 500 15px "Raleway";
+      line-height: 26px; }
+    .single-description .owl-carousel .single-description-reviews .single-description-img {
+      width: 15% !important; }
+      .single-description .owl-carousel .single-description-reviews .single-description-img span {
+        margin-top: -3em; }
+    .single-description .owl-carousel .single-description-reviews .single-description-text {
+      width: 85% !important; }
+      .single-description .owl-carousel .single-description-reviews .single-description-text .single-descriptions-text-sub .single-descriptions-name h3 {
+        font: 300 15px "Lato";
+        line-height: 23px; }
+      .single-description .owl-carousel .single-description-reviews .single-description-text .single-descriptions-comment h3 {
+        font: 400 15px "Raleway";
+        line-height: 23px; }
+    .single-description .owl-carousel form h3 {
+      font: 500 15px "Raleway";
+      line-height: 24px; }
+    .single-description .owl-carousel form button {
+      background: #814090; }
+
+  .single-features .single-features-second {
+    display: grid !important; }
+  .single-features h1 {
+    font: 700 25px "Raleway";
+    line-height: 40px;
+    margin-bottom: 1.5em; }
+  .single-features .owl-carousel {
+    display: none !important; }
+
+  .breadcrumb-wishlist h1 {
+    font-size: 50px !important;
+    margin-top: .5em !important; }
+
+  .wishlist-empty img {
+    width: 65%; }
+  .wishlist-empty h1 {
+    font: 700 20px "Raleway";
+    line-height: 32px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto; }
+  .wishlist-empty h2 {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto; }
+  .wishlist-empty a {
+    background: #814090; }
+
+  .wishlist {
+    display: none; }
+
+  .wishlist-second {
+    display: grid; }
+
+  .cart-second {
+    display: block; }
+
+  .cart-buttons {
+    display: block; }
+    .cart-buttons a {
+      font: 700 13px "Lato";
+      padding: 1em 3%;
+      display: block;
+      width: 94%;
+      margin-bottom: 1em;
+      text-align: center;
+      background: #e6e6e6;
+      color: #666;
+      border: 1px solid #b3b3b3; }
+      .cart-buttons a:hover {
+        background: #ccc; }
+      .cart-buttons a:nth-child(2) {
+        color: black;
+        border: 1px solid #000; }
+
+  .cart-finish {
+    display: block; }
+    .cart-finish .cart-coupons {
+      border: 1px solid #b3b3b3;
+      padding: 1em; }
+      .cart-finish .cart-coupons form input {
+        padding: 1em 0;
+        width: 100%; }
+      .cart-finish .cart-coupons form button {
+        background: #814090;
+        padding: 1em 0;
+        width: 100%;
+        margin-top: .5em;
+        display: block; }
+    .cart-finish .cart-total {
+      padding: 1em;
+      border: 1px solid #b3b3b3;
+      width: auto;
+      margin-top: 2em; }
+      .cart-finish .cart-total h1 {
+        display: none; }
+      .cart-finish .cart-total .cart-total-item h3 {
+        font: 700 15px "Lato";
+        color: #000; }
+      .cart-finish .cart-total .cart-total-item:nth-child(2), .cart-finish .cart-total .cart-total-item:nth-child(3) {
+        border-bottom: 1px solid #b3b3b3; }
+      .cart-finish .cart-total a {
+        background: #814090;
+        font: 500 14px "Lato";
+        letter-spacing: 1px; }
+
+  .sidebar-content, .sidebar-content2, .sidebar {
+    display: none; }
+
+  header {
+    background: #e6e6e6; }
+    header .nav {
+      -webkit-box-shadow: 0px 0px 0px 0px rgba(170, 170, 170, 0.25);
+      -moz-box-shadow: 0px 0px 0px 0px rgba(170, 170, 170, 0.25);
+      box-shadow: 0px 0px 0px 0px rgba(170, 170, 170, 0.25); }
+      header .nav .nav-toggle {
+        display: none; }
+      header .nav .nav-brand {
+        width: 18% !important; }
+        header .nav .nav-brand img {
+          width: 70%; }
+      header .nav .nav-links {
+        display: none; }
+      header .nav .nav-icons {
+        display: none; }
+      header .nav .nav-search-responsive {
+        display: block; }
+      header .nav .nav-toggle-responsive {
+        display: flex;
+        align-items: center;
+        justify-content: center; }
+
+  .sidebar-second {
+    display: block;
+    width: 90% !important; }
+
+  .about-why-us {
+    background: #1e1e1e; }
+    .about-why-us .about-why-us-benefits {
+      display: block; }
+      .about-why-us .about-why-us-benefits .about-why-us-video {
+        width: 100%; }
+        .about-why-us .about-why-us-benefits .about-why-us-video img, .about-why-us .about-why-us-benefits .about-why-us-video video {
+          width: 90%;
+          margin-left: auto;
+          margin-right: auto;
+          display: block; }
+      .about-why-us .about-why-us-benefits .about-why-us-carac {
+        margin-left: 0;
+        margin-top: 2em;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 10px; }
+        .about-why-us .about-why-us-benefits .about-why-us-carac .about-why-us-item {
+          width: 100%;
+          display: block;
+          column-span: span 1;
+          text-align: center; }
+          .about-why-us .about-why-us-benefits .about-why-us-carac .about-why-us-item .about-why-us-icon {
+            margin-right: 0; }
+            .about-why-us .about-why-us-benefits .about-why-us-carac .about-why-us-item .about-why-us-icon span svg {
+              width: 45px;
+              color: white; }
+          .about-why-us .about-why-us-benefits .about-why-us-carac .about-why-us-item .about-why-us-text h3 {
+            font: 700 19px "Raleway";
+            color: white;
+            line-height: 30px; }
+          .about-why-us .about-why-us-benefits .about-why-us-carac .about-why-us-item .about-why-us-text h4 {
+            font: 300 13px "Raleway";
+            color: white;
+            line-height: 22px;
+            margin-top: -1em; }
+
+  .about-brands h1 {
+    font: 700 30px "Raleway";
+    line-height: 45px; }
+  .about-brands img:nth-child(2) {
+    display: none; }
+  .about-brands .about-brands-img-prev {
+    width: 95%;
+    background: #e6e6e6; }
+    .about-brands .about-brands-img-prev .about-brands-img {
+      background: #e6e6e6;
+      width: 100%;
+      margin-top: 2em;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 10px;
+      text-align: center; }
+      .about-brands .about-brands-img-prev .about-brands-img img {
+        width: 5.5em;
+        display: block;
+        margin: 0;
+        cursor: pointer;
+        margin-left: auto;
+        margin-right: auto; }
+        .about-brands .about-brands-img-prev .about-brands-img img:nth-child(5) {
+          grid-column: span 2; } }
+@media screen and (max-width: 500px) {
+  .about-info {
+    width: 95%; }
+    .about-info .about-info-item {
+      margin: 0;
+      margin-bottom: 3em; }
+      .about-info .about-info-item img {
+        height: auto; } }
 @media screen and (max-width: 450px) {
   .pre-footer .pre-footer-cont {
-    width: 100%; } }
+    width: 100%; }
+
+  .single-features .single-features-second .item-shop-new {
+    top: .25em !important;
+    left: .25em !important; }
+    .single-features .single-features-second .item-shop-new span {
+      height: 35px !important;
+      width: 35px !important;
+      font: 400 12px "Lato" !important; }
+  .single-features .single-features-second .item-shop-discounts {
+    top: .25em !important;
+    left: .25em !important; }
+    .single-features .single-features-second .item-shop-discounts span {
+      height: 35px !important;
+      width: 35px !important;
+      font: 400 12px "Lato" !important; }
+  .single-features .item-shop-text .item-shop-h2-first, .single-features .item-shop-text .item-shop-h2-second {
+    width: 50% !important; }
+  .single-features .item-shop-text .item-shop-h2-first {
+    margin-right: 2em !important; }
+
+  .cart-second .cart-second-product .cart-second-img {
+    width: 35%; }
+  .cart-second .cart-second-product .cart-second-name .input-group {
+    margin-top: 1em; }
+    .cart-second .cart-second-product .cart-second-name .input-group button {
+      width: 35px; }
+    .cart-second .cart-second-product .cart-second-name .input-group input {
+      width: 35px; }
+  .cart-second .cart-second-product .cart-second-price {
+    width: 20%; } }
+@media screen and (max-width: 400px) {
+  .single-product .single-product-text .single-text-desc {
+    display: block;
+    margin: 1em 0; }
+    .single-product .single-product-text .single-text-desc h5 {
+      width: 100%; }
+    .single-product .single-product-text .single-text-desc h6 {
+      margin-top: 1em; }
+    .single-product .single-product-text .single-text-desc .single-social {
+      justify-content: flex-start;
+      margin-top: 1em; }
+
+  .single-description .single-descriptions-links a {
+    font-size: 14px; }
+    .single-description .single-descriptions-links a:nth-child(1), .single-description .single-descriptions-links a:nth-child(3) {
+      padding: 0 .5em !important; }
+  .single-description .owl-carousel .single-description-reviews .single-description-img {
+    width: 20% !important;
+    margin-top: -4em; }
+  .single-description .owl-carousel .single-description-reviews .single-description-text {
+    width: 80% !important; }
+
+  .single-product .single-product-text form .input-group input {
+    display: block !important;
+    width: 100% !important; }
+  .single-product .single-product-text form .input-group button {
+    background: #eee !important; }
+
+  .breadcrumb-wishlist h1 {
+    font-size: 40px !important; }
+
+  .wishlist-empty img {
+    width: 75%; }
+  .wishlist-empty h1 {
+    font: 700 19px "Raleway";
+    line-height: 32px;
+    width: 95%; }
+  .wishlist-empty h2 {
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1em; }
+
+  .wishlist-second form span {
+    width: 35px !important;
+    height: 35px !important; }
+
+  header .nav {
+    height: 5em; }
+    header .nav .nav-brand img {
+      width: 95%; }
+    header .nav .nav-search-responsive {
+      width: 57%;
+      margin-left: 3%; }
+      header .nav .nav-search-responsive form div button {
+        padding: 0 1em; }
+    header .nav .nav-toggle-responsive a span {
+      height: 4px;
+      width: 25px;
+      margin-bottom: 4px; }
+
+  .heart-hide {
+    right: .5em !important; } }
+@media screen and (max-width: 360px) {
+  .cart-second .cart-second-product .cart-second-name a {
+    font: 700 14px "Raleway";
+    line-height: 26px; }
+  .cart-second .cart-second-product .cart-second-name h2 {
+    font: 700 12px "Raleway"; }
+  .cart-second .cart-second-product .cart-second-name .input-group {
+    margin-top: .5em !important; }
+  .cart-second .cart-second-product .cart-second-name input, .cart-second .cart-second-product .cart-second-name button {
+    width: 30px !important; }
+  .cart-second .cart-second-product .cart-second-price h3 {
+    font-size: 14px;
+    bottom: 0; } }
 @media screen and (max-width: 350px) {
   .pre-footer .pre-footer-cont .pre-footer-item .pre-footer-icon {
     margin-bottom: 1em; }
@@ -951,7 +1902,22 @@ footer {
   .pre-footer .pre-footer-cont .pre-footer-item .pre-footer-text h1 {
     font: 700 14px "Raleway" !important; }
   .pre-footer .pre-footer-cont .pre-footer-item .pre-footer-text h2 {
-    font: 400 13px "Raleway" !important; } }
+    font: 400 13px "Raleway" !important; }
+
+  .single-features .single-features-second {
+    display: grid !important; }
+  .single-features h1 {
+    font: 700 22px "Raleway";
+    line-height: 40px; }
+  .single-features .owl-carousel {
+    display: none !important; }
+
+  .about-why-us .about-why-us-benefits .about-why-us-carac .about-why-us-item .about-why-us-text h3 {
+    font: 700 16px "Raleway";
+    line-height: 30px; }
+  .about-why-us .about-why-us-benefits .about-why-us-carac .about-why-us-item .about-why-us-text h4 {
+    font: 300 12px "Raleway";
+    line-height: 22px; } }
 @media screen and (max-width: 300px) {
   .pre-footer {
     margin-bottom: 0;

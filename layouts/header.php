@@ -21,10 +21,10 @@ switch($archivo_actual) //Valido en que archivo estoy para generar mi CSS de sel
 	 break; 
  }
 
-include './php/icons.php';
+include './layouts/icons.php';
 
 ?>
-<header>
+<header id="header">
 	<nav class="nav nav1">
 		<!-- Botón desplegable  -->
 		<div class="nav-toggle">
@@ -48,23 +48,72 @@ include './php/icons.php';
 		</div>
 		<!-- Íconos  -->
 		<div class="nav-icons">
-		<form action="#" method="GET">
+		<form action="shop" method="GET">
 			<div class="nav-search">
 			<label>
-				<input type="text" placeholder="Iniciar búsqueda..." name="search" required>
+				<input type="text" placeholder="Iniciar búsqueda..." name="search" id="search" required>
 				</label>
-				<button type="submit"><?php echo $loupe; ?></button> 
+				<button type="submit" id="button_search"><?php echo $loupe; ?></button> 
 			</div>
 		</form>
-		<a href="wishlist">
+		<a href="wishlist" title="Tienes <?php echo count($_SESSION["wishlist"]); ?> artículos en tu lista de deseos">
 			<?php echo $heart; ?>
-			<span>1</span>
+			<span>
+				<?php 
+					if(isset($_SESSION["wishlist"])){
+					echo count($_SESSION["wishlist"]);
+					}else{
+					echo 0;
+					}
+				?>
+			</span>
 		</a>
-		<a href="cart">
+			<?php
+				$items = 0;
+					$arreglocarrito =$_SESSION["carrito"];
+					for($i=0;$i<count($arreglocarrito);$i++){ 
+					$items += $arreglocarrito[$i]['Cantidad']; 
+					}
+			?>
+		<a href="cart" title="Tienes <?php echo $items; ?> artículos en tu carrito">
 			<?php echo $bag; ?>
-			<span>2</span>
+			<span>
+			<?php
+				if(isset($_SESSION["carrito"])){ 
+					echo $items; 
+				}else{
+					echo '0'; 
+				}
+				?>
+			</span>
 		</a>
-		<h1>Total: <a href="cart">$245</a></h1>
+		<h1>Total: <a href="cart">$<?php
+		$total = 0;
+		if(isset($_SESSION["total"])){
+				echo $_SESSION["total"];
+		}else{
+			echo '0';
+		}
+			?></a></h1>
+		</div>
+		
+		<div class="nav-search-responsive">
+		<form action="shop" method="GET">
+			<div class="nav-search">
+			<label>
+				<input type="text" placeholder="Iniciar búsqueda..." name="search" id="search" required>
+				</label>
+				<button type="submit" id="button_search"><?php echo $loupe; ?></button> 
+			</div>
+		</form>
+		</div>
+		
+		<div class="nav-toggle-responsive">
+			<a id="nav-toggle-responsive">
+				<span></span>
+				<span></span>
+				<span></span>
+			</a>
 		</div>
 	</nav>
 </header>   
@@ -197,5 +246,40 @@ include './php/icons.php';
 				<a href="#">Crayones</a>
 			</div>
 		</div>
+		</div>
+	</div>
+	
+	
+	<div class="sidebar-second-black" id="sidebar_second_black"></div>
+	<div class="sidebar-second" id="sidebar_second">
+		<div class="sidebar-second-content">
+			<div class="sidebar-second-item">
+				<a href="./"><i class="fas fa-home"></i> Inicio</a>
+			</div>
+			<div class="sidebar-second-item">
+				<a href="categories"><i class="fas fa-list-alt"></i> Categorías</a>
+			</div>
+			<div class="sidebar-second-item">
+				<a href="shop"><i class="fas fa-pencil-ruler"></i> Tienda</a>
+			</div>
+			<div class="sidebar-second-item">
+				<a href="about-us"><i class="fas fa-user-friends"></i> Nosotros</a>
+			</div>
+			<div class="sidebar-second-item">
+				<a href="contact"><?php echo $headphones ?> Contacto</a>
+			</div>
+			<div class="sidebar-second-item">
+				<a href="wishlist"><?php echo $heart ?> Lista de Deseos <span><?php echo count($_SESSION["wishlist"]);?></span></a>
+			</div>
+			<?php
+				$items = 0;
+					$arreglocarrito =$_SESSION["carrito"];
+					for($i=0;$i<count($arreglocarrito);$i++){ 
+					$items += $arreglocarrito[$i]['Cantidad']; 
+					}
+			?>
+			<div class="sidebar-second-item">
+				<a href="cart"><?php echo $bag ?> Carrito <span><?php echo $items; ?></span></a>
+			</div>
 		</div>
 	</div>

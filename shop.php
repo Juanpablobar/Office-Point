@@ -9,7 +9,7 @@ session_start();
 	<title>Office Point | Tienda</title>
 	
 	<link rel="icon shortcut" href="./img/logo.png">
-	<link rel="stylesheet" href="css/shop.css"> 
+	<link rel="stylesheet" href="css/shop.css?16.0"> 
 	<link rel="preload" href="fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="fontawesome-free/css/all.min.css"></noscript>
 	
@@ -224,8 +224,8 @@ session_start();
 	
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/reload.js"></script>
-<script src="js/header.js" defer></script>
-<script src="js/up2.js" defer></script>
+<script src="js/header2.js" defer></script>
+<script src="js/up3.js" defer></script>
 
 <script defer>
 	$(document).ready(function(){

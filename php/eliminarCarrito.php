@@ -7,9 +7,6 @@ for($i=0;$i<count($arreglo);$i++){
         "Id" =>$arreglo[$i]["Id"],
         "Nombre" =>  $arreglo[$i]["Nombre"],
         "Imagen" =>  $arreglo[$i]["Imagen"],
-        "Tamaño" =>  $arreglo[$i]["Tamaño"],
-        "Material" =>  $arreglo[$i]["Material"],
-        "Precio" =>  $arreglo[$i]["Precio"],
         "Precio" =>  $arreglo[$i]["Precio"],
         "Cantidad" =>$arreglo[$i]["Cantidad"],
         );
@@ -21,5 +18,4 @@ if(isset($arregloNuevo)){
     //quiere decir que el registro a eliminar es el unico que habia
     unset($_SESSION["carrito"]);
 }
-echo "listo";
 ?>

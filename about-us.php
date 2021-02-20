@@ -9,7 +9,7 @@ session_start();
 	<title>Office Point | Nosotros</title>
 	
 	<link rel="icon shortcut" href="./img/logo.png">
-	<link rel="stylesheet" href="css/about-us.css?2.0"> 
+	<link rel="stylesheet" href="css/about-us.css?16.0"> 
 	<link rel="preload" href="fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="fontawesome-free/css/all.min.css"></noscript>
 	
@@ -28,16 +28,18 @@ session_start();
 </div>
 
 <div class="about-info">
+	       <?php
+                include("./php/conexion.php");
+                   $resultado = $conexion ->query("select * from nosotros_texto order by id"); 
+                
+                while($fila = mysqli_fetch_array($resultado)){
+                ?>
 	<div class="about-info-item">
-		<img src="img/about%201.png">
-		<h1>Quiénes Somos</h1>
-		<h2>Lorem ipsum dolor sit amet, consectetur adispiscing elit. Aliqusm ne elit ultrices, congue ante equis, feguiat felis. Aenean pulvinar, erat et interdum iaculis, felis ex blandit eros, ac volutpat nibh orci id sapien. Mauris consequat nisl eu vulputate lacinia. Phasellus ut arcu auismod tortor condimentum elementum blandit at massa. Donec ullamcorper semper suscipit. Sed auctor varius diam et pharetra. Sed tincidunt urna.</h2>
+		<img src="img/<?php echo $fila[3]; ?>" alt="<?php echo $fila[4]; ?>" title="<?php echo $fila[4]; ?>">
+		<h1><?php echo $fila[1]; ?></h1>
+		<h2><?php echo $fila[2]; ?></h2>
 	</div>
-	<div class="about-info-item">
-		<img src="img/about%202.png">
-		<h1>Nuestra Visión</h1>
-		<h2>Lorem ipsum dolor sit amet, consectetur adispiscing elit. Aliqusm ne elit ultrices, congue ante equis, feguiat felis. Aenean pulvinar, erat et interdum iaculis, felis ex blandit eros, ac volutpat nibh orci id sapien. Mauris consequat nisl eu vulputate lacinia. Phasellus ut arcu auismod tortor condimentum elementum blandit at massa. Donec ullamcorper semper suscipit. Sed auctor varius diam et pharetra. Sed tincidunt urna.</h2>
-	</div>
+	<?php } ?>
 </div>
 
 <div class="about-why-us">
@@ -82,8 +84,14 @@ session_start();
 <div class="about-brands">
 	<h1>Nuestras Marcas</h1>
 	<img src="img/pritt.png">
-	<div class="about-brands-img">
-		<img src="img/brands.png">
+	<div class="about-brands-img-prev">
+		<div class="about-brands-img">
+			<img src="img/brands%201.png">
+			<img src="img/brand%202.png">
+			<img src="img/brand%203.png">
+			<img src="img/brand%204.png">
+			<img src="img/brand%205.png">
+		</div>
 	</div>
 </div>
 
@@ -91,8 +99,8 @@ session_start();
 <?php include ('./layouts/footer.php'); ?>	
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/reload.js"></script>
-<script src="js/header.js" defer></script>
-<script src="js/up2.js" defer></script>
+<script src="js/header2.js" defer></script>
+<script src="js/up3.js" defer></script>
 </body>
 </html>
  

@@ -6,9 +6,10 @@
 	z-index: 99998;
 	top: 0;
 	left: 0; 
-}      
+	display: none;
+}                
 .sidebar-content,.sidebar-content2{
-	width: 30%;
+	width: 25em;
 	background: white;       
 	height: 100%;         
 	position: fixed;
@@ -119,4 +120,4 @@
 	100%{
 		transform: translate(0%)
 	}
-}                                                                                                                                     
+}                                                                                                                        

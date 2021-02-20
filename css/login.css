@@ -186,17 +186,22 @@ li {
         color: #444;
         line-height: 40px;
         margin-top: .75em; }
-      .login .login-first .login-cont form {
+      .login .login-first .login-cont form, .login .login-first .login-cont .form-login {
         width: 100%; }
-        .login .login-first .login-cont form .login-input-item {
+        .login .login-first .login-cont form .login-input-item, .login .login-first .login-cont .form-login .login-input-item {
           text-align: left;
           width: 100%;
           margin-bottom: 1em; }
-          .login .login-first .login-cont form .login-input-item h2 {
+          .login .login-first .login-cont form .login-input-item h2, .login .login-first .login-cont .form-login .login-input-item h2 {
             font: 500 14px "Raleway";
             color: #666;
             line-height: 20px; }
-          .login .login-first .login-cont form .login-input-item input {
+          .login .login-first .login-cont form .login-input-item h3, .login .login-first .login-cont .form-login .login-input-item h3 {
+            font: 500 14px "Raleway";
+            color: #ff6363;
+            line-height: 20px;
+            margin-top: 0; }
+          .login .login-first .login-cont form .login-input-item input, .login .login-first .login-cont .form-login .login-input-item input {
             outline: none;
             border: 2px solid #e9e9e9;
             padding: 1em 3%;
@@ -205,19 +210,19 @@ li {
             border-radius: .25em;
             margin-top: -.5em;
             color: #666; }
-            .login .login-first .login-cont form .login-input-item input:active, .login .login-first .login-cont form .login-input-item input:focus {
+            .login .login-first .login-cont form .login-input-item input:active, .login .login-first .login-cont form .login-input-item input:focus, .login .login-first .login-cont .form-login .login-input-item input:active, .login .login-first .login-cont .form-login .login-input-item input:focus {
               border: 2px solid #ff6363; }
-          .login .login-first .login-cont form .login-input-item .login-input-second {
+          .login .login-first .login-cont form .login-input-item .login-input-second, .login .login-first .login-cont .form-login .login-input-item .login-input-second {
             display: flex;
             justify-content: space-between; }
-            .login .login-first .login-cont form .login-input-item .login-input-second a {
+            .login .login-first .login-cont form .login-input-item .login-input-second a, .login .login-first .login-cont .form-login .login-input-item .login-input-second a {
               font: 500 14px "Raleway";
               color: #ff6363;
               line-height: 20px;
               display: flex;
               justify-content: center;
               align-items: center; }
-        .login .login-first .login-cont form button {
+        .login .login-first .login-cont form button, .login .login-first .login-cont .form-login button {
           outline: none;
           border: 0;
           background: #ff6363;

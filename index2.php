@@ -9,7 +9,7 @@ session_start();
 	<title>Office Point | Inicio</title>
 	
 	<link rel="icon shortcut" href="./img/logo.png">
-	<link rel="stylesheet" href="css/index.css?1.0"> 
+	<link rel="stylesheet" href="css/index.css?16.0"> 
 	<link rel="preload" href="fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="fontawesome-free/css/all.min.css"></noscript>
     <link rel="preload" href="css/owl.carousel.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -66,21 +66,21 @@ session_start();
 <div class="index-icons">
 	<div class="index-icons-item">
 	<div class="index-icons-cont">
-		<span><img src="img/truck.svg"></span>
+		<span><img src="img/delivery.svg"></span>
 		<h1>Envío Gratis</h1>
 		<h2>Lorem ipsum dolor it amet, consectetur adispiscing elit</h2>
 	</div>
 	</div>
 	<div class="index-icons-item">
 	<div class="index-icons-cont">
-		<span><img src="img/tag.svg"></span>
+		<span><img src="img/price-tag.svg"></span>
 		<h1>Grandes Descuentos</h1>
 		<h2>Lorem ipsum dolor it amet, consectetur adispiscing elit</h2>
 	</div>
 	</div>
 	<div class="index-icons-item">
 	<div class="index-icons-cont">
-		<span><img src="img/guarantee.svg"></span>
+		<span><img src="img/medal.svg"></span>
 		<h1>Expertos en el Área</h1>
 		<h2>Lorem ipsum dolor it amet, consectetur adispiscing elit</h2>
 	</div>
@@ -122,21 +122,22 @@ session_start();
 						<img src="img/<?php echo $fila[6]; ?>">
 						<div class="item-shop-hide">
 							<div class="item-shop-hide-top">
-								<div class="item-shop-hide-a"><a href="#" title="Agregar a la lista de deseos"><?php echo $heart; ?></a></div>
+								<div class="item-shop-hide-a"><a href="wishlist?id=<?php echo $fila[0]; ?>&cant=1" title="Agregar a la lista de deseos"><?php echo $heart; ?></a></div>
 								<div class="item-shop-hide-a"><a href="#" title="Buscar productos similares"><?php echo $loupe; ?></a></div>
 							</div>
 							<div class="item-shop-hide-bottom">
-								<div class="item-shop-hide-a"><a href="#" title="Agregar al carrito"><?php echo $bag; ?></a></div>
+								<div class="item-shop-hide-a"><a href="cart?id=<?php echo $fila[0]; ?>&cant=1" title="Agregar al carrito"><?php echo $bag; ?></a></div>
 							</div>
 						</div>
 						<?php
-						if($fila[4] > 0){
-						$update = $conexion ->query("UPDATE productos SET descuento='0' WHERE id='$fila[0]'");
-
-						$date = $fila[4] ;
+						$fecha = date("Y-m-d");
+						if($fila[4] < $fecha || $fila[4] == 0){
+							$update = $conexion ->query("UPDATE productos SET descuento='0' WHERE id=".$fila[0])or die($conexion->error);
+						}else{
+						$date = $fila[4];
 						echo "<div class='item-shop-clock' id='countdown".$fila[0]."'>
 						<script>
-						var end".$fila[0]." = new Date('".$date." 12:00 AM'); 
+						var end".$fila[0]." = new Date('".$date." 11:59 PM'); 
 
 							var _second = 1000;
 							var _minute = _second * 60;
@@ -170,10 +171,8 @@ session_start();
 
 							timer = setInterval(showRemaining, 1000);
 														</script> 
-								</div>";
-						}else{
-							echo '';
-						}
+								</div>";						}
+					
 						if($fila[5] == 'true'){
 						echo '<div class="item-shop-new">
 							<span>New</span>
@@ -192,7 +191,7 @@ session_start();
 						?>
 					</div>
 					<div class="item-shop-text">
-						<a href="shop-single?id=<?php echo $fila[0]; ?>"><?php echo $fila[1]; ?></a>
+						<a href="shop-single?name=<?php echo $fila[1];?>&id=<?php echo $fila[0]; ?>"><?php echo $fila[1]; ?></a>
 						<?php
 								$percent = round($fila[3]/100*$fila[2]);
 							if($fila[3] > 0){
@@ -291,8 +290,8 @@ session_start();
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/owl.carousel.min.js"></script>
 <script src="js/reload.js"></script>
-<script src="js/header.js" defer></script>
-<script src="js/up2.js" defer></script>
+<script src="js/header2.js" defer></script>
+<script src="js/up3.js" defer></script>
 
 <script defer>
     $('.owl-carousel1').owlCarousel({
@@ -322,8 +321,8 @@ session_start();
 	$(".index-categories-item").click(function(){
 	window.location = $(this).find("div:first a:first").attr("href");
 	});
-	$(".item-shop").click(function(){
-	window.location = $(this).find(".item-shop-text a:first").attr("href");
+	$(".item-shop-img").click(function(){
+	window.location = $(this).parent("div").find(".item-shop-text a:first").attr("href");
 	});
 });
 	</script>

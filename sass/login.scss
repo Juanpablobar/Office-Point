@@ -34,7 +34,7 @@
 				line-height: 40px; 
 				margin-top: .75em; 
 			}
-			form{
+			form, .form-login{
 				width: 100%;
 				.login-input-item{
 					text-align: left;  
@@ -44,6 +44,12 @@
 						font: 500 14px $rale;
 						color: #666;
 						line-height: 20px;
+					}
+					h3{
+						font: 500 14px $rale;
+						color: $c2;
+						line-height: 20px;  
+						margin-top: 0; 
 					}
 					input{
 						outline: none;
@@ -178,4 +184,4 @@
 			}
 		}
 	}
-}             
+}                  

@@ -9,7 +9,7 @@ session_start();
 	<title>Office Point | Contacto</title>
 	
 	<link rel="icon shortcut" href="./img/logo.png">
-	<link rel="stylesheet" href="css/contact.css?2.0"> 
+	<link rel="stylesheet" href="css/contact.css?16.0"> 
 	<link rel="preload" href="fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="fontawesome-free/css/all.min.css"></noscript>
 	
@@ -26,27 +26,47 @@ session_start();
 	<h1>Contacto</h1>
 	<h2><a href="./">Home</a> &mdash; Contacto</h2>
 </div>
+	       <?php
+                include("./php/conexion.php");
+                ?>
 
 <div class="contact-icons">
 	<div class="contact-icons-item">
+		<?php 
+        $resultado = $conexion ->query("select * from contacto where id='1'"); 
+        $fila = mysqli_fetch_array($resultado)
+			?>
 		<span><?php echo $phone; ?></span>
 		<h1>Teléfono</h1>
-		<a href="#">+01-2-8888-6868</a>
+		<a href="tel:<?php echo $fila[1]; ?>"><?php echo $fila[1]; ?>
+		</a>
 	</div>
 	<div class="contact-icons-item">
+		<?php 
+        $resultado2 = $conexion ->query("select * from contacto where id='2'"); 
+        $fila2 = mysqli_fetch_array($resultado2)
+			?>
 		<span><?php echo $map; ?></span>
 		<h1>Dirección</h1>
-		<a href="#">38 Block Street, Sydney, Australia</a>
+		<a><?php echo $fila2[1]; ?></a>
 	</div>
 	<div class="contact-icons-item">
+		<?php 
+        $resultado3 = $conexion ->query("select * from contacto where id='3'"); 
+        $fila3 = mysqli_fetch_array($resultado3)
+			?>
 		<span><?php echo $clock; ?></span>
 		<h1>Horario</h1>
-		<a>10:00 am to 23:00 pm</a>
+		<a><?php echo $fila3[1]; ?></a>
 	</div>
 	<div class="contact-icons-item">
+		<?php 
+        $resultado4 = $conexion ->query("select * from contacto where id='4'"); 
+        $fila4 = mysqli_fetch_array($resultado4)
+			?>
 		<span><?php echo $envelope; ?></span>
 		<h1>Email</h1>
-		<a href="#">info@officepoint.com</a>
+		<a href="mailto:<?php echo $fila3[1]; ?>"><?php echo $fila4[1]; ?></a>
 	</div>
 </div>
 
@@ -70,8 +90,8 @@ session_start();
 <?php include ('./layouts/footer.php'); ?>	
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/reload.js"></script>
-<script src="js/header.js" defer></script>
-<script src="js/up2.js" defer></script>
+<script src="js/header2.js" defer></script>
+<script src="js/up3.js" defer></script>
 </body>
 </html>
  

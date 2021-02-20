@@ -1,3 +1,7 @@
+.header{
+	position: fixed !important;
+	z-index: 101;
+}
 header{         
 	@include initial;       
 	nav{
@@ -24,7 +28,7 @@ header{
 		}               
 		.nav-brand{
 			@include flex;
-			width: 23%;
+			width: 23%;     
 			justify-content: flex-start;
 			margin-left: 2%;  
 			img{
@@ -85,6 +89,9 @@ header{
 					font-family: $lato;
 					color: #666;
 				}
+				.nav-search2{
+					animation: search2 .5s linear forwards;
+				}
 				button{
 					border: 0;
 					outline: none;
@@ -138,7 +145,185 @@ header{
 				}
 			}
 		}
+		.nav-search-responsive{
+			display: none;
+			width: 60%;
+			form{
+				width: 100%;
+				@include flex;
+				div{
+					width: 100%;
+					position: relative;
+					border: 2px solid $c1;
+					border-radius: 10em;
+					padding: 0;
+					input{
+						padding: 0 5%;
+						width: 90%;
+						display: block;
+						font: 500 14px $rale;
+						color: #333;
+						outline: none;
+						background: #e6e6e6;
+						border-radius: 10em;
+						border: 0;
+						height: 3em;
+						&:focus{
+							background: white;
+						}
+					}
+					button{
+						border: 0;
+						outline: none;
+						height: 3.2em;
+						background: $c1;
+						position: absolute;
+						top: 0;
+						right: -1px;
+						border-radius: 10em;
+						padding: 0 1.5em;
+						cursor: pointer;
+						svg{
+							width: 16px;
+							color: white;
+							display: block;
+						}
+					}
+				}
+			}
+		}
+		.nav-toggle-responsive{
+			width: 20%;
+			display: none;
+			height: 100%;
+			margin-right: 0%;
+			a{
+				width: auto;
+				display: block;
+				cursor: pointer;
+				span{
+					height: 4px;
+					width: 30px;
+					margin-bottom: 5px;
+					background: $c1;
+					display: block;
+				}
+			}
+		}
 	}
-}                                                         
+}
+.sidebar-second-black{
+	display: none;
+	position: fixed;
+	left: 0;   
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,.5);
+	z-index: 99;
+}    
+.sidebar-second{
+	animation: sidebar-second .5s linear forwards;
+}
+.sidebar-second2{
+	animation: sidebar-second2 .5s linear forwards;
+}
+.sidebar-second,.sidebar-second2{
+	display: none; 
+	position: fixed;
+	overflow-y: auto;
+	top: 5em;
+	right: 0;
+	width: 27em;
+	z-index: 100;
+	height: 100%;   
+	background: #e6e6e6;    
+	.sidebar-second-item{  
+		width: 100%;
+		border-top: 1px solid #ccc;
+		&:hover{
+			background: #ddd;
+		}
+		a{  
+			font: 700 18px $rale;
+			padding: 1em 5%;
+			line-height: 22px;
+			text-transform: uppercase;  
+			color: #444;
+			display: flex; 
+			width: 90%;            
+			svg{
+				width: 18px;     
+			}
+			i, svg{
+				margin-right: .75em;
+			} 
+			span{
+				display: block;
+				font: 400 11px $lato;
+				color: white;
+				background: $c1;
+				border-radius: 10em;
+				height: 20px;
+				width: 20px;
+				@include flex;      
+				position: relative;
+				top: -1em;
+				right: -.5em;
+			}
+		}          
+	}  
+} 
+     
+@keyframes search{
+	0%{
+		width: 500%;
+		position: relative;
+		right: 450%;
+		background: white;
+	}
+	99%{
+		width: 0%; 
+		right: 0;
+		background: white;
+	}
+	100%{
+		z-index: -1;
+		width: 0%; 
+		right: 0;
+		background: white;
+	}
+}
+@keyframes search2{
+	0%{
+		width: 0%;
+		z-index: -1;
+		right: 0;
+	}
+	100%{
+		width: 500%; 
+		z-index: 1; 
+		background: white;
+		border: 1px solid #eee;
+		position: relative;
+		right: 450%; 
+	}   
+}    
 
-@import 'sidebar';
+@keyframes sidebar-second2{
+	0%{
+		transform: translateX(100%);
+	}
+	100%{
+		transform: translateX(0%); 
+	}
+}  
+@keyframes sidebar-second{
+	0%{
+		transform: translateX(0%);
+	}
+	100%{
+		transform: translateX(100%); 
+	}
+}
+
+@import 'sidebar';   
