@@ -1,5 +1,6 @@
 <?php
 session_start();
+include './php/conexion.php';
 ?>
 <!DOCTYPE html>
 <html lang="">
@@ -29,7 +30,6 @@ session_start();
 
 <div class="about-info">
 	       <?php
-                include("./php/conexion.php");
                    $resultado = $conexion ->query("select * from nosotros_texto order by id"); 
                 
                 while($fila = mysqli_fetch_array($resultado)){
@@ -47,7 +47,30 @@ session_start();
 	<h2>Nuestros Beneficios</h2>
 	<div class="about-why-us-benefits">
 		<div class="about-why-us-video">
-			<img src="img/why-us.png">
+			<?php 
+				$resultado = $conexion ->query("select * from nosotros_img where id='1'"); 
+				$fila = mysqli_fetch_array($resultado);
+
+				$resultado2 = $conexion ->query("select * from nosotros_img where id='2'"); 
+				$fila2 = mysqli_fetch_array($resultado2);
+
+				$resultado3 = $conexion ->query("select * from nosotros_img where id='3'"); 
+				$fila3 = mysqli_fetch_array($resultado3);
+
+				$resultado4 = $conexion ->query("select * from nosotros_img where id='4'"); 
+				$fila4 = mysqli_fetch_array($resultado4);
+
+				$resultado5 = $conexion ->query("select * from nosotros_img where id='5'"); 
+				$fila5 = mysqli_fetch_array($resultado5);
+
+				$resultado6 = $conexion ->query("select * from nosotros_img where id='6'"); 
+				$fila6 = mysqli_fetch_array($resultado6);
+
+				$resultado7 = $conexion ->query("select * from nosotros_img where id='7'"); 
+				$fila7 = mysqli_fetch_array($resultado7);
+			
+			?>
+			<img src="img/<?php echo $fila[1]; ?>" alt="<?php echo $fila[2] ?>" title="<?php echo $fila[2] ?>">
 		</div>
 		<div class="about-why-us-carac">
 			<div class="about-why-us-item">
@@ -83,14 +106,14 @@ session_start();
 
 <div class="about-brands">
 	<h1>Nuestras Marcas</h1>
-	<img src="img/pritt.png">
+	<img src="img/<?php echo $fila2[1]; ?>" alt="<?php echo $fila2[2] ?>" title="<?php echo $fila2[2] ?>">
 	<div class="about-brands-img-prev">
 		<div class="about-brands-img">
-			<img src="img/brands%201.png">
-			<img src="img/brand%202.png">
-			<img src="img/brand%203.png">
-			<img src="img/brand%204.png">
-			<img src="img/brand%205.png">
+			<img src="img/<?php echo $fila3[1]; ?>" alt="<?php echo $fila3[2] ?>" title="<?php echo $fila3[2] ?>">
+			<img src="img/<?php echo $fila4[1]; ?>" alt="<?php echo $fila4[2] ?>" title="<?php echo $fila4[2] ?>">
+			<img src="img/<?php echo $fila5[1]; ?>" alt="<?php echo $fila5[2] ?>" title="<?php echo $fila5[2] ?>">
+			<img src="img/<?php echo $fila6[1]; ?>" alt="<?php echo $fila6[2] ?>" title="<?php echo $fila6[2] ?>">
+			<img src="img/<?php echo $fila7[1]; ?>" alt="<?php echo $fila7[2] ?>" title="<?php echo $fila7[2] ?>">
 		</div>
 	</div>
 </div>

@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include './conexion.php';
 
 function comprobar_email($email) {

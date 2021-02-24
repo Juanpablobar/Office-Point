@@ -21,21 +21,21 @@
 				<h2>Email: <a href="mailto:support@officepoint.com">support@officepoint.com</a></h2>
 			</div>
 			<div class="footer-links-item">
-				<h1>Company</h1>
-				<a href="#" target="_blank">About Us</a>
-				<a href="#" target="_blank">Offices</a>
-				<a href="#" target="_blank">Contact</a>
-				<a href="#" target="_blank">Help &amp; FAQ</a>
+				<h1>Compañia</h1>
+				<a href="shop">Tienda</a>
+				<a href="categories">Categorías</a>
+				<a href="about-us">Sobre Nosotros</a>
+				<a href="contact">Contacto</a>
 			</div>
 			<div class="footer-links-item">
-				<h1>Useful Links</h1>
+				<h1>Vínculos Rápidos</h1>
+				<a href="login">Iniciar Sesión</a>
 				<a href="#" target="_blank">Privacy Protection</a>
-				<a href="#" target="_blank">Safe Payments</a>
 				<a href="#" target="_blank">Terms of Service</a>
 				<a href="#" target="_blank">Privacy Policy</a>
 			</div>
 			<div class="footer-links-item">
-				<h1>Newsletter</h1>
+				<h1>Boletín</h1>
 				<h2>Suscríbete a nuestro boletín</h2>
 				<form action="#" method="post">
 				<div class="footer-input">

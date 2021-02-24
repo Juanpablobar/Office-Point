@@ -9,15 +9,15 @@ session_start();
 	<title>Office Point | Inicio</title>
 	
 	<link rel="icon shortcut" href="./img/logo.png">
-	<link rel="stylesheet" href="css/index.css?16.0"> 
+	<noscript><link rel="stylesheet" href=".css/owl.carousel.css"></noscript>
+    <link rel="preload" href="css/owl.theme.default.css?1.0" as="style" onload="this.onload=null;this.rel='stylesheet'">
+	<link rel="stylesheet" href="css/index.css?21.0">
 	<link rel="preload" href="fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="fontawesome-free/css/all.min.css"></noscript>
     <link rel="preload" href="css/owl.carousel.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="css/owl.carousel.css"></noscript>
-    <link rel="preload" href="css/owl.theme.default.css?1.0" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="css/owl.theme.default.css?1.0"></noscript>
 	
-</head>
+</head> 
 <body>
 
 <?php include ('./layouts/header.php'); ?>
@@ -39,23 +39,14 @@ session_start();
 		<div class="item">
 		<div class="item-img">
 			<img src="img/<?php echo $fila[1]; ?>">
+			<img src="img/<?php echo $fila[15]; ?>">
 		</div>
 		<div class="item-text <?php echo $fila[2]; ?>">
 		<div class="item-text-align">
-		<span style="color: <?php echo $fila[14]; ?>;background:<?php echo $fila[13]; ?>"><?php echo $fila[12]; ?></span>
+		<span style="color: <?php echo $fila[14]; ?>;background:<?php echo $fila[13]; ?>">#<?php echo $fila[12]; ?></span>
 		<h1 style="color: <?php echo $fila[4]; ?>"><?php echo $fila[3]; ?></h1>
 		<h2 style="color: <?php echo $fila[6]; ?>"><?php echo $fila[5]; ?></h2>
-		<a class="carousel-a" href="<?php echo $fila[11]; ?>" style="color:<?php echo $fila[9]; ?>;border-color:<?php echo $fila[10]; ?>;background:<?php echo $fila[8]; ?>"><?php echo $fila[7]; ?></a>
-		<style>
-			.carousel-a:hover{
-				background: <?php echo $fila[10]; ?> !important;
-				color: <?php echo $fila[8]; ?> !important;
-				font-weight: 600 !important;
-			}
-			.carousel-a svg{
-				transition: none !important; 
-			}
-		</style>
+		<a class="carousel-a" href="shop?search=<?php echo $fila[12]; ?>" style="color:<?php echo $fila[9]; ?>;border-color:<?php echo $fila[10]; ?>;background:<?php echo $fila[8]; ?>"><?php echo $fila[7]; ?></a>
 		</div>
 			</div>
 	</div>
@@ -64,25 +55,37 @@ session_start();
 	</div>
 	
 <div class="index-icons">
+	<?php
+		$resultado = $conexion ->query("select * from icons_index where id='1'"); 
+		$fila = mysqli_fetch_array($resultado)
+	?>
 	<div class="index-icons-item">
 	<div class="index-icons-cont">
 		<span><img src="img/delivery.svg"></span>
-		<h1>Envío Gratis</h1>
-		<h2>Lorem ipsum dolor it amet, consectetur adispiscing elit</h2>
+		<h1><?php echo $fila[1]; ?></h1>
+		<h2><?php echo $fila[2]; ?></h2>
 	</div>
 	</div>
+	<?php
+		$resultado2 = $conexion ->query("select * from icons_index where id='2'"); 
+		$fila2 = mysqli_fetch_array($resultado2)
+	?>
 	<div class="index-icons-item">
 	<div class="index-icons-cont">
 		<span><img src="img/price-tag.svg"></span>
-		<h1>Grandes Descuentos</h1>
-		<h2>Lorem ipsum dolor it amet, consectetur adispiscing elit</h2>
+		<h1><?php echo $fila2[1]; ?></h1>
+		<h2><?php echo $fila2[2]; ?></h2>
 	</div>
 	</div>
+	<?php
+		$resultado3 = $conexion ->query("select * from icons_index where id='3'"); 
+		$fila3 = mysqli_fetch_array($resultado3)
+	?>
 	<div class="index-icons-item">
 	<div class="index-icons-cont">
 		<span><img src="img/medal.svg"></span>
-		<h1>Expertos en el Área</h1>
-		<h2>Lorem ipsum dolor it amet, consectetur adispiscing elit</h2>
+		<h1><?php echo $fila3[1]; ?></h1>
+		<h2><?php echo $fila3[2]; ?></h2>
 	</div>
 	</div>
 </div>
@@ -173,7 +176,7 @@ session_start();
 														</script> 
 								</div>";						}
 					
-						if($fila[5] == 'true'){
+						if($fila[5] == 'si'){
 						echo '<div class="item-shop-new">
 							<span>New</span>
 						</div>';
@@ -220,7 +223,7 @@ session_start();
 		</div>
 		<div class="index-clock-text-flex">
 			<div class="index-clock-text">
-				<h4 style="background: <?php echo $fila[2]; ?>;color: <?php echo $fila[3] ;?>"><?php echo $fila[4]; ?></h4>
+				<h4 style="background: <?php echo $fila[2]; ?>;color: <?php echo $fila[3] ;?>">#<?php echo $fila[4]; ?></h4>
 				<h1>Ofertas de la Semana</h1>
 				<div class="index-clock-clock">
 	<?php
@@ -269,7 +272,7 @@ session_start();
 							}
 							?>
 							</div>
-				<a class="clock-a" href="<?php echo $fila[9]; ?>" style="background:<?php echo $fila[6]; ?>;color: <?php echo $fila[7]; ?>;border-color: <?php echo $fila[8]; ?>">COMPRAR <?php echo $arrow_right; ?></a>
+				<a class="clock-a" href="shop?search=<?php echo $fila[9]; ?>" style="background:<?php echo $fila[6]; ?>;color: <?php echo $fila[7]; ?>;border-color: <?php echo $fila[8]; ?>">COMPRAR <?php echo $arrow_right; ?></a>
 				<style>
 					.clock-a:hover{
 						background: <?php echo $fila[8]; ?> !important;

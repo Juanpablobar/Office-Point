@@ -68,7 +68,20 @@ try {
 		")or die($conexion->error);
 			header('Location: ../dashboard/');		
 		}else{
-			header('Location: ../dashboard/');
+      $datos_usuario = mysqli_fetch_row($resultado);
+      $nombre = $datos_usuario[1];
+      $id_usuario = $datos_usuario[0];
+      $email = $datos_usuario[2];
+      $nivel = $datos_usuario[4];
+      $metodo = $datos_usuario[5];
+      $_SESSION['datos_login']= array(
+      'nombre'=>$nombre,
+      'id'=>$id_usuario,
+      'correo'=>$email,
+      'nivel'=>$nivel,
+      'metodo'=>$metodo
+      );
+        header('Location: ../dashboard/');
 		}
 // Logged in
 //echo '<h3>Access Token</h3>';

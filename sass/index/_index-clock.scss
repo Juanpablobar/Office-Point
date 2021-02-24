@@ -6,6 +6,7 @@
 	.index-clock-cont{
 		width: 100%;
 		position: relative;
+		overflow: hidden;
 		.index-clock-img{
 			width: 100%;
 			position: relative;
@@ -34,7 +35,8 @@
 					margin-top: 6em;
 					width: 10em;
 					margin-left: 50%;
-					transform: translate(-50%)
+					transform: translate(-50%);
+					text-transform: uppercase;
 				}
 				h1{
 					color: #333;

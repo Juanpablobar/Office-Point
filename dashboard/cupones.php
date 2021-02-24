@@ -1,25 +1,28 @@
 <?php
 session_start();
-include '../.././php/conexion.php';
+include '../php/conexion.php';
 if(!isset($_SESSION['datos_login'])){
+	header("Location: ../index.php");
 }
 $arregloUsuario = $_SESSION['datos_login'];
+if($arregloUsuario['nivel'] != 'admin'){
+	header('Location: ./');
+}
 $resultado = $conexion->query("
 select * from
-productos order by id desc")or die($conexion->error);
+cupones order by id desc")or die($conexion->error);
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Grodel | Dashboard</title>
+  <title>Office Point | Dashboard</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 
-   <link rel="icon shortcut" href="../../img/logo%20img.png">
-    <link rel="stylesheet" href="../../css/login.css">
+   <link rel="icon shortcut" href="../img/logo.png">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
@@ -48,34 +51,32 @@ productos order by id desc")or die($conexion->error);
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
-       <?php
-		  if(isset($_GET['error'])){
-		  ?>
-		<div class="alert alert-danger" role="alert">
-		  <?php echo $_GET['error']; ?>
-		</div>
-          <?php } ?>
-       <?php
+      <?php
 		  if(isset($_GET['success'])){
 		  ?>
 		<div class="alert alert-success" role="alert">
 		  Se ha insertado correctamente
 		</div>
           <?php } ?>
-       <?php
-		  if(isset($_GET['edit'])){
-		  ?>
-		<div class="alert alert-success" role="alert">
-		  Se ha editado correctamente
-		</div>
-          <?php } ?>
-           <div class="row mb-2">
+          <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Productos</h1>
+            <h1 class="m-0" style="color:#444">Cupones</h1>
+            <h6 style="margin-top:.5em:color:#444">Activos (
+              <?php
+              $resultado2 = $conexion->query("
+              select * from
+              cupones where status='activo'")or die($conexion->error);
+              if(mysqli_num_rows($resultado2) > 0){
+                echo mysqli_num_rows($resultado2) ;
+              }else{
+                echo '0';
+              }
+            ?>
+            )</h6>
           </div><!-- /.col -->
           <div class="col-sm-6 text-right">
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-  	<i class="fa fa-plus"></i> Insertar Producto
+  	<i class="fa fa-plus"></i> Crear Cupón
 </button>          </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -88,14 +89,12 @@ productos order by id desc")or die($conexion->error);
     		<table class="table">
     			<thead>
     			<tr>
-    				<th>Id</th>
-    				<th>Nombre</th>
-    				<th>Imagen</th>
-    				<th>Precio</th>
-    				<th>Tamaño</th>
-    				<th>Material</th>
-    				<th>Marca</th>
-    				<th>Stock</th>
+    				<th style="color:#444">Id</th>
+    				<th style="color:#444">Código</th>
+    				<th style="color:#444">Status</th>
+    				<th style="color:#444">Tipo </th>
+    				<th style="color:#444">Valor</th>
+    				<th style="color:#444">Fecha de Vencimiento</th>
     				<th></th>
 					</tr>
     			</thead>
@@ -103,27 +102,22 @@ productos order by id desc")or die($conexion->error);
     			<tr>
     			<?php
 					while($f = mysqli_fetch_array($resultado)){
+            if(strtotime($f['fecha_de_vencimiento']) < strtotime(date("Y-m-d"))){
+              $conexion->query("update cupones set 
+              status='vencido'
+              where id=".$f['id']);
+                    }else{
+              echo '';
+            }
 					?>
     				<td><?php echo $f['id']; ?></td>
-    				<td><?php echo $f['nombre']; ?></td>
-    				<td><?php echo $f['img']; ?></td>
-    				<td><?php echo $f['precio']; ?></td>
-    				<td><?php echo $f['tamaño']; ?></td>
-    				<td><?php echo $f['material']; ?></td>
-    				<td><?php echo $f['marca']; ?></td>
-    				<td><?php echo $f['stock']; ?></td>
+    				<td><?php echo $f['codigo']; ?></td>
+    				<td><?php echo $f['status']; ?></td>
+    				<td><?php echo $f['tipo']; ?></td>
+    				<td><?php echo $f['valor']; ?></td>
+    				<td><?php echo $f['fecha_de_vencimiento']; ?></td>
     				<td>
-    					<button class="btn btn-primary btn-small btnEditar" data-id="<?php echo $f['id'] ?>"
-    					data-id="<?php echo $f['id'] ?>"
-    					data-nombre="<?php echo $f['nombre'] ?>"
-    					data-img="<?php echo $f['img'] ?>"
-    					data-precio="<?php echo $f['precio'] ?>"
-    					data-tamaño="<?php echo $f['tamaño'] ?>"
-    					data-material="<?php echo $f['material'] ?>"
-    					data-marca="<?php echo $f['marca'] ?>"
-    					data-stock="<?php echo $f['stock'] ?>"
-    					  data-toggle="modal" data-target="#modalEditar"><i class="fa fa-edit"></i></button>
-    					<button class="btn btn-danger btn-small btnEliminar" data-id="<?php echo $f['id'] ?>" data-toggle="modal" data-target="#modalEliminar"><i class="fa fa-trash"></i></button>
+      					<button class="btn btn-danger btn-small btnEliminar" data-id="<?php echo $f['id'] ?>" data-toggle="modal" data-target="#modalEliminar"><i class="fa fa-trash"></i></button>
     				</td>
 					</tr>
    			<?php } ?>
@@ -139,41 +133,39 @@ productos order by id desc")or die($conexion->error);
 <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-     <form action="../.././php/insertarproducto.php" method="post" enctype="multipart/form-data">
+     <form action=".././php/insertarcupon.php" method="post" enctype="multipart/form-data">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Insertar Producto</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Crear Cupón</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
       <div class="form-group">
-        <label for="">Nombre</label>
-        <input type="text" name="nombre" placeholder="Nombre" id="nombre" class="form-control" required>
+        <label for="">Código</label>
+        <div class="row">
+        	<div class="col-9">
+        <input type="text" name="codigo" placeholder="Código" id="codigo" class="form-control" required>
+        	</div>
+        	<div class="col-3">
+        		<button class="btn btn-primary btn-small col-12" id="generar">Generar</button>
+        	</div>
+        </div>
       </div>
       <div class="form-group">
-        <label for="">Imagen</label>
-        <input type="file" name="imagen" placeholder="Imagen" id="imagen" class="form-control" required>
+        <label for="">Tipo</label>
+        <select name="tipo" placeholder="Tipo" id="tipo" class="form-control" required>
+        <option value="moneda">Moneda</option>
+        <option value="porcentaje">Porcentaje</option>
+		  </select>
       </div>
       <div class="form-group">
-        <label for="">Precio</label>
-        <input type="text" name="precio" placeholder="Precio" id="precio" class="form-control" required>
+        <label for="">Valor del cupón</label>
+        <input type="number" min="0" name="valor" placeholder="Valor del cupón" id="valor" class="form-control" required> 
       </div>
       <div class="form-group">
-        <label for="">Tamaño</label>
-        <input type="text" name="tamaño" placeholder="Tamaño" id="tamaño" class="form-control" required> 
-      </div>
-      <div class="form-group">
-        <label for="">Material</label>
-        <input type="text" name="material" placeholder="Material" id="material" class="form-control" required>
-      </div>
-      <div class="form-group">
-        <label for="">Marca</label>
-        <input type="text" name="marca" placeholder="Marca" id="marca" class="form-control" required>
-      </div>
-      <div class="form-group">
-        <label for="">Stock</label>
-        <input type="text" name="stock" placeholder="Stock" id="stock" class="form-control" required>
+        <label for="">Fecha de vencimiento</label>
+        <input type="date" min="0" name="fecha" placeholder="Fecha de vencimiento" id="fecha" class="form-control" required> 
       </div>
       </div>
       <div class="modal-footer">
@@ -207,61 +199,9 @@ productos order by id desc")or die($conexion->error);
 </div>
 
 <!-- Modal editar -->
- <div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="modalEditar" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-     <form action="../.././php/editarproducto.php" method="post" enctype="multipart/form-data">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalEditar">Editar Producto</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      <input type="hidden" id="idEdit" name="id">
-      <div class="form-group">
-        <label for="">Nombre</label>
-        <input type="text" name="nombre" placeholder="Nombre" id="nombreEdit" class="form-control" required>
-      </div>
-      <div class="form-group">
-        <label for="">Imagen</label>
-        <input type="file" name="imagen" placeholder="Imagen" id="imagenEdit" class="form-control">
-      </div>
-      <div class="form-group">
-        <label for="">Precio</label>
-        <input type="text" name="precio" placeholder="Precio" id="precioEdit" class="form-control" required>
-      </div>
-      <div class="form-group">
-        <label for="">Tamaño</label>
-        <input type="text" name="tamaño" placeholder="Tamaño" id="tamañoEdit" class="form-control" required> 
-      </div>
-      <div class="form-group">
-        <label for="">Material</label>
-        <input type="text" name="material" placeholder="Material" id="materialEdit" class="form-control" required>
-      </div>
-      <div class="form-group">
-        <label for="">Marca</label>
-        <input type="text" name="marca" placeholder="Marca" id="marcaEdit" class="form-control" required>
-      </div>
-      <div class="form-group">
-        <label for="">Stock</label>
-        <input type="text" name="stock" placeholder="Stock" id="stockEdit" class="form-control" required>
-      </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="submit" class="btn btn-primary editar">Guardar</button>
-      </div>
-		</form>
-    </div>
-  </div>
-</div>
   <?php include ('./footer.php'); ?>
 
   <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
@@ -304,15 +244,18 @@ productos order by id desc")or die($conexion->error);
 <script>
 	$(document).ready(function(){
 		var idEliminar = -1;
-		var idEditar = -1;
 		var fila;
+		$("#generar").click(function(){
+							var num = Math.floor( Math.random()*900000)+100000;
+		$("#codigo").val(num);
+							})
 		$(".btnEliminar").click(function(){
 		idEliminar = $(this).data('id');
 		fila=$(this).parent('td').parent('tr');
 	});
 		$(".eliminar").click(function(){
 			$.ajax({
-				url: '../.././php/eliminarproducto.php',
+				url: '.././php/eliminarCupon.php',
 				method: 'POST',
 				data:{
 					id:idEliminar
@@ -320,24 +263,6 @@ productos order by id desc")or die($conexion->error);
 			}).done(function(res){
 				$(fila).fadeOut(1000);
 			});
-		});
-		$('.btnEditar').click(function(){
-			idEditar=$(this).data('id');
-			var nombre=$(this).data('nombre');
-			var imagen=$(this).data('imagen');
-			var precio=$(this).data('precio');
-			var tamaño=$(this).data('tamaño');
-			var material=$(this).data('material');
-			var marca=$(this).data('marca');
-			var stock=$(this).data('stock');
-			$('#nombreEdit').val(nombre);
-			$('#imagenEdit').val(imagen);
-			$('#precioEdit').val(precio);
-			$('#tamañoEdit').val(tamaño);
-			$('#materialEdit').val(material);
-			$('#marcaEdit').val(marca);
-			$('#stockEdit').val(stock);
-			$('#idEdit').val(idEditar);
 		});
 	});
 	</script>

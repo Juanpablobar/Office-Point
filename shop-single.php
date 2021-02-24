@@ -113,7 +113,7 @@ if( isset($_GET["id"])){
 		<div class="single-product-span">
 			<h1><?php echo $fila[1]; ?></h1>
 			<?php
-			if($fila[5] == 'true'){
+			if($fila[5] == 'si'){
 			echo '<div class="item-shop-new">
 				<span>New</span>
 			</div>';
@@ -349,7 +349,7 @@ if( isset($_GET["id"])){
 								</div>
 							</div>
 							<?php
-							if($fila[5] == 'true'){
+							if($fila[5] == 'si'){
 							echo '<div class="item-shop-new">
 								<span>New</span>
 							</div>';
@@ -405,7 +405,7 @@ if( isset($_GET["id"])){
 								</div>
 							</div>
 							<?php
-							if($fila[5] == 'true'){
+							if($fila[5] == 'si'){
 							echo '<div class="item-shop-new">
 								<span>New</span>
 							</div>';

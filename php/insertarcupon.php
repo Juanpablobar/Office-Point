@@ -1,7 +1,7 @@
 <?php
 include './conexion.php';
 if(isset($_POST['codigo']) && isset($_POST['tipo']) && isset($_POST['valor'])){
-	$conexion->query("insert into cupones (codigo,tipo,valor,status,fecha_vencimiento)
+	$conexion->query("insert into cupones (codigo,tipo,valor,status,fecha_de_vencimiento)
 	values(
 	'".$_POST['codigo']."',
 	'".$_POST['tipo']."',
@@ -10,7 +10,7 @@ if(isset($_POST['codigo']) && isset($_POST['tipo']) && isset($_POST['valor'])){
 	'".$_POST['fecha']."'
 	)
 	")or die($conexion->error);
-			header('Location: ../dashboard/AdminLTE-3.1.0-rc/cupones.php?success');
+			header('Location: ../dashboard/cupones.php?success');
 }else{
 	
 }

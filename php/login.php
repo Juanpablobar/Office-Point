@@ -16,8 +16,8 @@ if(isset($_POST['email']) && isset($_POST['password']) ){
 		'nombre'=>$nombre,
 		'id'=>$id_usuario,
 		'correo'=>$email,
-		'nivel'=>$imagen,
-		'metodo'=>$nivel
+		'nivel'=>$nivel,
+		'metodo'=>$metodo
 		);
 	header("Location: ../dashboard/");
 	}else{
