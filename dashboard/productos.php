@@ -114,6 +114,8 @@ productos order by id")or die($conexion->error);
     				<th>Dimensiones</th>
     				<th>Peso</th>
     				<th>Materiales</th>
+    				<th>Categoría</th>
+    				<th>Sub-Categoría</th>
     				<th>Tag1</th>
     				<th>Tag2</th>
     				<th>Tag3</th>
@@ -141,6 +143,8 @@ productos order by id")or die($conexion->error);
     				<td><?php echo $f['dimensiones']; ?></td>
     				<td><?php echo $f['peso']; ?></td>
     				<td><?php echo substr($f['materiales'],0,50).'...'; ?></td>
+    				<td><?php echo $f['categoria']; ?></td>
+    				<td><?php echo $f['subcategoria']; ?></td>
     				<td><?php echo $f['tag1']; ?></td>
     				<td><?php echo $f['tag2']; ?></td>
     				<td><?php echo $f['tag3']; ?></td>
@@ -158,6 +162,8 @@ productos order by id")or die($conexion->error);
     					data-peso="<?php echo $f['peso']; ?>"
     					data-materiales="<?php echo $f['materiales']; ?>"
     					data-dimensiones="<?php echo $f['dimensiones']; ?>"
+    					data-categoria="<?php echo $f['categoria']; ?>"
+    					data-subcategoria="<?php echo $f['subcategoria']; ?>"
     					data-tag1="<?php echo $f['tag1']; ?>"
     					data-tag2="<?php echo $f['tag2']; ?>"
     					data-tag3="<?php echo $f['tag3']; ?>"
@@ -231,7 +237,7 @@ productos order by id")or die($conexion->error);
         <input type="file" name="imagen2" placeholder="Imagen2" id="imagen2" class="form-control">
       </div>
       <div class="form-group">
-        <label for="">Image3</label>
+        <label for="">Imagen3</label>
         <h6 style="margin-bottom:.5em;margin-top:-.5em;font-size:12px;color:#FF6363">Te recomendamos subir cada imagen por separado para que se visualicen correctamente</h6>
         <input type="file" name="imagen3" placeholder="Imagen3" id="imagen3" class="form-control">
       </div>
@@ -266,17 +272,70 @@ productos order by id")or die($conexion->error);
         <input type="text" name="materiales" placeholder="Materiales" id="materiales" class="form-control" required>
       </div>
       <div class="form-group">
+        <label for="">Categoría</label>
+        <select name="catego" id="catego" class="form-control catego" required>
+          <?php
+            $resultado11 = $conexion ->query("select * from categorias order by id"); 
+            while ($fila11 = mysqli_fetch_array($resultado11)) {
+                ?>
+          <option  class="optionCatego" data-id="<?php echo $fila11[0] ?>" value="<?php echo $fila11[1]; ?>"><?php echo $fila11[1]; ?></option>
+          <?php } ?>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="">Sub-categoría</label>
+        <div class="insert">
+        <select name="sub_catego" id="sub_catego" class="form-control sub_catego" required>
+        <?php
+            $var = 1;
+
+         $resultado12 = $conexion ->query("SELECT * FROM subcategorias INNER JOIN categorias ON subcategorias.id_categoria = categorias.nombre WHERE categorias.id=".$var)
+         or die($conexion->error);	
+         while ($f12 = mysqli_fetch_row($resultado12)){
+        ?>
+        <option value="<?php echo $f12[1] ?>"><?php echo $f12[1] ?></option>
+        <?php } ?>
+        </select>
+         </div>
+      </div>
+      <div class="form-group">
         <label for="">Tag1</label>
-        <h6 style="margin-bottom:.5em;margin-top:-.5em;font-size:12px;color:#999">Los tags o etiquetas ayudan a organizar los productos en categorías.</h6>
-        <input type="text" name="tag1" placeholder="Ej. Oficina" id="tag1" class="form-control" required>
+        <h6 style="margin-bottom:.5em;margin-top:-.5em;font-size:12px;color:#999">Los tags o etiquetas ayudan a organizar los productos en Nuevas Categorías.</h6>
+        <select name="tag1" placeholder="Ej. Lo Más Nuevo" id="tag1" class="form-control">
+          <?php
+            $resultado13 = $conexion ->query("select * from tags order by id"); 
+            while ($fila13 = mysqli_fetch_array($resultado13)) {
+                ?>
+              <option value="<?php echo $fila13[1] ?>"><?php echo $fila13[1] ?></option>
+              <?php
+            } ?>
+        </select>
       </div>
       <div class="form-group">
         <label for="">Tag2</label>
-        <input type="text" name="tag2" placeholder="Ej. Tendencias" id="tag2" class="form-control">
+        <select name="tag2" placeholder="Ej. Tendencias" id="tag2" class="form-control">
+        <?php
+            $resultado13 = $conexion ->query("select * from tags order by id"); 
+            while ($fila13 = mysqli_fetch_array($resultado13)) {
+                ?>
+              <option value="<?php echo $fila13[1] ?>"><?php echo $fila13[1] ?></option>
+              <?php
+            } ?>
+
+        </select>
       </div>
       <div class="form-group">
         <label for="">Tag3</label>
-        <input type="text" name="tag3" placeholder="Ej. Escolares" id="tag3" class="form-control">
+        <select name="tag3" placeholder="Ej. Lo Más Vendido" id="tag3" class="form-control">
+        <?php
+            $resultado13 = $conexion ->query("select * from tags order by id"); 
+            while ($fila13 = mysqli_fetch_array($resultado13)) {
+                ?>
+              <option value="<?php echo $fila13[1] ?>"><?php echo $fila13[1] ?></option>
+              <?php
+            } ?>
+
+        </select>
       </div>
       </div>
       <div class="modal-footer">
@@ -395,17 +454,69 @@ productos order by id")or die($conexion->error);
         <input type="text" name="materiales" placeholder="Materiales" id="materialesEdit" class="form-control" required>
       </div>
       <div class="form-group">
+        <label for="">Categoría</label>
+        <select name="catego" id="categoEdit" class="form-control catego" required>
+          <?php
+            $resultado11 = $conexion ->query("select * from categorias order by id"); 
+            while ($fila11 = mysqli_fetch_array($resultado11)) {
+                ?>
+          <option  class="optionCatego" data-id="<?php echo $fila11[0] ?>" value="<?php echo $fila11[1]; ?>"><?php echo $fila11[1]; ?></option>
+          <?php } ?>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="">Sub-categoría</label>
+        <div class="insert">
+        <select name="sub_catego" id="subcategoEdit" class="form-control sub_catego" required>
+        <?php
+            $var = 1;
+
+         $resultado12 = $conexion ->query("SELECT * FROM subcategorias INNER JOIN categorias ON subcategorias.id_categoria = categorias.nombre WHERE categorias.id=".$var)
+         or die($conexion->error);	
+         while ($f12 = mysqli_fetch_row($resultado12)){
+        ?>
+        <option value="<?php echo $f12[1] ?>"><?php echo $f12[1] ?></option>
+        <?php } ?>
+        </select>
+         </div>
+      </div>
+
+      <div class="form-group">
         <label for="">Tag1</label>
-        <h6 style="margin-bottom:.5em;margin-top:-.5em;font-size:12px;color:#999">Los tags o etiquetas ayudan a organizar los productos en categorías.</h6>
-        <input type="text" name="tag1" placeholder="Ej. Oficina" id="tag1Edit" class="form-control" required>
+        <h6 style="margin-bottom:.5em;margin-top:-.5em;font-size:12px;color:#999">Los tags o etiquetas ayudan a organizar los productos en Nuevas categorías.</h6>
+        <select name="tag1" placeholder="Ej. Lo Más Vendido" id="tag1Edit" class="form-control">
+        <?php
+            $resultado13 = $conexion ->query("select * from tags order by id"); 
+            while ($fila13 = mysqli_fetch_array($resultado13)) {
+                ?>
+              <option value="<?php echo $fila13[1] ?>"><?php echo $fila13[1] ?></option>
+              <?php
+            } ?>
+        </select>
       </div>
       <div class="form-group">
         <label for="">Tag2</label>
-        <input type="text" name="tag2" placeholder="Ej. Tendencias" id="tag2Edit" class="form-control">
+        <select name="tag2" placeholder="Ej. Tendencias" id="tag2Edit" class="form-control">
+        <?php
+            $resultado13 = $conexion ->query("select * from tags order by id"); 
+            while ($fila13 = mysqli_fetch_array($resultado13)) {
+                ?>
+              <option value="<?php echo $fila13[1] ?>"><?php echo $fila13[1] ?></option>
+              <?php
+            } ?>
+        </select>
       </div>
       <div class="form-group">
         <label for="">Tag3</label>
-        <input type="text" name="tag3" placeholder="Ej. Escolares" id="tag3Edit" class="form-control">
+        <select name="tag3" placeholder="Ej. Lo Más Nuevo" id="tag3Edit" class="form-control">
+        <?php
+            $resultado13 = $conexion ->query("select * from tags order by id"); 
+            while ($fila13 = mysqli_fetch_array($resultado13)) {
+                ?>
+              <option value="<?php echo $fila13[1] ?>"><?php echo $fila13[1] ?></option>
+              <?php
+            } ?>
+        </select>
       </div>
       </div>
       <div class="modal-footer">
@@ -424,6 +535,7 @@ productos order by id")or die($conexion->error);
   </aside>
   <!-- /.control-sidebar -->
 </div>
+
 <!-- ./wrapper -->
 
 <!-- jQuery -->
@@ -511,11 +623,26 @@ productos order by id")or die($conexion->error);
 			$('#dimensionesEdit').val(dimensiones);
 			$('#pesoEdit').val(peso);
 			$('#materialesEdit').val(materiales);
+			$('#categoriaEdit').val(materiales);
+			$('#subcategoriaEdit').val(materiales);
 			$('#tag1Edit').val(tag1);
 			$('#tag2Edit').val(tag2);
 			$('#tag3Edit').val(tag3);
 		});
-	});
+      $(".catego").change(function(){
+      idCatego = $(this).val();
+      $.ajax({
+				url: '../php/actualizarCatego.php',
+				method: 'POST',
+				data:{
+					id:idCatego
+				}
+			}).done(function(id){
+        $('.sub_catego').remove();
+        $('.insert').append(id);
+	})
+  });
+});
 	</script>
 </body>
 </html>

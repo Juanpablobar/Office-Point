@@ -249,8 +249,6 @@ header {
           font-weight: 400;
           font-family: "Lato";
           color: #666; }
-        header nav .nav-icons .nav-search .nav-search2 {
-          animation: search2 .5s linear forwards; }
         header nav .nav-icons .nav-search button {
           border: 0;
           outline: none;
@@ -469,7 +467,8 @@ header {
   height: 100%;
   position: fixed;
   top: 0;
-  z-index: 99999; }
+  z-index: 99999;
+  overflow-y: auto; }
   .sidebar-content .sidebar-first, .sidebar-content2 .sidebar-first {
     display: flex;
     justify-content: center;
@@ -529,6 +528,8 @@ header {
         font: 600 18px "Raleway";
         color: #666;
         margin-bottom: .5em; }
+        .sidebar-content .sidebar-category .sidebar-category-first .sidebar-text a:hover, .sidebar-content2 .sidebar-category .sidebar-category-first .sidebar-text a:hover {
+          color: #ff6363; }
     .sidebar-content .sidebar-category .sub-category-prev, .sidebar-content2 .sidebar-category .sub-category-prev {
       width: 100%;
       height: auto; }
@@ -538,7 +539,10 @@ header {
         margin-left: 3em; }
         .sidebar-content .sidebar-category .sub-category-prev .sidebar-subcategory a, .sidebar-content2 .sidebar-category .sub-category-prev .sidebar-subcategory a {
           color: #555;
-          font: 400 16px "Raleway"; }
+          font: 400 16px "Raleway";
+          padding: .5em 0; }
+          .sidebar-content .sidebar-category .sub-category-prev .sidebar-subcategory a:hover, .sidebar-content2 .sidebar-category .sub-category-prev .sidebar-subcategory a:hover {
+            color: #ff6363; }
 
 .sidebar-content {
   animation: sidebar .3s linear forwards; }
@@ -1597,6 +1601,8 @@ footer {
     padding: .75em; }
     header nav .nav-icons .nav-search input {
       animation: search 0.5s linear forwards; }
+  header nav .nav-icons .nav-search2 {
+    animation: search2 .5s linear forwards; }
 
   .about-info {
     width: 95%; }
@@ -1647,7 +1653,10 @@ footer {
       margin-left: auto;
       margin-right: auto; }
     .index-shop .index-shop-items {
-      width: 75%; } }
+      width: 75%; }
+
+  .categories {
+    width: 95%; } }
 @media screen and (max-width: 1100px) {
   .single-product {
     width: 95%;
@@ -1801,7 +1810,10 @@ footer {
         .index-clock .index-clock-cont .index-clock-text-flex .index-clock-text .index-clock-clock .item-shop-clock div div h2 {
           font: 400 12px "Lato"; }
     .index-clock .index-clock-cont .index-clock-text-flex .index-clock-text a {
-      font: 400 11px "Lato"; } }
+      font: 400 11px "Lato"; }
+
+  .shop-products .shop-products-second {
+    grid-template-columns: 1fr 1fr; } }
 @media screen and (max-width: 950px) {
   .index-carousel .owl-carousel .item .item-text {
     top: 3em; }
@@ -1880,7 +1892,11 @@ footer {
         line-height: 23px; }
 
   .index-clock .index-clock-cont .index-clock-text-flex .index-clock-text {
-    top: 1em; } }
+    top: 1em; }
+
+  .categories {
+    width: 85%;
+    grid-template-columns: repeat(2, 1fr); } }
 @media screen and (max-width: 865px) {
   @keyframes search {
     0% {
@@ -2182,7 +2198,14 @@ footer {
   .index-shop h2 {
     width: 85%; }
   .index-shop .index-shop-items {
-    width: 95%; } }
+    width: 95%; }
+
+  .shop-products .shop-products-first {
+    display: none; }
+  .shop-products .shop-products-second {
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto; } }
 @media screen and (max-width: 725px) {
   @keyframes search {
     0% {
@@ -2221,7 +2244,10 @@ footer {
     header .nav .nav-icons .nav-search {
       display: none; }
   header .nav .nav-brand {
-    width: 30% !important; } }
+    width: 30% !important; }
+
+  .categories {
+    width: 95%; } }
 @media screen and (max-width: 675px) {
   .index-carousel .owl-carousel .item .item-text .item-text-align h1 {
     font-size: 23px;
@@ -2723,7 +2749,38 @@ footer {
     .index-clock .index-clock-cont .index-clock-text-flex .index-clock-text .index-clock-clock .item-shop-clock div div h2 {
       font: 400 12px "Lato"; }
   .index-clock .index-clock-cont .index-clock-text-flex .index-clock-text a {
-    font: 400 11px "Lato"; } }
+    font: 400 11px "Lato"; }
+
+  .categories {
+    grid-template-columns: 1fr; }
+
+  .breadcrumb-shop h1 {
+    margin-top: .75em; }
+
+  .shop-filter {
+    background: #e6e6e6; }
+    .shop-filter .shop-filter-cont div:nth-child(1) select {
+      background: #e6e6e6; }
+    .shop-filter .shop-filter-cont div:nth-child(3) .span-list svg {
+      color: #814090 !important; }
+
+  .shop-products .shop-products-second .shop-button-charge {
+    bottom: -5em; }
+  .shop-products .shop-products-second .item-shop .item-shop-cont .item-shop-prev .item-shop-img .item-shop-hide .item-shop-hide-top {
+    position: relative;
+    top: .5em;
+    right: 1em; }
+  .shop-products .shop-products-second .item-shop .item-shop-cont .item-shop-prev .item-shop-img .item-shop-new, .shop-products .shop-products-second .item-shop .item-shop-cont .item-shop-prev .item-shop-img .item-shop-discounts {
+    top: -.5em;
+    left: -.5em; }
+  .shop-products .shop-products-second .item-shop .item-shop-cont .item-shop-prev .item-shop-text {
+    margin-top: .5em; }
+  .shop-products .shop-products-list .item-shop {
+    border-top: 1px solid #ddd; }
+    .shop-products .shop-products-list .item-shop .item-shop-cont .item-shop-prev .item-shop-img .item-shop-hide {
+      display: none; }
+    .shop-products .shop-products-list .item-shop .item-shop-cont .item-shop-prev .item-shop-text h2 {
+      color: #111; } }
 @media screen and (max-width: 575px) {
   .index-clock .index-clock-cont .index-clock-text-flex .index-clock-text h4 {
     display: none; } }
@@ -2751,7 +2808,16 @@ footer {
   .index-clock .index-clock-cont .index-clock-img img {
     width: 150%;
     margin-left: auto;
-    margin-right: auto; } }
+    margin-right: auto; }
+
+  .shop-products .shop-products-list .item-shop .item-shop-cont .item-shop-prev .item-shop-img {
+    width: 25% !important; }
+  .shop-products .shop-products-list .item-shop .item-shop-cont .item-shop-prev .item-shop-text-list {
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    width: 50% !important; }
+  .shop-products .shop-products-list .item-shop .item-shop-cont .item-shop-prev .item-shop-text {
+    width: 20% !important; } }
 @media screen and (max-width: 450px) {
   .pre-footer .pre-footer-cont {
     width: 100%; }
@@ -2796,7 +2862,34 @@ footer {
         line-height: 30px;
         width: 100%; }
       .index-carousel .owl-carousel .item .item-text .item-text-align span {
-        font-size: 11px; } }
+        font-size: 11px; }
+
+  .shop-filter .shop-filter-cont {
+    width: 98%; }
+
+  .shop-products .shop-products-second {
+    display: block; }
+    .shop-products .shop-products-second .item-shop {
+      margin-bottom: 4em; }
+      .shop-products .shop-products-second .item-shop .item-shop-cont .item-shop-prev .item-shop-img .item-shop-hide .item-shop-hide-top {
+        position: relative;
+        top: .5em;
+        right: 1em; }
+      .shop-products .shop-products-second .item-shop .item-shop-cont .item-shop-prev .item-shop-img .item-shop-new, .shop-products .shop-products-second .item-shop .item-shop-cont .item-shop-prev .item-shop-img .item-shop-discounts {
+        top: -.5em;
+        left: -.5em; }
+      .shop-products .shop-products-second .item-shop .item-shop-cont .item-shop-prev .item-shop-text {
+        margin-top: .5em; }
+  .shop-products .shop-products-list .item-shop {
+    margin-bottom: 0 !important; }
+    .shop-products .shop-products-list .item-shop .item-shop-cont .item-shop-prev .item-shop-img {
+      width: 25% !important; }
+    .shop-products .shop-products-list .item-shop .item-shop-cont .item-shop-prev .item-shop-text-list {
+      margin-left: 2.5%;
+      margin-right: 2.5%;
+      width: 50% !important; }
+    .shop-products .shop-products-list .item-shop .item-shop-cont .item-shop-prev .item-shop-text {
+      width: 20% !important; } }
 @media screen and (max-width: 400px) {
   .single-product .single-product-text .single-text-desc {
     display: block;
@@ -2913,7 +3006,12 @@ footer {
     margin-left: auto;
     margin-right: auto; }
   .index-clock .index-clock-cont .index-clock-text-flex .index-clock-text {
-    width: 100%; } }
+    width: 100%; }
+
+  .shop-filter .shop-filter-cont {
+    grid-template-columns: repeat(2, 1fr); }
+    .shop-filter .shop-filter-cont div:nth-child(2) {
+      display: none; } }
 @media screen and (max-width: 375px) {
   .index-shop .index-shop-items .item-shop .item-shop-cont .item-shop-prev .item-shop-img .item-shop-hide .item-shop-hide-bottom {
     bottom: .5em !important; } }
@@ -2959,7 +3057,28 @@ footer {
   .index-carousel .owl-carousel .item .item-text {
     top: 1em; }
     .index-carousel .owl-carousel .item .item-text .item-text-align {
-      left: -1em; } }
+      left: -1em; }
+
+  .shop-products .shop-products-list .item-shop {
+    margin-bottom: 0 !important; }
+    .shop-products .shop-products-list .item-shop .item-shop-cont .item-shop-prev .item-shop-img {
+      width: 30% !important; }
+    .shop-products .shop-products-list .item-shop .item-shop-cont .item-shop-prev .item-shop-text-list {
+      margin-left: 2.5%;
+      margin-right: 2.5%;
+      width: 45% !important; }
+      .shop-products .shop-products-list .item-shop .item-shop-cont .item-shop-prev .item-shop-text-list a {
+        font-size: 14px; }
+      .shop-products .shop-products-list .item-shop .item-shop-cont .item-shop-prev .item-shop-text-list h3 {
+        font-size: 12px; }
+    .shop-products .shop-products-list .item-shop .item-shop-cont .item-shop-prev .item-shop-text {
+      width: 20% !important; }
+      .shop-products .shop-products-list .item-shop .item-shop-cont .item-shop-prev .item-shop-text h2 {
+        font-size: 14px; }
+    .shop-products .shop-products-list .item-shop .item-shop-cont .item-shop-prev .item-shop-new span, .shop-products .shop-products-list .item-shop .item-shop-cont .item-shop-prev .item-shop-discounts span {
+      height: 30px !important;
+      width: 30px !important;
+      font-size: 11px; } }
 @media screen and (max-width: 300px) {
   .pre-footer {
     margin-bottom: 0;

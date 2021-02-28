@@ -1,6 +1,6 @@
 <?php
 include './conexion.php';
-if(isset($_POST['nombre']) && isset($_POST['precio']) && isset($_POST['nuevo']) && isset($_POST['des1']) && isset($_POST['des2']) && isset($_POST['informacion']) && isset($_POST['stock']) && isset($_POST['dimensiones']) && isset($_POST['peso']) && isset($_POST['materiales']) && isset($_POST['tag1'])){
+if(isset($_POST['nombre']) && isset($_POST['precio']) && isset($_POST['nuevo']) && isset($_POST['des1']) && isset($_POST['des2']) && isset($_POST['informacion']) && isset($_POST['stock']) && isset($_POST['dimensiones']) && isset($_POST['peso']) && isset($_POST['materiales']) && isset($_POST['catego'])&& isset($_POST['sub_catego'])&& isset($_POST['tag1'])){
 	
 	$carpeta = "../img/";
 	$nombre = $_FILES['imagen1']['name'];
@@ -18,9 +18,9 @@ if(isset($_POST['nombre']) && isset($_POST['precio']) && isset($_POST['nuevo']) 
 	$nombrefinal3 = time().'.'.$extension3;
 	
 	if($extension== 'jpg' || $extension == 'png' || $extension == 'jpge' || $extension== 'webp' || $extension == 'svg' && ($extension2== 'jpg' || $extension2 == 'png' || $extension2 == 'jpge' || $extension2 == '' || $extension2== 'webp' || $extension2 == 'svg') && ($extension3== 'jpg' || $extension3 == 'png' || $extension3 == 'jpge' || $extension3== 'webp' || $extension3 == 'svg' || $extension3 == '')){
-		if(move_uploaded_file($_FILES['imagen1']['tmp_name'], $carpeta.$nombrefinal) && move_uploaded_file($_FILES['imagen2']['tmp_name'], $carpeta.$nombrefinal2) && move_uploaded_file($_FILES['imagen3']['tmp_name'], $carpeta.$nombrefinal3)){
+		if(move_uploaded_file($_FILES['imagen1']['tmp_name'], $carpeta.$nombrefinal) || move_uploaded_file($_FILES['imagen2']['tmp_name'], $carpeta.$nombrefinal2) || move_uploaded_file($_FILES['imagen3']['tmp_name'], $carpeta.$nombrefinal3)){
 			$conexion->query("insert into productos
-			(nombre,precio,descuento,tiempo_descuento,nuevo,img,img2,img3,descripcion,stock,dimensiones,peso,descripcion_amplia,materiales,informacion_amplia,tag1,tag2,tag3) values(
+			(nombre,precio,descuento,tiempo_descuento,nuevo,img,img2,img3,descripcion,stock,dimensiones,peso,descripcion_amplia,materiales,informacion_amplia,tag1,tag2,tag3,categoria,subcategoria) values(
 			'".$_POST['nombre']."',
 			".$_POST['precio'].",
 			".$_POST['descuento'].",
@@ -38,7 +38,9 @@ if(isset($_POST['nombre']) && isset($_POST['precio']) && isset($_POST['nuevo']) 
 			'".$_POST['informacion']."',
 			'".$_POST['tag1']."',
 			'".$_POST['tag2']."',
-			'".$_POST['tag3']."'
+			'".$_POST['tag3']."',
+			'".$_POST['catego']."',
+			'".$_POST['sub_catego']."'
 			)
 			")or die($conexion->error);
 			header('Location: ../dashboard/productos.php?success');

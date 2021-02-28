@@ -75,7 +75,9 @@ if(isset($_POST['nombre']) && isset($_POST['precio']) && isset($_POST['nuevo']) 
 			informacion_amplia='".$_POST['informacion']."',
 			tag1='".$_POST['tag1']."',
 			tag2='".$_POST['tag2']."',
-			tag3='".$_POST['tag3']."'
+			tag3='".$_POST['tag3']."',
+			categoria='".$_POST['catego']."',
+			subcategoria='".$_POST['sub_catego']."'
 			where id=".$_POST['id']);
 			header('Location: ../dashboard/productos.php?edit');
 }

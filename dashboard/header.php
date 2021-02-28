@@ -90,7 +90,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="./pedidos" class="nav-link" style="color:white">
+            <a href="pedidos" class="nav-link" style="color:white">
               <i class="fas fa-money-check-alt"></i>
               <p>
                  Pedidos
@@ -102,6 +102,22 @@
               <i class="fas fa-cart-arrow-down"></i>
               <p>
                  Productos
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="categories" class="nav-link" style="color:white">
+              <i class="fas fa-list"></i>
+              <p>
+                 Categorías
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="tags" class="nav-link" style="color:white">
+              <i class="fas fa-tag"></i>
+              <p>
+                 Tags/Etiquetas
               </p>
             </a>
           </li>

@@ -2,6 +2,11 @@
 	width: 95%;
 	@include margin;
 	@include flex;
+	align-items: flex-start;
+	margin-top: 3em;
+	position:relative;
+	margin-bottom: 4em;
+	padding-bottom:6em;
 	.shop-products-first{
 		width: 30%;
 		h1{
@@ -11,53 +16,165 @@
 			margin-bottom: .75em; 
 			margin-top: 2em;
 		} 
-		a,h2{
-			display: block;
-			font: 600 16px $rale;
-			color: #333;
-			line-height: 30px;   
-			margin: .25em 0;
-			width: 5em;        
-			&:hover{
-				color: $c2;
+		.shop-categories-dropdown{
+			width: 62.5%;
+			margin-bottom:1em;
+			.shop-categories-dropdown-i{
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				a,h2{
+					display: block;
+					font: 600 16px $rale;
+					color: #333;
+					line-height: 30px;   
+					margin: .25em 0;
+					&:hover{
+						color: $c2;
+					}
+			}
+				i{
+					font-size:12px;
+					margin-left:1em;
+					transition: 0s all;
+					cursor: pointer;
 			}
 		}
+			.shop-categories-cont{
+				padding: 0 1em;
+				position: relative;
+				overflow: hidden;
+				margin-bottom: -10px;
+				a{
+					display: block;
+					font: 500 16px $rale;
+					color: #444;
+					line-height: 30px;   
+					margin: .25em 0;
+					&:hover{
+						color: $c2;
+					}
+				}
+			}
+	}
 		.shop-categories{
 			h1{
 				margin-top: 1em;    
 			} 
 		} 
 		.shop-price{
-			h2{
-				font-family: $lato; 
-				color: $c2;
+			p{
+				margin-top: 3em !important; 
+			}
+			input[type='button']{
+				outline: none;
+				background: $c2;
+				color: white;
+				font: 600 12px $lato;
+				border: 0;
+				padding: .5em 1em;
+				border-radius: .5em;
+				cursor: pointer;
+			}
+		}
+		.shop-recents{
+			width: 100%;
+			.shop-recents-item{
+				width: 100%;
+				display: flex;
+				padding-bottom: .5em;
+				.shop-recents-img{
+					width: 20%;
+					margin-right: 5%;
+					img{
+						width: 100%
+					}
+				}
+				.shop-recents-text{
+					width: 75%;
+					a{
+						font: 700 14px $rale;
+						color: #333;
+					}
+					h4{
+						font: 800 14px $lato;
+						color: $c2;
+						margin-top: .5em;
+						margin-bottom: .5em;
+					}
+					.single-product-stars-icons{
+						display: flex;
+						svg{
+							width: 12px;
+							color: #fdba0e;
+						}
+					}
+				}
+			}
+		}
+		.shop-tags{
+			.shop-tags-item{
+				width: 65%;
+				a{
+					font: 500 14px $rale;
+					color: #333;
+					background: #f9f9f9;
+					padding: .5em;
+					border-radius: .25em;
+					display: block;
+					float: left;
+					margin: .25em;
+				}
 			}
 		}
 	}
 	.shop-products-second{
 		width: 70%;
-		img{
-			display: none;    
+		display:grid;
+		grid-gap: 30px ;
+		grid-template-columns: 1fr 1fr 1fr;
+		position: relative !important;
+		.empty{
+			width: 100%;
+			font: 600 16px $rale;
+			color: #666;
+			line-height: 25px;
+			padding-top: 3em;
 		}
-	}
-}     
-  
-       
-    
- 
-
-
-
- 
-
-
-.item-shop{   
+		.shop-button-charge{
+			bottom: -10em;
+			position:absolute;
+			width:100%;
+			left: 0;
+			@include flex;
+			button{
+				outline: none;
+				border: 0;
+				color:#666;
+				cursor: pointer;
+				background: #f6f6f6;
+				padding: 1em 2em;
+				border-radius:.25em;
+				font: 600 11px $rale;
+				letter-spacing: 1px;
+				&:hover{
+					background: #eee;
+				}
+				i{
+					margin: .5em;
+				}
+			}
+		}
+		.item-shop{   
 			width: 100%; 
 			.item-shop-cont{ 
 				max-width: 100%;  
 				position: relative;
 				.item-shop-prev{
 					width: 100%;
+					.item-shop-text-list{
+						display: none;
+					}
 					.item-shop-img{         
 						width: 100%;
 						position: relative;
@@ -235,4 +352,53 @@
 		svg{
 			width: 16px !important;
 		}
-  
+
+	}
+	.shop-products-list{
+		display: block !important;
+		.item-shop{
+			padding: 2em 0;
+			border-top: 1px solid #f4f4f4;
+			.item-shop-cont{
+				.item-shop-prev{
+					display: flex !important;
+					.item-shop-img{
+						width: 18% !important;
+					}
+					.item-shop-text-list{
+						margin-left: 5% ;
+						margin-right: 5% ;
+						display: block !important;
+						width: 42% !important;
+						a{
+							cursor: pointer;
+							display: block;
+							font: 600 16px $rale;
+							color: #666;
+							line-height: 20px;
+							margin-bottom: .5em;
+						}
+						h3{
+							font: 500 14px $open;
+							line-height: 22px;
+							color: #666;
+							margin-top: .25em;
+							width: 100%;  
+						}
+					}
+					.item-shop-text{
+						width: 30% !important;
+						a{
+							display: none !important;
+						}
+						h2{
+							color: $c2;
+							font-size: 18px;
+						}
+					}
+				}
+			}
+		}
+
+	}
+}     

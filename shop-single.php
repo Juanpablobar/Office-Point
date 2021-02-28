@@ -342,7 +342,7 @@ if( isset($_GET["id"])){
 							<div class="item-shop-hide">
 								<div class="item-shop-hide-top">
 									<div class="item-shop-hide-a"><a href="wishlist?id=<?php echo $fila[0]; ?>&cant=1" title="Agregar a la lista de deseos"><?php echo $heart; ?></a></div>
-									<div class="item-shop-hide-a"><a href="#" title="Buscar productos similares"><?php echo $loupe; ?></a></div>
+									<div class="item-shop-hide-a"><a href="shop?search=<?php echo $fila['categoria'] ?>" title="Buscar productos similares"><?php echo $loupe; ?></a></div>
 								</div>
 								<div class="item-shop-hide-bottom">
 									<div class="item-shop-hide-a"><a href="cart?id=<?php echo $fila[0]; ?>&cant=1" title="Agregar al carrito"><?php echo $bag; ?></a></div>
@@ -398,7 +398,7 @@ if( isset($_GET["id"])){
 							<div class="item-shop-hide">
 								<div class="item-shop-hide-top">
 									<div class="item-shop-hide-a"><a href="wishlist?id=<?php echo $fila[0]; ?>&cant=1" title="Agregar a la lista de deseos"><?php echo $heart; ?></a></div>
-									<div class="item-shop-hide-a"><a href="#" title="Buscar productos similares"><?php echo $loupe; ?></a></div>
+									<div class="item-shop-hide-a"><a href="shop?search=<?php echo $fila['categoria'] ?>" title="Buscar productos similares"><?php echo $loupe; ?></a></div>
 								</div>
 								<div class="item-shop-hide-bottom">
 									<div class="item-shop-hide-a"><a href="cart?id=<?php echo $fila[0]; ?>&cant=1" title="Agregar al carrito"><?php echo $bag; ?></a></div>

@@ -249,8 +249,6 @@ header {
           font-weight: 400;
           font-family: "Lato";
           color: #666; }
-        header nav .nav-icons .nav-search .nav-search2 {
-          animation: search2 .5s linear forwards; }
         header nav .nav-icons .nav-search button {
           border: 0;
           outline: none;
@@ -469,7 +467,8 @@ header {
   height: 100%;
   position: fixed;
   top: 0;
-  z-index: 99999; }
+  z-index: 99999;
+  overflow-y: auto; }
   .sidebar-content .sidebar-first, .sidebar-content2 .sidebar-first {
     display: flex;
     justify-content: center;
@@ -529,6 +528,8 @@ header {
         font: 600 18px "Raleway";
         color: #666;
         margin-bottom: .5em; }
+        .sidebar-content .sidebar-category .sidebar-category-first .sidebar-text a:hover, .sidebar-content2 .sidebar-category .sidebar-category-first .sidebar-text a:hover {
+          color: #ff6363; }
     .sidebar-content .sidebar-category .sub-category-prev, .sidebar-content2 .sidebar-category .sub-category-prev {
       width: 100%;
       height: auto; }
@@ -538,7 +539,10 @@ header {
         margin-left: 3em; }
         .sidebar-content .sidebar-category .sub-category-prev .sidebar-subcategory a, .sidebar-content2 .sidebar-category .sub-category-prev .sidebar-subcategory a {
           color: #555;
-          font: 400 16px "Raleway"; }
+          font: 400 16px "Raleway";
+          padding: .5em 0; }
+          .sidebar-content .sidebar-category .sub-category-prev .sidebar-subcategory a:hover, .sidebar-content2 .sidebar-category .sub-category-prev .sidebar-subcategory a:hover {
+            color: #ff6363; }
 
 .sidebar-content {
   animation: sidebar .3s linear forwards; }

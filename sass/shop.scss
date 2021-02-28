@@ -8,6 +8,15 @@
 		margin-top: 0;
 		margin-left: 3%;
 	}
+	h6{
+		text-align: left;
+		color:#bbb;
+		margin-left:3%;
+		position:relative;
+		top: 2em;
+		font-weight: 600;
+		font-family: $lato;
+	}
 }
 
 @import 'shop/filter';

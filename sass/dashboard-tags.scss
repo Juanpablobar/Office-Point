@@ -1,0 +1,25 @@
+
+@import 'dashboard-layouts';
+
+.tags{
+    width: 80%;
+    margin-left: 5%;
+    a{
+        display: flex;
+        justify-content: space-between;
+        font: 500 18px $rale;
+        padding: .5em;
+        cursor: pointer;
+        align-items: center;
+        &:hover{
+            background: #eee;
+        }
+    }
+}
+
+@media screen and (max-width:400px){
+    .tags{
+        width: 95%;
+        @include margin;
+    }
+}

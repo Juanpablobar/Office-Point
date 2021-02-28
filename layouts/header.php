@@ -1,5 +1,6 @@
 <?php
 error_reporting(0); 
+include './php/conexion.php';
 $archivo_actual = basename($_SERVER["PHP_SELF"]); //Regresa el nombre del archivo actual
 
 switch($archivo_actual) //Valido en que archivo estoy para generar mi CSS de selección
@@ -127,125 +128,33 @@ include './layouts/icons.php';
 		<h1>Categorías</h1>
 		<span id="sidebar_close"><i class="fa fa-times"></i></span>
 	</div>
+	<?php
+            $resultado11 = $conexion ->query("select * from categorias order by id"); 
+            while ($fila11 = mysqli_fetch_array($resultado11)) {
+                ?>
 		<div class="sidebar-category">
 		<div class="sidebar-category-first">
-			<div class="sidebar-plus" id="sidebar_span1">
+			<div class="sidebar-plus">
 				<span></span>
 			</div>
 			<div class="sidebar-text">
-				<a href="#">Escolar</a>
+				<a href="shop?search=<?php echo $fila11[1] ?>"><?php echo $fila11[1] ?></a>
 			</div>
 			</div>
-			<div class="sub-category-prev" id="sidebar_sub_category1">
+			<div class="sub-category-prev">
+				<?php
+				 $resultado12 = $conexion ->query("select * FROM subcategorias INNER JOIN categorias ON subcategorias.id_categoria = categorias.nombre WHERE categorias.nombre='".$fila11[1]."'")
+				 or die($conexion->error);	
+                 while ($f12 = mysqli_fetch_row($resultado12)) {
+                     ?>
 			<div class="sidebar-subcategory">
-				<a href="#">Libretas</a>
+				<a href="shop?search=<?php echo $f12[1] ?>"><?php echo $f12[1] ?></a>
 			</div>
-			<div class="sidebar-subcategory">
-				<a href="#">Lápices</a>
-			</div>
-			<div class="sidebar-subcategory">
-				<a href="#">Colores</a>
-			</div>
-			<div class="sidebar-subcategory">
-				<a href="#">Crayones</a>
-			</div>
+			<?php
+                 } ?>
 			</div>
 		</div>
-		<div class="sidebar-category">
-		<div class="sidebar-category-first">
-			<div class="sidebar-plus" id="sidebar_span2">
-				<span></span>
-			</div>
-			<div class="sidebar-text">
-				<a href="#">Papelería</a>
-			</div>
-			</div>
-			<div class="sub-category-prev" id="sidebar_sub_category2">
-			<div class="sidebar-subcategory">
-				<a href="#">Libretas</a>
-			</div>
-			<div class="sidebar-subcategory">
-				<a href="#">Lápices</a>
-			</div>
-			<div class="sidebar-subcategory">
-				<a href="#">Colores</a>
-			</div>
-			<div class="sidebar-subcategory">
-				<a href="#">Crayones</a>
-			</div>
-			</div>
-		</div>
-		<div class="sidebar-category">
-		<div class="sidebar-category-first">
-			<div class="sidebar-plus" id="sidebar_span3">
-				<span></span>
-			</div>
-			<div class="sidebar-text">
-				<a href="#">Escolar</a>
-			</div>
-			</div>
-			<div class="sub-category-prev" id="sidebar_sub_category3">
-			<div class="sidebar-subcategory">
-				<a href="#">Libretas</a>
-			</div>
-			<div class="sidebar-subcategory">
-				<a href="#">Lápices</a>
-			</div>
-			<div class="sidebar-subcategory">
-				<a href="#">Colores</a>
-			</div>
-			<div class="sidebar-subcategory">
-				<a href="#">Crayones</a>
-			</div>
-		</div>
-		</div>
-		<div class="sidebar-category">
-		<div class="sidebar-category-first">
-			<div class="sidebar-plus" id="sidebar_span4">
-				<span></span>
-			</div>
-			<div class="sidebar-text">
-				<a href="#">Escolar</a>
-			</div>
-			</div>
-			<div class="sub-category-prev" id="sidebar_sub_category4">
-			<div class="sidebar-subcategory">
-				<a href="#">Libretas</a>
-			</div>
-			<div class="sidebar-subcategory">
-				<a href="#">Lápices</a>
-			</div>
-			<div class="sidebar-subcategory">
-				<a href="#">Colores</a>
-			</div>
-			<div class="sidebar-subcategory">
-				<a href="#">Crayones</a>
-			</div>
-			</div>
-		</div>
-		<div class="sidebar-category">
-		<div class="sidebar-category-first">
-			<div class="sidebar-plus" id="sidebar_span5">
-				<span></span>
-			</div>
-			<div class="sidebar-text">
-				<a href="#">Papelería</a>
-			</div>
-			</div>
-			<div class="sub-category-prev" id="sidebar_sub_category5">
-			<div class="sidebar-subcategory">
-				<a href="#">Libretas</a>
-			</div>
-			<div class="sidebar-subcategory">
-				<a href="#">Lápices</a>
-			</div>
-			<div class="sidebar-subcategory">
-				<a href="#">Colores</a>
-			</div>
-			<div class="sidebar-subcategory">
-				<a href="#">Crayones</a>
-			</div>
-		</div>
+		<?php } ?>
 		</div>
 	</div>
 	

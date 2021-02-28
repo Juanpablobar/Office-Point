@@ -255,7 +255,7 @@ cupones order by id desc")or die($conexion->error);
 	});
 		$(".eliminar").click(function(){
 			$.ajax({
-				url: '.././php/eliminarCupon.php',
+				url: '../php/eliminarCupon.php',
 				method: 'POST',
 				data:{
 					id:idEliminar
