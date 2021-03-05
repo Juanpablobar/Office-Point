@@ -21,7 +21,7 @@ session_start();
 	<title>Office Point | Iniciar Sesión</title>
 	
 	<link rel="icon shortcut" href="./img/logo.png">
-	<link rel="stylesheet" href="css/login.css?10.0"> 
+	<link rel="stylesheet" href="css/login.css?11.0"> 
 	
 </head>
 <body>

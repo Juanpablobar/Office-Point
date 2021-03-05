@@ -18,7 +18,7 @@ session_start();
 <div class="error">
 <div class="error-content">
 		<img src="img/404.svg">
-		<img src="img/error%20404-1.png">
+		<img src="img/error%20404-1.webp">
 		<h2>Página No Encontrada</h2>
 		<h3>La página que está buscando no existe</h3>
 		<a href="./">Regresar a casa</a>

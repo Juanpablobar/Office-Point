@@ -1,0 +1,209 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap");
+footer {
+  width: 100%;
+  display: block;
+  position: relative;
+  padding-top: 5em; }
+  footer .footer {
+    width: 100%;
+    display: block;
+    position: relative;
+    padding-bottom: 1em; }
+    footer .footer .footer-links {
+      margin-left: auto;
+      margin-right: auto;
+      width: 95%;
+      display: flex; }
+      footer .footer .footer-links .footer-links-item {
+        width: 100%;
+        text-align: left; }
+        footer .footer .footer-links .footer-links-item:nth-child(1) {
+          width: 120%; }
+          footer .footer .footer-links .footer-links-item:nth-child(1) h2, footer .footer .footer-links .footer-links-item:nth-child(1) a {
+            margin-bottom: .75em; }
+        footer .footer .footer-links .footer-links-item:nth-child(2), footer .footer .footer-links .footer-links-item:nth-child(3) {
+          width: 90%; }
+        footer .footer .footer-links .footer-links-item h1 {
+          font: 700 20px "Raleway";
+          margin-bottom: 1.25em;
+          color: #353535; }
+        footer .footer .footer-links .footer-links-item h2, footer .footer .footer-links .footer-links-item a {
+          display: block;
+          font: 600 14px "Raleway";
+          color: #666;
+          line-height: 20px;
+          margin-bottom: 1.25em; }
+        footer .footer .footer-links .footer-links-item h2 {
+          display: flex; }
+          footer .footer .footer-links .footer-links-item h2 a {
+            margin-left: .5em;
+            font-family: "Open Sans"; }
+        footer .footer .footer-links .footer-links-item h2 button {
+          font-size: 10px !important;
+          margin-right: .5em; }
+        footer .footer .footer-links .footer-links-item a:hover {
+          color: #333; }
+        footer .footer .footer-links .footer-links-item .footer-input {
+          width: 100%;
+          border-radius: 10em;
+          position: relative;
+          margin-top: 3em; }
+          footer .footer .footer-links .footer-links-item .footer-input input {
+            border: 0;
+            border-radius: 10em;
+            padding: 0 5%;
+            outline: none;
+            border: 1px solid #ccc;
+            width: 90%;
+            height: 45px; }
+          footer .footer .footer-links .footer-links-item .footer-input button {
+            display: block;
+            position: absolute;
+            top: 0px;
+            right: -2px;
+            background: #ff6363;
+            color: white;
+            border: 0;
+            outline: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10em;
+            width: 45px;
+            height: 45px;
+            font-size: 1.25em;
+            cursor: pointer; }
+    footer .footer .footer-last {
+      width: 95%;
+      margin-top: 3em;
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      align-items: center;
+      padding: 1em 0;
+      border-top: 1px solid #ddd; }
+      footer .footer .footer-last .footer-last-text {
+        width: 70%; }
+        footer .footer .footer-last .footer-last-text h3 {
+          font: 500 16px "Raleway";
+          color: #333; }
+          footer .footer .footer-last .footer-last-text h3 a {
+            color: #999; }
+      footer .footer .footer-last .footer-last-cards {
+        width: 30%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding-right: 8em; }
+        footer .footer .footer-last .footer-last-cards .footer-last-cards-img img {
+          margin: 0 .25em; }
+        footer .footer .footer-last .footer-last-cards .footer-last-cards-icons {
+          display: none; }
+
+@media screen and (max-width: 1125px) {
+  footer .footer .footer-links {
+    width: 95%; }
+  footer .footer .footer-last {
+    width: 95%; } }
+@media screen and (max-width: 900px) {
+  footer .footer .footer-links {
+    display: block; }
+    footer .footer .footer-links .footer-links-item {
+      width: 50% !important;
+      float: left;
+      text-align: left;
+      margin-bottom: 1em; }
+      footer .footer .footer-links .footer-links-item .footer-input {
+        width: 90%; }
+        footer .footer .footer-links .footer-links-item .footer-input input {
+          height: 55px;
+          padding-bottom: 0;
+          padding-top: 0; }
+        footer .footer .footer-links .footer-links-item .footer-input button {
+          top: 0px;
+          right: -2px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 10em;
+          width: 55px;
+          height: 55px; } }
+@media screen and (max-width: 600px) {
+  footer {
+    background: white;
+    padding-top: 4em; }
+    footer .footer .footer-links {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      width: 95%;
+      margin-left: 5%; }
+      footer .footer .footer-links .footer-links-item {
+        width: 100% !important; }
+        footer .footer .footer-links .footer-links-item:nth-child(1) {
+          grid-column: span 2; }
+        footer .footer .footer-links .footer-links-item:nth-child(2), footer .footer .footer-links .footer-links-item:nth-child(3) {
+          width: 100%; }
+        footer .footer .footer-links .footer-links-item:nth-child(4) {
+          display: none !important; }
+        footer .footer .footer-links .footer-links-item h1 {
+          font: 700 20px "Raleway";
+          margin-bottom: 1.25em;
+          color: #353535;
+          width: 100%; }
+        footer .footer .footer-links .footer-links-item h2, footer .footer .footer-links .footer-links-item a {
+          display: block;
+          font: 600 14px "Raleway";
+          color: #666;
+          line-height: 20px;
+          margin-bottom: 1.25em; }
+        footer .footer .footer-links .footer-links-item h2 {
+          display: flex; }
+          footer .footer .footer-links .footer-links-item h2 a {
+            margin-left: .5em;
+            font-family: "Open Sans"; }
+        footer .footer .footer-links .footer-links-item a:hover {
+          color: #333; }
+        footer .footer .footer-links .footer-links-item .footer-input {
+          width: 100%;
+          border-radius: 10em;
+          position: relative;
+          margin-top: 3em; }
+          footer .footer .footer-links .footer-links-item .footer-input input {
+            border: 0;
+            border-radius: 10em;
+            padding: 0 5%;
+            outline: none;
+            border: 1px solid #ccc;
+            width: 90%;
+            height: 45px; }
+          footer .footer .footer-links .footer-links-item .footer-input button {
+            display: block;
+            position: absolute;
+            top: 0px;
+            right: -2px;
+            background: #ff6363;
+            color: white;
+            border: 0;
+            outline: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10em;
+            width: 45px;
+            height: 45px;
+            font-size: 1.25em;
+            cursor: pointer; } }
+@media screen and (max-width: 300px) {
+  .footer .footer-links {
+    margin-bottom: -1em;
+    display: block;
+    grid-template-columns: 1fr; }
+    .footer .footer-links .footer-links-item {
+      grid-column: span 2; }
+  .footer .footer-last {
+    margin-top: 1em !important; } }
+
+/*# sourceMappingURL=dashboard-footer.css.map */

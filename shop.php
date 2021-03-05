@@ -11,6 +11,7 @@ include("./php/conexion.php");
 	<title>Office Point | Tienda</title>
 	
 	<link rel="icon shortcut" href="./img/logo.png">
+	<link rel="stylesheet" href="css/popup.css"> 
 	<link rel="stylesheet" href="css/shop.css?20.0"> 
 	<link rel="preload" href="fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="fontawesome-free/css/all.min.css"></noscript>
@@ -365,6 +366,37 @@ include("./php/conexion.php");
 </div>
 
 
+<?php
+	$resultado = $conexion ->query("select * from popup where id=1");
+	$popup = mysqli_fetch_array($resultado);
+if(isset($_SESSION['popup'])){
+	echo '';
+}else{
+    ?>
+<div class="popup">
+	<div class="popup-cont">
+		<div class="popup-img">
+			<img src="img/<?php echo $popup[1]; ?>">
+		</div>
+		<div class="popup-text">
+			<div class="popup-close">
+				<span id="popup_close"><i class="fa fa-times"></i></span>
+			</div>
+			<span><?php echo $popup[2]; ?></span>
+			<h1><?php echo $popup[3]; ?></h1>
+			<h2><?php echo $popup[4]; ?></h2>
+			<form action="./php/mailPopup.php" method="post">
+				<input type="text" name="email" placeholder="Dirección de correo" required>
+				<button type="submit" name="send_email">Suscribir</button>
+			</form>
+		</div>
+	</div>
+</div>
+<?php
+$_SESSION['popup'] = '';
+}
+?>
+
 <?php include ('./layouts/pre-footer.php'); ?>	
 
 <?php include ('./layouts/footer.php'); ?>	
@@ -393,9 +425,12 @@ include("./php/conexion.php");
 	$(".iconDropDown").click(function(){
 		$(this).parent('div').parent('div').find('.shop-categories-cont').slideToggle('linear');
 	});
+	$("#popup_close").click(function(){
+		$(".popup").fadeOut('linear');
+	})
 });
 	</script>
-		<script>
+<script> 
 $('.price_range').jRange({
     from: 0,
     to: <?php echo $q1['precio']; ?>,

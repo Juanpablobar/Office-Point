@@ -76,7 +76,7 @@ session_start();
 
 <div class="contact-form">
 	<h1>Déjanos un Mensaje</h1>
-	<form action="#" method="post">
+	<form action="./php/mailContact.php" method="post">
 	<div class="contact-form-input">
 			<input type="text" placeholder="Nombre" name="name" required>
 			<input type="text" placeholder="Tu Correo" name="email" required>
@@ -86,12 +86,70 @@ session_start();
 	</form>
 </div>
 
+<?php
+    if (isset($_GET['success'])) {
+        ?>
+<div class="modal-contact">
+	<div class="modal-contact-cont">
+		<div class="modal-contact-text">
+			<div class="modal-contact-span">
+				<span class="modal_span"><i class="fa fa-times"></i></span>
+			</div>
+			<div class="modal-contact-h2">
+				<h2>Gracias por regístrarte, nos pondremos en contacto contigo lo antes posible.<br> ¡Gracias!</h2>
+			</div>
+		</div>
+	</div>
+</div>
+<?php
+    }elseif(isset($_GET['invalid_email'])){
+?>
+<div class="modal-contact">
+	<div class="modal-contact-cont">
+		<div class="modal-contact-text">
+			<div class="modal-contact-span">
+				<span class="modal_span"><i class="fa fa-times"></i></span>
+			</div>
+			<div class="modal-contact-h2">
+				<h2 style="color:#FF6363">Por favor introduce un correo electrónico válido</h2>
+			</div>
+		</div>
+	</div>
+</div>
+<?php
+	}elseif(isset($_GET['error'])){
+?>
+<div class="modal-contact">
+	<div class="modal-contact-cont">
+		<div class="modal-contact-text">
+			<div class="modal-contact-span">
+				<span class="modal_span"><i class="fa fa-times"></i></span>
+			</div>
+			<div class="modal-contact-h2">
+				<h2 style="color:#FF6363">Por favor llena todos los campos</h2>
+			</div>
+		</div>
+	</div>
+</div>
+<?php
+	}else{
+		echo '';
+	}
+?>
+
 <?php include ('./layouts/pre-footer.php'); ?>	
 <?php include ('./layouts/footer.php'); ?>	
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/reload.js"></script>
 <script src="js/header2.js" defer></script>
 <script src="js/up3.js" defer></script>
+<script>
+	$(document).ready(function(){
+		$('.modal_span').click(function(){
+			$('.modal-contact').fadeOut();
+		})
+	})
+</script>
 </body>
 </html>
  

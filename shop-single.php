@@ -298,7 +298,7 @@ if( isset($_GET["id"])){
 					</div>
 					<?php } echo '<h1>Agrega una reseña</h1>
 					<h2 style="margin-bottom:2em">Su dirección de correo electrónico no será publicada. Los campos obligatorios están marcados con un *.</h2>'; }?>
-			<form action="./php/reviews" method="post">
+			<form action="./php/reviews.php" method="post">
 			<input name="id" value="<?php echo $fila[0]; ?>" type="hidden">
 			<h3>Tu calificación *</h3>
 			<div class="reviews-stars">

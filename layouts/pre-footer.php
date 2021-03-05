@@ -6,7 +6,7 @@
 			</div>
 			<div class="pre-footer-text">
 				<h1>Envío Gratis</h1>
-				<h2>En Órdenes Mayores a $500.00</h2>
+				<h2>En Órdenes Mayores a $2,199</h2>
 			</div>
 		</div>
 		<div class="pre-footer-item">
@@ -15,7 +15,7 @@
 			</div>
 			<div class="pre-footer-text">
 				<h1>Ahorra tu Dinero</h1>
-				<h2>Aprovecha Nuestros Precio</h2>
+				<h2>Aprovecha Nuestros Precios</h2>
 			</div>
 		</div>
 		<div class="pre-footer-item">

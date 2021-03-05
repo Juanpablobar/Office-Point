@@ -99,7 +99,7 @@ if(isset($_SESSION["wishlist"])){
 	if(count($_SESSION["wishlist"]) == 0){
 		echo 
 		'<div class="wishlist-empty">
-			<img src="img/empty-cart.png">
+			<img src="img/empty-cart.webp">
 			<h1>No hay artículos en la lista de deseos</h1>
 			<h2>Te recomendamos agregar los artículos que deseas comprar</h2>
 			<a href="./shop">Volver a la tienda</a>

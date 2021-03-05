@@ -79,7 +79,7 @@ include './php/conexion.php';
 				</div>
 				<div class="about-why-us-text">
 					<h3>Envío Gratis</h3>
-					<h4>Envíos Gratis en pedidos a partir de %500.00 pesos</h4>
+					<h4>Envíos Gratis en pedidos a partir de $2,199 pesos</h4>
 				</div>
 			</div>
 			<div class="about-why-us-item">

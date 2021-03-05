@@ -197,6 +197,63 @@ carousel_index order by id desc")or die($conexion->error);
 	</div>
 	</div>
 </div>
+
+<div class="content-header">
+      <div class="container-fluid">
+           <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0" style="color: #444;margin-top:1em">Categorías</h1>
+          </div>
+          <div class="col-sm-6 text-right ml-auto" style="margin-top:1em;">
+            <button type="button" class="btn btn-primary btn-small" 
+              data-id="<?php echo $fila10[0] ?>"
+              data-t_tag="<?php echo $fila10[4] ?>"
+              data-cr_tag="<?php echo $fila10[2] ?>"
+              data-cl_tag="<?php echo $fila10[3] ?>"
+              data-fecha="<?php echo $fila10[5] ?>"
+              data-cr_boton="<?php echo $fila10[6] ?>"
+              data-cl_boton="<?php echo $fila10[7]; ?>"
+              data-cb_boton="<?php echo $fila10[8] ?>"
+               data-toggle="modal" data-target="#modalCatego">
+            <i class="fa fa-edit"></i> Agregar Enlace a Categoría
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+<div class="index-categories">
+	       <?php
+                   $resultado = $conexion ->query("select * from categorias_index order by id"); 
+                
+                while($fila = mysqli_fetch_array($resultado)){
+                ?>
+	<div class="index-categories-item <?php echo $fila[1]; ?> <?php echo $fila[2]; ?>" style="background-image: url('../img/<?php echo $fila[3]; ?>');background-size:cover;">
+		<div class="index-categories-text <?php echo $fila[4]; ?> <?php echo $fila[5]; ?>">
+			<div class="index-categories-text-sub">
+				<h2 style="color: <?php echo $fila[7]; ?>">#<?php echo $fila[6]; ?></h2>
+				<h1 style="color: <?php echo $fila[9]; ?>"><?php echo $fila[8]; ?></h1>
+				<a style="color: <?php echo $fila[10]; ?>"><?php echo $fila[11]; ?> <?php echo $arrow_right; ?></a>
+        <button class="btn btn-primary btn-small btnEditarCatego" 
+              data-id="<?php echo $fila[0] ?>"
+              data-alto="<?php echo $fila[1] ?>"
+              data-ancho="<?php echo $fila[2] ?>"
+              data-vertical="<?php echo $fila[4] ?>"
+              data-horizontal="<?php echo $fila[5] ?>"
+              data-t_tag="<?php echo $fila[6] ?>"
+              data-cl_tag="<?php echo $fila[7] ?>"
+              data-texto="<?php echo $fila[8] ?>"
+              data-c_texto="<?php echo $fila[9] ?>"
+              data-t_boton="<?php echo $fila[11] ?>"
+              data-cl_boton="<?php echo $fila[10] ?>"
+              data-toggle="modal" data-target="#modalEditarCatego"><i class="fa fa-edit"></i></button>
+    					<button class="btn btn-danger btn-small btnEliminarCatego" data-id="<?php echo $fila[0] ?>" data-toggle="modal" data-target="#modalEliminarCatego"><i class="fa fa-trash"></i></button>
+			</div>
+		</div>
+	</div>
+	<?php } ?>
+</div>
+<br><br>
+<br><br>
 <?php
                 $resultado10 = $conexion ->query("select * from reloj_index order by id"); 
                 $fila10 = mysqli_fetch_array($resultado10);
@@ -295,7 +352,6 @@ carousel_index order by id desc")or die($conexion->error);
 		</div>
 	</div>
 </div>
-
 </div>
 	</div>
     <!-- /.content -->
@@ -364,7 +420,7 @@ carousel_index order by id desc")or die($conexion->error);
       </div>
       <div class="form-group">
         <label for="">Color de las letras del botón</label>
-        <input type="text" name="cl_boton" placeholder="DColor de las letras del botón" id="cl_boton" class="form-control" required>
+        <input type="text" name="cl_boton" placeholder="Color de las letras del botón" id="cl_boton" class="form-control" required>
       </div>
       <div class="form-group">
         <label for="">Color del borde del botón</label>
@@ -374,7 +430,26 @@ carousel_index order by id desc")or die($conexion->error);
       <div class="form-group">
         <label for="">Texto de la etiqueta</label>
         <h6 style="margin-bottom:.5em;margin-top:-.5em;font-size:12px;color:#999">Escoge una de las categorías que aparecerá en la etiqueta y a la que dirigira al usuario cuando de click al botón.</h6>
-        <input type="text" name="t_etiqueta" placeholder="Texto de la etiqueta" id="t_etiqueta" class="form-control" required>
+        <select name="t_etiqueta"id="t_etiqueta" class="form-control" required>
+        <?php
+          $resultado30 = $conexion ->query("select * from categorias order by id"); 
+          while($fila30 = mysqli_fetch_array($resultado30)){
+          ?>
+          <option value="<?php echo $fila30['nombre']; ?>"><?php echo $fila30['nombre'] ?></option>
+          <?php } ?>
+        <?php
+          $resultado31 = $conexion ->query("select * from subcategorias order by id"); 
+          while($fila31 = mysqli_fetch_array($resultado31)){
+          ?>
+          <option value="<?php echo $fila31['nombre']; ?>"><?php echo $fila31['nombre'] ?></option>
+          <?php } ?>
+        <?php
+          $resultado32 = $conexion ->query("select * from tags order by id"); 
+          while($fila32 = mysqli_fetch_array($resultado32)){
+          ?>
+          <option value="<?php echo $fila32['nombre']; ?>"><?php echo $fila32['nombre'] ?></option>
+          <?php } ?>
+        </select>
       </div>
       <div class="form-group">
         <label for="">Color de las letras de la etiqueta</label>
@@ -383,6 +458,110 @@ carousel_index order by id desc")or die($conexion->error);
       <div class="form-group">
         <label for="">Color de relleno de la etiqueta</label>
         <input type="text" name="cr_etiqueta" placeholder="Color de relleno de la etiqueta" id="cr_etiqueta" class="form-control" required>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+      </div>
+		</form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalCatego" tabindex="-1" role="dialog" aria-labelledby="modalCategoTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+     <form action="../php/insertarIndexCatego.php" method="post" enctype="multipart/form-data">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Insertar Enlace a Categoría</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class="form-group">
+        <label for="">Imagen</label>
+      <input type="file" name="imagen" placeholder="Imagen" id="imagenCatego" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="">Alto</label>
+        <h6 style="margin-bottom:.5em;margin-top:-.5em;font-size:12px;color:#999">Determina si el elemento abarcará uno o dos espacios de altura</h6>
+        <select name="alto" placeholder="Altura del elemento" id="alto" class="form-control" required>
+          <option value="categories-height1">1</option>
+          <option value="categories-height2">2</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="">Ancho</label>
+        <h6 style="margin-bottom:.5em;margin-top:-.5em;font-size:12px;color:#999">Determina si el elemento abarcará uno, dos, tres o cuatro espacios de ancho</h6>
+        <select name="ancho" placeholder="Anchura del elemento" id="ancho" class="form-control" required>
+          <option value="categories-width1">1</option>
+          <option value="categories-width2">2</option>
+          <option value="categories-width3">3</option>
+          <option value="categories-width4">4</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="">Posición del Texto Verticalmente</label>
+        <select name="vertical" placeholder="Posición del Texto Verticalmente" id="vertical" class="form-control" required>
+          <option value="index-categories-text-top">Arriba</option>
+          <option value="index-categories-text-center">Centro</option>
+          <option value="index-categories-text-bottom">Abajo</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="">Posición del Texto Horizontalmente</label>
+        <select name="horizontal" placeholder="Posición del Texto Horizontalmente" id="horizontal" class="form-control" required>
+          <option value="index-categories-text-left">Izquierda</option>
+          <option value="index-categories-text-center">Centro</option>
+          <option value="index-categories-text-right">Derecha</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="">Texto de la Etiqueta</label>
+        <h6 style="margin-bottom:.5em;margin-top:-.5em;font-size:12px;color:#999">Escoge una de las categorías que aparecerá en la etiqueta y a la que dirigira al usuario cuando de click al botón.</h6>
+        <select name="t_tag" placeholder="Texto de la Etiqueta" id="t_tag" class="form-control" required>
+        <?php
+          $resultado30 = $conexion ->query("select * from categorias order by id"); 
+          while($fila30 = mysqli_fetch_array($resultado30)){
+          ?>
+          <option value="<?php echo $fila30['nombre']; ?>"><?php echo $fila30['nombre'] ?></option>
+          <?php } ?>
+        <?php
+          $resultado31 = $conexion ->query("select * from subcategorias order by id"); 
+          while($fila31 = mysqli_fetch_array($resultado31)){
+          ?>
+          <option value="<?php echo $fila31['nombre']; ?>"><?php echo $fila31['nombre'] ?></option>
+          <?php } ?>
+        <?php
+          $resultado32 = $conexion ->query("select * from tags order by id"); 
+          while($fila32 = mysqli_fetch_array($resultado32)){
+          ?>
+          <option value="<?php echo $fila32['nombre']; ?>"><?php echo $fila32['nombre'] ?></option>
+          <?php } ?>        </select>
+      </div>
+      <div class="form-group">
+        <label for="">Color de letras de la Etiqueta</label>
+        <h6 style="margin-bottom:.5em;margin-top:-.5em;font-size:12px;color:#999">Escribe el color de las letras de la etiqueta, si deseas que sean blancas pon 'white' o negras 'black', puedes poner cualquier color en inglés o el código hexadecimal de ellos como '#000000' para negro o '#ffffff' para blanco, puedes visitar <a href="https://www.color-hex.com/">Color Hex</a> para guiarte.</h6>
+        <input type="text" name="cl_tag" placeholder="Color de letras de la Etiqueta" id="cl_tag" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="">Texto</label>
+        <input type="text" name="texto" placeholder="Texto" id="texto" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="">Color del texto</label>
+        <input type="text" name="c_texto" placeholder="Color del Texto" id="c_texto" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="">Texto del botón</label>
+        <h6 style="margin-bottom:.5em;margin-top:-.5em;font-size:12px;color:#999">Este es le texto que irá dentro del botón, por ejemplo, 'Comprar' o 'Ver Más', trata de que sea corto.</h6>
+        <input type="text" name="t_boton" placeholder="Texto dentro del botón" id="t_boton" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="">Color de las letras del botón</label>
+        <input type="text" name="cl_boton" placeholder="Color de las letras del botón" id="cl_boton" class="form-control" required>
       </div>
       </div>
       <div class="modal-footer">
@@ -410,6 +589,26 @@ carousel_index order by id desc")or die($conexion->error);
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
         <button type="submit" data-dismiss="modal" class="btn btn-danger eliminar">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalEliminarCatego" tabindex="-1" role="dialog" aria-labelledby="modalEliminarCategoLable" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Eliminar Enlace a Categoría</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      ¿Desea eliminar este enlace a una categoría?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="submit" data-dismiss="modal" class="btn btn-danger eliminarCatego">Eliminar</button>
       </div>
     </div>
   </div>
@@ -488,7 +687,26 @@ carousel_index order by id desc")or die($conexion->error);
       <div class="form-group">
         <label for="">Texto de la etiqueta</label>
         <h6 style="margin-bottom:.5em;margin-top:-.5em;font-size:12px;color:#999">Escoge una de las categorías que aparecerá en la etiqueta y a la que dirigira al usuario cuando de click al botón.</h6>
-        <input type="text" name="t_etiqueta" placeholder="Texto de la etiqueta" id="t_etiquetaEdit" class="form-control" required>
+        <select name="t_etiqueta" placeholder="Texto de la etiqueta" id="t_etiquetaEdit" class="form-control" required>
+        <?php
+          $resultado30 = $conexion ->query("select * from categorias order by id"); 
+          while($fila30 = mysqli_fetch_array($resultado30)){
+          ?>
+          <option value="<?php echo $fila30['nombre']; ?>"><?php echo $fila30['nombre'] ?></option>
+          <?php } ?>
+        <?php
+          $resultado31 = $conexion ->query("select * from subcategorias order by id"); 
+          while($fila31 = mysqli_fetch_array($resultado31)){
+          ?>
+          <option value="<?php echo $fila31['nombre']; ?>"><?php echo $fila31['nombre'] ?></option>
+          <?php } ?>
+        <?php
+          $resultado32 = $conexion ->query("select * from tags order by id"); 
+          while($fila32 = mysqli_fetch_array($resultado32)){
+          ?>
+          <option value="<?php echo $fila32['nombre']; ?>"><?php echo $fila32['nombre'] ?></option>
+          <?php } ?>
+        </select>
       </div>
       <div class="form-group">
         <label for="">Color de las letras de la etiqueta</label>
@@ -557,7 +775,26 @@ carousel_index order by id desc")or die($conexion->error);
       <div class="form-group">
         <label for="">Texto de la Etiqueta</label>
         <h6 style="margin-bottom:.5em;margin-top:-.5em;font-size:12px;color:#999">Escoge una de las categorías que aparecerá como etiqueta en el reloj, además será a esta categoría a la que se conducirá al usuario cunado de click al botón</h6>
-        <input type="text" name="t_tag" placeholder="Texto de la etiqueta" id="t_tagEdit3" class="form-control" required>
+        <select name="t_tag" id="t_tagEdit3" class="form-control" required>
+        <?php
+          $resultado30 = $conexion ->query("select * from categorias order by id"); 
+          while($fila30 = mysqli_fetch_array($resultado30)){
+          ?>
+          <option value="<?php echo $fila30['nombre']; ?>"><?php echo $fila30['nombre'] ?></option>
+          <?php } ?>
+        <?php
+          $resultado31 = $conexion ->query("select * from subcategorias order by id"); 
+          while($fila31 = mysqli_fetch_array($resultado31)){
+          ?>
+          <option value="<?php echo $fila31['nombre']; ?>"><?php echo $fila31['nombre'] ?></option>
+          <?php } ?>
+        <?php
+          $resultado32 = $conexion ->query("select * from tags order by id"); 
+          while($fila32 = mysqli_fetch_array($resultado32)){
+          ?>
+          <option value="<?php echo $fila32['nombre']; ?>"><?php echo $fila32['nombre'] ?></option>
+          <?php } ?>
+        </select>
       </div>
       <div class="form-group">
         <label for="">Color de Relleno de la Etiqueta</label>
@@ -584,6 +821,111 @@ carousel_index order by id desc")or die($conexion->error);
         <label for="">Color del borde del Botón</label>
         <h6 style="margin-bottom:.5em;margin-top:-.5em;font-size:12px;color:#999">El color del borde debe ser del mismo color que las letras.</h6>
         <input type="text" name="cb_boton" placeholder="Color del borde de los botones" id="cb_botonEdit3" class="form-control" required>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-primary editar">Guardar</button>
+      </div>
+		</form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalEditarCatego" tabindex="-1" role="dialog" aria-labelledby="modalEditarCatego" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+     <form action="../php/editarIndexCatego.php" method="post" enctype="multipart/form-data">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalEditar3">Editar Enlace a Categoría</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <input type="hidden" id="idCatego" name="id">
+      <div class="form-group">
+        <label for="">Imagen</label>
+      <input type="file" name="imagen" placeholder="Imagen" id="imagenCatego" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="">Alto</label>
+        <h6 style="margin-bottom:.5em;margin-top:-.5em;font-size:12px;color:#999">Determina si el elemento abarcará uno o dos espacios de altura</h6>
+        <select name="alto" placeholder="Altura del elemento" id="altoCatego" class="form-control" required>
+          <option value="categories-height1">1</option>
+          <option value="categories-height2">2</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="">Ancho</label>
+        <h6 style="margin-bottom:.5em;margin-top:-.5em;font-size:12px;color:#999">Determina si el elemento abarcará uno, dos, tres o cuatro espacios de ancho</h6>
+        <select name="ancho" placeholder="Anchura del elemento" id="anchoCatego" class="form-control" required>
+          <option value="categories-width1">1</option>
+          <option value="categories-width2">2</option>
+          <option value="categories-width3">3</option>
+          <option value="categories-width4">4</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="">Posición del Texto Verticalmente</label>
+        <select name="vertical" placeholder="Posición del Texto Verticalmente" id="verticalCatego" class="form-control" required>
+          <option value="index-categories-text-top">Arriba</option>
+          <option value="index-categories-text-center">Centro</option>
+          <option value="index-categories-text-bottom">Abajo</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="">Posición del Texto Horizontalmente</label>
+        <select name="horizontal" placeholder="Posición del Texto Horizontalmente" id="horizontalCatego" class="form-control" required>
+          <option value="index-categories-text-left">Izquierda</option>
+          <option value="index-categories-text-center">Centro</option>
+          <option value="index-categories-text-right">Derecha</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="">Texto de la Etiqueta</label>
+        <h6 style="margin-bottom:.5em;margin-top:-.5em;font-size:12px;color:#999">Escoge una de las categorías que aparecerá en la etiqueta y a la que dirigira al usuario cuando de click al botón.</h6>
+        <select name="t_tag" placeholder="Texto de la Etiqueta" id="t_tagCatego" class="form-control" required>
+        <?php
+          $resultado30 = $conexion ->query("select * from categorias order by id"); 
+          while($fila30 = mysqli_fetch_array($resultado30)){
+          ?>
+          <option value="<?php echo $fila30['nombre']; ?>"><?php echo $fila30['nombre'] ?></option>
+          <?php } ?>
+        <?php
+          $resultado31 = $conexion ->query("select * from subcategorias order by id"); 
+          while($fila31 = mysqli_fetch_array($resultado31)){
+          ?>
+          <option value="<?php echo $fila31['nombre']; ?>"><?php echo $fila31['nombre'] ?></option>
+          <?php } ?>
+        <?php
+          $resultado32 = $conexion ->query("select * from tags order by id"); 
+          while($fila32 = mysqli_fetch_array($resultado32)){
+          ?>
+          <option value="<?php echo $fila32['nombre']; ?>"><?php echo $fila32['nombre'] ?></option>
+          <?php } ?>        </select>
+      </div>
+      <div class="form-group">
+        <label for="">Color de letras de la Etiqueta</label>
+        <h6 style="margin-bottom:.5em;margin-top:-.5em;font-size:12px;color:#999">Escribe el color de las letras de la etiqueta, si deseas que sean blancas pon 'white' o negras 'black', puedes poner cualquier color en inglés o el código hexadecimal de ellos como '#000000' para negro o '#ffffff' para blanco, puedes visitar <a href="https://www.color-hex.com/">Color Hex</a> para guiarte.</h6>
+        <input type="text" name="cl_tag" placeholder="Color de letras de la Etiqueta" id="cl_tagCatego" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="">Texto</label>
+        <input type="text" name="texto" placeholder="Texto" id="textoCatego" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="">Color del texto</label>
+        <input type="text" name="c_texto" placeholder="Color del Texto" id="c_textoCatego" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="">Texto del botón</label>
+        <h6 style="margin-bottom:.5em;margin-top:-.5em;font-size:12px;color:#999">Este es le texto que irá dentro del botón, por ejemplo, 'Comprar' o 'Ver Más', trata de que sea corto.</h6>
+        <input type="text" name="t_boton" placeholder="Texto dentro del botón" id="t_botonCatego" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="">Color de las letras del botón</label>
+        <input type="text" name="cl_boton" placeholder="Color de las letras del botón" id="cl_botonCatego" class="form-control" required>
       </div>
       </div>
       <div class="modal-footer">
@@ -647,6 +989,10 @@ carousel_index order by id desc")or die($conexion->error);
 		$(".btnEliminar").click(function(){
 		idEliminar = $(this).data('id');
 		fila=$(this).parent('div').parent('div');
+	});		
+  $(".btnEliminarCatego").click(function(){
+		idEliminarCatego = $(this).data('id');
+		fila=$(this).parent('div').parent('div').parent('div');
 	});
 		$(".eliminar").click(function(){
 			$.ajax({
@@ -654,6 +1000,17 @@ carousel_index order by id desc")or die($conexion->error);
 				method: 'POST',
 				data:{
 					id:idEliminar
+				}
+			}).done(function(res){
+				$(fila).fadeOut(1000);
+			});
+		});
+    	$(".eliminarCatego").click(function(){
+			$.ajax({
+				url: '../../php/eliminarIndexCatego.php',
+				method: 'POST',
+				data:{
+					id:idEliminarCatego
 				}
 			}).done(function(res){
 				$(fila).fadeOut(1000);
@@ -712,6 +1069,30 @@ carousel_index order by id desc")or die($conexion->error);
 			$('#cr_botonEdit3').val(cr_boton);
 			$('#cl_botonEdit3').val(cl_boton);
 			$('#cb_botonEdit3').val(cb_boton);
+		});
+		$('.btnEditarCatego').click(function(){
+			idCatego=$(this).data('id');
+			var alto=$(this).data('alto');
+			var ancho=$(this).data('ancho');
+			var vertical=$(this).data('vertical');
+			var horizontal=$(this).data('horizontal');
+			var t_tag=$(this).data('t_tag');
+			var cl_tag=$(this).data('cl_tag');
+			var texto=$(this).data('texto');
+			var c_texto=$(this).data('c_texto');
+			var t_boton=$(this).data('t_boton');
+			var cl_boton=$(this).data('cl_boton');
+			$('#idCatego').val(idCatego);
+			$('#altoCatego').val(alto);
+			$('#anchoCatego').val(ancho);
+			$('#verticalCatego').val(vertical);
+			$('#horizontalCatego').val(horizontal);
+			$('#t_tagCatego').val(t_tag);
+			$('#cl_tagCatego').val(cl_tag);
+			$('#textoCatego').val(texto);
+			$('#c_textoCatego').val(c_texto);
+			$('#t_botonCatego').val(t_boton);
+			$('#cl_botonCatego').val(cl_boton);
 		});
 	});
 	</script>

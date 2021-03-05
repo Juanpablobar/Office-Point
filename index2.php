@@ -99,9 +99,9 @@ session_start();
 	<div class="index-categories-item <?php echo $fila[1]; ?> <?php echo $fila[2]; ?>" style="background-image: url('img/<?php echo $fila[3]; ?>');background-size:cover;">
 		<div class="index-categories-text <?php echo $fila[4]; ?> <?php echo $fila[5]; ?>">
 			<div class="index-categories-text-sub">
-				<h2 style="color: <?php echo $fila[7]; ?>"><?php echo $fila[6]; ?></h2>
+				<h2 style="text-transform:uppercase;color: <?php echo $fila[7]; ?>">#<?php echo $fila[6]; ?></h2>
 				<h1 style="color: <?php echo $fila[9]; ?>"><?php echo $fila[8]; ?></h1>
-				<a style="color: <?php echo $fila[10]; ?>" href="<?php echo $fila[12]; ?>"><?php echo $fila[11]; ?> <?php echo $arrow_right; ?></a>
+				<a style="color: <?php echo $fila[10]; ?>" href="shop?search=<?php echo $fila[6]; ?>"><?php echo $fila[11]; ?> <?php echo $arrow_right; ?></a>
 			</div>
 		</div>
 	</div>
@@ -288,6 +288,57 @@ session_start();
 	<?php } ?>
 </div>
 
+<?php
+    if (isset($_GET['success'])) {
+        ?>
+<div class="modal-contact">
+	<div class="modal-contact-cont">
+		<div class="modal-contact-text">
+			<div class="modal-contact-span">
+				<span class="modal_span"><i class="fa fa-times"></i></span>
+			</div>
+			<div class="modal-contact-h2">
+				<h2>Gracias por regístrarte, nos pondremos en contacto contigo lo antes posible.<br> ¡Gracias!</h2>
+			</div>
+		</div>
+	</div>
+</div>
+<?php
+    }elseif(isset($_GET['invalid_email'])){
+?>
+<div class="modal-contact">
+	<div class="modal-contact-cont">
+		<div class="modal-contact-text">
+			<div class="modal-contact-span">
+				<span class="modal_span"><i class="fa fa-times"></i></span>
+			</div>
+			<div class="modal-contact-h2">
+				<h2 style="color:#FF6363">Por favor introduce un correo electrónico válido</h2>
+			</div>
+		</div>
+	</div>
+</div>
+<?php
+	}elseif(isset($_GET['error'])){
+?>
+<div class="modal-contact">
+	<div class="modal-contact-cont">
+		<div class="modal-contact-text">
+			<div class="modal-contact-span">
+				<span class="modal_span"><i class="fa fa-times"></i></span>
+			</div>
+			<div class="modal-contact-h2">
+				<h2 style="color:#FF6363">Por favor llena todos los campos</h2>
+			</div>
+		</div>
+	</div>
+</div>
+<?php
+	}else{
+		echo '';
+	}
+?>
+
 
 <?php include ('./layouts/footer.php'); ?>	
 <script src="js/jquery-3.3.1.min.js"></script>
@@ -329,6 +380,13 @@ session_start();
 	});
 });
 	</script>
+<script>
+	$(document).ready(function(){
+		$('.modal_span').click(function(){
+			$('.modal-contact').fadeOut();
+		})
+	})
+</script>
 </body>
 </html>
  

@@ -1,0 +1,44 @@
+.modal-contact{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.4);
+    z-index: 20;
+    .modal-contact-cont{
+        width: 60%;
+        @include margin;
+        background: white;
+        padding: 2em;
+        border-radius: .5em;
+        margin-top: 3em;
+        .modal-contact-text{
+            width: 100%;
+            .modal-contact-span{
+                width: 100%;
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                margin-bottom: -1em;
+                span{
+                    height: 2em;
+                    width: 2em;
+                    @include flex;
+                    cursor: pointer;
+                    &:hover{
+                        background-color: rgba(0,0,0,.4);
+                    }
+                }
+            }
+            .modal-contact-h2{
+                width: 100%;
+                h2{
+                    font: 500 17px $rale;
+                    color: #333;
+                    line-height: 28px;
+                }
+            }
+        }
+    }
+}
