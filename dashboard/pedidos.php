@@ -1,6 +1,14 @@
 <?php
 session_start();
-include '../.././php/conexion.php';
+include '../php/conexion.php';
+include '../layouts/icons.php';
+if(!isset($_SESSION['datos_login'])){
+  header('Location: ../login.php');
+}
+$arregloUsuario = $_SESSION['datos_login'];
+if($arregloUsuario['nivel'] != 'admin'){
+  header('Location: ./');
+}
 $resultado = $conexion->query("
 select ventas.*, envios.nombre, envios.correo, envios.calle, envios.apartamento, envios.cp, envios.ciudad, envios.estado, envios.pais, envios.envio from ventas inner join envios on   ventas.id = envios.id_venta")or die($conexion->error);
 ?>

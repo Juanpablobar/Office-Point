@@ -36,6 +36,13 @@ session_start();
 		<a href="./"><img src="img/logo.png" title="Office Point Logo"></a>
 		<h1>Iniciar Sesión</h1>
 		<form action="./php/login.php" method="post">
+		<?php
+		if(isset($_GET['checkout'])){
+			echo '<input type="hidden" name="checkout">';
+		}else{
+			echo '';
+		}
+		?>
 				<div class="login-input-item">
 				<?php
 					if(isset($_GET['error'])){

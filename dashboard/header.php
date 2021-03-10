@@ -56,7 +56,11 @@ include '../php/conexion.php';
           <span style="text-transform:uppercase;display:flex;justify-content:center;align-items:center;background:#FFF;border-radius:10em;height:35px;width:35px;color:#666;font-size:18px;font-weight:500;"><?php echo substr($arregloUsuario['nombre'],0,1) ?></span>
         </div>
         <div class="info">
-          <a class="d-block" style="text-transform:capitalize;color:white"><?php echo $arregloUsuario['nombre']; ?></a>
+          <a
+          <?php if(($arregloUsuario['nivel'] == 'cliente')){ ?>
+          href="mi-perfil"
+          <?php } ?>
+           class="d-block" style="text-transform:capitalize;color:white"><?php echo $arregloUsuario['nombre']; ?></a>
         </div>
       </div>
 
@@ -203,6 +207,14 @@ include '../php/conexion.php';
             <i class="fas fa-comments"></i>
               <p>
                  Mis Reseñas
+              </p>
+            </a>
+          </li>
+            <li class="nav-item">
+            <a href="mi-perfil" class="nav-link" style="color:white">
+            <i class="fa fa-user-alt"></i>
+              <p>
+                Perfil
               </p>
             </a>
           </li>

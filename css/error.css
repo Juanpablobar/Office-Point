@@ -367,10 +367,10 @@ header {
   z-index: 99; }
 
 .sidebar-second {
-  animation: sidebar-second .5s linear forwards; }
+  animation: sidebar-second .25s linear forwards; }
 
 .sidebar-second2 {
-  animation: sidebar-second2 .5s linear forwards; }
+  animation: sidebar-second2 .25s linear forwards; }
 
 .sidebar-second, .sidebar-second2 {
   display: none;

@@ -1,0 +1,156 @@
+@import 'dashboard-layouts';
+
+.añadir{
+    width: 100%;
+    background: #eee;
+    padding: 1em 1em;
+    transition: .3s all;
+    cursor: pointer;
+    @include margin;
+    &:hover{
+        background: #e9e9e9;
+        h2{
+            color: $c1;
+        }
+    }
+    h2{
+        font: 600 14px $rale;
+        color:#333;
+        line-height: 28px;
+        transition: .3s all;
+        i{
+            margin-right: .25em;
+        }
+    }
+    h3{
+        font: 600 13px $rale;
+        color: #666;
+        line-height: 27px;
+        margin-top:-.5em;
+    }
+}
+
+.direccion{
+    width: 100%;
+    padding: 2em 1em;
+    background: #eee;
+    display: none;
+    h1{
+        font: 600 20px $rale;
+    }
+    form{
+        width: 100%;
+        position:relative;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 10px 20px;
+        .direccion-item{
+            grid-column: span 1;
+            &:nth-child(5){
+                grid-column: span 2;
+                input{
+                    &:nth-child(2){
+                        margin-bottom:1em;
+                    }
+                }
+            }
+            h2{
+                font: 600 14px $rale;
+                color: #333;
+                line-height: 28px;
+                a{
+                    color: $c2;
+                }
+            }
+            input{
+                border: 1px solid #eee;
+                outline: none;
+                padding: .5em 3%;
+                border-radius: .25em;
+                width: 100%;
+                font-size:14px;
+                display: block;
+            }
+        }
+        .direccion-button{
+            padding-top: 1em;
+            display: flex;
+            justify-content: flex-end;
+            grid-column: span 2;
+            button{
+                padding: 1em 2em;
+                background: $c1;
+                font: 600 12px $lato;
+                text-transform: uppercase;
+                outline: none;
+                border: 0;
+                cursor: pointer;
+                color:white;
+            }
+        }
+    }
+}
+
+.ready{
+    width: 100%;
+    padding: 1em 1em;
+    background: #eee;
+    .ready-first{
+        display: flex;
+        justify-content: space-between;
+        h1{
+            font: 600 16px $rale;
+            color:#333;
+        }
+        h2{
+            font: 500 12px $rale;
+            color: $c1;
+        }
+        #editar{
+            cursor: pointer;
+        }
+    }
+    .ready-cont{
+        width: 100%;
+        position:relative;
+        h3{
+            font: 500 16px $rale;
+            line-height: 30px;
+            color: #333;
+            a{
+                color: #666;
+                font-family: $lato;
+            }
+        }
+    }
+    .ready-eliminar{
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        button{
+            font: 600 12px $lato;
+            color: $c2;
+            text-transform: uppercase;
+            line-height: 0;
+            border: 0;
+            outline: none;
+            background: transparent;
+        }
+    }
+}
+
+@media screen and (max-width:500px){
+    .direccion{
+        form{
+            .direccion-item{
+                grid-column: span 2;
+            }
+            .direccion-button{
+                button{
+                    display: block;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

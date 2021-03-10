@@ -159,6 +159,9 @@
 	.aviso{
 		width: 85%;
 	}
+	.checkout{
+		width: 95%;
+	}
 } 
 
 @media screen and (max-width:1100px){
@@ -818,6 +821,15 @@
 			width: 85%;
 			padding: 2em 5%;
 			margin-top: 0;
+		}
+	}
+	.checkout{
+		display: block;
+		.checkout-first, .checkout-second{
+			width: 100%;
+		}
+		.checkout-second{
+			margin-bottom: 5em;
 		}
 	}
 }
@@ -1777,7 +1789,17 @@
 								left: -.5em;
 								}
 							}
-						}       
+						}    
+						.item-shop-text{
+							.item-shop-h2-first{
+								width: 46% !important;
+								margin-right: .5em !important;
+							}
+							.item-shop-h2-second{
+								width: 46% !important;
+							}
+						} 
+	   
 					}
 				}
 			}
@@ -1918,6 +1940,92 @@
 						background:transparent;
 						color:white;
 					}
+				}
+			}
+		}
+	}
+	.checkout{
+		.checkout-first{
+			padding-bottom: 2em;
+			h1{
+				font: 700 20px $rale;
+				line-height: 33px;
+				border-bottom: 1px solid #ddd;
+				color: $c1;
+			}
+			.checkout-inputs{
+				display: block;
+				.checkout-inputs-item{
+					h2{
+						font: 600 14px $rale;
+						line-height: 28px;
+					}
+					h3{
+						a{
+							color: $c1;
+						}
+					}
+					h4{
+						a{
+							color: $c1;
+						}
+					}
+					.email_h4{
+						color: $c1;
+					}
+					.checkout-label{
+						input[type='checkbox']{
+							&:checked + .label1{
+								background-color: $c1 !important;
+								border: 1px solid $c1;
+							}
+						}
+					}
+				}
+			}
+		}
+		.checkout-second{
+			background: #e6e6e6;
+			.checkout-second-address{
+				width:100%;
+				margin-bottom:1.5em;
+				.checkout-second-address-edit{
+					h1{
+						font: 800 20px $rale;
+						line-height: 33px;
+						border-bottom: 0;
+					}	
+					a{
+						color: $c1;
+					}
+				}
+			}	
+			.checkout-second-cont{
+				width: 100%;
+				h1{
+					font: 800 20px $rale;
+					line-height: 33px;
+					border-bottom: 1px solid #ddd;
+				}
+				.checkout-second-products{
+					border-bottom: 1px solid #ddd;
+					.checkout-second-products-item{
+						h3{
+							display:flex;
+							span{
+								background: $c1;
+								position: relative;
+								left: 0;
+								margin-left:.5em;
+							}
+						} 
+						.total{
+							color: $c1;
+						}
+					}
+				}
+				button{
+					background: $c1;
 				}
 			}
 		}

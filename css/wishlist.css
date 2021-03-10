@@ -367,10 +367,10 @@ header {
   z-index: 99; }
 
 .sidebar-second {
-  animation: sidebar-second .5s linear forwards; }
+  animation: sidebar-second .25s linear forwards; }
 
 .sidebar-second2 {
-  animation: sidebar-second2 .5s linear forwards; }
+  animation: sidebar-second2 .25s linear forwards; }
 
 .sidebar-second, .sidebar-second2 {
   display: none;
@@ -1081,7 +1081,10 @@ footer {
     width: 95%; }
 
   .aviso {
-    width: 85%; } }
+    width: 85%; }
+
+  .checkout {
+    width: 95%; } }
 @media screen and (max-width: 1100px) {
   .single-product {
     width: 95%;
@@ -1532,7 +1535,14 @@ footer {
     .modal-contact .modal-contact-cont {
       width: 85%;
       padding: 2em 5%;
-      margin-top: 0; } }
+      margin-top: 0; }
+
+  .checkout {
+    display: block; }
+    .checkout .checkout-first, .checkout .checkout-second {
+      width: 100%; }
+    .checkout .checkout-second {
+      margin-bottom: 5em; } }
 @media screen and (max-width: 785px) {
   @keyframes search {
     0% {
@@ -2178,6 +2188,11 @@ footer {
     .index-shop .index-shop-items .item-shop .item-shop-cont .item-shop-prev .item-shop-img .item-shop-hide .item-shop-new, .index-shop .index-shop-items .item-shop .item-shop-cont .item-shop-prev .item-shop-img .item-shop-hide .item-shop-discounts {
       top: -.5em;
       left: -.5em; }
+    .index-shop .index-shop-items .item-shop .item-shop-cont .item-shop-prev .item-shop-text .item-shop-h2-first {
+      width: 46% !important;
+      margin-right: .5em !important; }
+    .index-shop .index-shop-items .item-shop .item-shop-cont .item-shop-prev .item-shop-text .item-shop-h2-second {
+      width: 46% !important; }
 
   .index-clock .index-clock-cont .index-clock-text-flex .index-clock-text .index-clock-clock .item-shop-clock div {
     height: 60px;
@@ -2245,7 +2260,59 @@ footer {
       right: 1em; }
       .popup .popup-cont .popup-text .popup-close span {
         background: transparent;
-        color: white; } }
+        color: white; }
+
+  .checkout .checkout-first {
+    padding-bottom: 2em; }
+    .checkout .checkout-first h1 {
+      font: 700 20px "Raleway";
+      line-height: 33px;
+      border-bottom: 1px solid #ddd;
+      color: #814090; }
+    .checkout .checkout-first .checkout-inputs {
+      display: block; }
+      .checkout .checkout-first .checkout-inputs .checkout-inputs-item h2 {
+        font: 600 14px "Raleway";
+        line-height: 28px; }
+      .checkout .checkout-first .checkout-inputs .checkout-inputs-item h3 a {
+        color: #814090; }
+      .checkout .checkout-first .checkout-inputs .checkout-inputs-item h4 a {
+        color: #814090; }
+      .checkout .checkout-first .checkout-inputs .checkout-inputs-item .email_h4 {
+        color: #814090; }
+      .checkout .checkout-first .checkout-inputs .checkout-inputs-item .checkout-label input[type='checkbox']:checked + .label1 {
+        background-color: #814090 !important;
+        border: 1px solid #814090; }
+  .checkout .checkout-second {
+    background: #e6e6e6; }
+    .checkout .checkout-second .checkout-second-address {
+      width: 100%;
+      margin-bottom: 1.5em; }
+      .checkout .checkout-second .checkout-second-address .checkout-second-address-edit h1 {
+        font: 800 20px "Raleway";
+        line-height: 33px;
+        border-bottom: 0; }
+      .checkout .checkout-second .checkout-second-address .checkout-second-address-edit a {
+        color: #814090; }
+    .checkout .checkout-second .checkout-second-cont {
+      width: 100%; }
+      .checkout .checkout-second .checkout-second-cont h1 {
+        font: 800 20px "Raleway";
+        line-height: 33px;
+        border-bottom: 1px solid #ddd; }
+      .checkout .checkout-second .checkout-second-cont .checkout-second-products {
+        border-bottom: 1px solid #ddd; }
+        .checkout .checkout-second .checkout-second-cont .checkout-second-products .checkout-second-products-item h3 {
+          display: flex; }
+          .checkout .checkout-second .checkout-second-cont .checkout-second-products .checkout-second-products-item h3 span {
+            background: #814090;
+            position: relative;
+            left: 0;
+            margin-left: .5em; }
+        .checkout .checkout-second .checkout-second-cont .checkout-second-products .checkout-second-products-item .total {
+          color: #814090; }
+      .checkout .checkout-second .checkout-second-cont button {
+        background: #814090; } }
 @media screen and (max-width: 575px) {
   .index-clock .index-clock-cont .index-clock-text-flex .index-clock-text h4 {
     display: none; } }

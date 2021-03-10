@@ -54,7 +54,7 @@ try {
   //echo 'Name: ' . $user['name'];
   //echo 'Email: ' . $user['email'];
 	include './conexion.php';
-   		$respuesta = $conexion->query("select * from usuarios where 	correo='".$user['email']."'")or die($conexion->error);
+   		$respuesta = $conexion->query("select * from usuarios where correo='".$user['email']."'")or die($conexion->error);
 	 	if(mysqli_num_rows($respuesta) == 0){
 		$pass= $_POST['password'];
 		$conexion->query("insert into usuarios (nombre,correo,contraseña,nivel, metodo)
@@ -66,9 +66,22 @@ try {
 		'Facebook'
 		)
 		")or die($conexion->error);
+    $datos_usuario = mysqli_fetch_row($respuesta);
+    $nombre = $user['name'];
+    $id_usuario = $datos_usuario[0];
+    $email = $user['email'];
+    $nivel = 'cliente';
+    $metodo = 'Facebook';
+    $_SESSION['datos_login']= array(
+    'nombre'=>$nombre,
+    'id'=>$id_usuario,
+    'correo'=>$email,
+    'nivel'=>$nivel,
+    'metodo'=>$metodo
+    );
 			header('Location: ../dashboard/');		
 		}else{
-      $datos_usuario = mysqli_fetch_row($resultado);
+      $datos_usuario = mysqli_fetch_row($respuesta);
       $nombre = $datos_usuario[1];
       $id_usuario = $datos_usuario[0];
       $email = $datos_usuario[2];

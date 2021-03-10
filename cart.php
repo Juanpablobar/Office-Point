@@ -106,6 +106,8 @@ if(isset($_SESSION["carrito"])){
 			<h2>Te recomendamos agregar los artículos que deseas comprar</h2>
 			<a href="./shop">Volver a la tienda</a>
 		</div>';
+		$_SESSION['total'] = 0;
+
 	}else{
 ?>
 
@@ -249,7 +251,7 @@ if(isset($_SESSION["carrito"])){
 			<h2>Total</h2>
 			<h3>$<?php echo $final = $total + $envio; ?>.00</h3>
 		</div>
-		<a href="#">Proceder al Pago</a>
+		<a href="checkout">Proceder al Pago</a>
 	</div>
 </div>
 <?php

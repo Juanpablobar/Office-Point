@@ -2,7 +2,7 @@
 session_start();
 include '../php/conexion.php';
 if(!isset($_SESSION['datos_login'])){
-	header("Location: ../index.php");
+	header("Location: ../login.php");
 }
 $arregloUsuario = $_SESSION['datos_login'];
 if($arregloUsuario['nivel'] != 'admin'){

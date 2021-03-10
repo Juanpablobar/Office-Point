@@ -51,7 +51,7 @@ if( isset($_GET["id"])){
    
     <title>Office Point | Comprar <?php echo $fila[1]; ?></title>
 	<link rel="icon shortcut" href="./img/logo.png">
-	<link rel="stylesheet" href="css/shop-single.css?16.0"> 
+	<link rel="stylesheet" href="css/shop-single.css?18.0"> 
 	<link rel="preload" href="fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="fontawesome-free/css/all.min.css"></noscript>
 	<link rel="preload" href="css/owl.carousel.css" as="style" onload="this.onload=null;this.rel='stylesheet'">

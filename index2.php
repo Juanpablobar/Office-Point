@@ -11,7 +11,7 @@ session_start();
 	<link rel="icon shortcut" href="./img/logo.png">
 	<noscript><link rel="stylesheet" href=".css/owl.carousel.css"></noscript>
     <link rel="preload" href="css/owl.theme.default.css?1.0" as="style" onload="this.onload=null;this.rel='stylesheet'">
-	<link rel="stylesheet" href="css/index.css?21.0">
+	<link rel="stylesheet" href="css/index.css?32.0">
 	<link rel="preload" href="fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="fontawesome-free/css/all.min.css"></noscript>
     <link rel="preload" href="css/owl.carousel.css" as="style" onload="this.onload=null;this.rel='stylesheet'">

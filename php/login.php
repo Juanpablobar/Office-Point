@@ -19,7 +19,11 @@ if(isset($_POST['email']) && isset($_POST['password']) ){
 		'nivel'=>$nivel,
 		'metodo'=>$metodo
 		);
-	header("Location: ../dashboard/");
+	if(isset($_POST['checkout'])){
+		header("Location: ../checkout");
+	}else{
+			header("Location: ../dashboard/");
+		}
 	}else{
 		header("Location: ../login.php?error");
 	}

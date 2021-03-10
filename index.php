@@ -15,9 +15,6 @@
 	<?php include ('./layouts/reload.php'); ?>
 	<div class="soon">
 		<div class="soon-second">
-			<div class="clock">
-				<div id="countdown"></div>				
-			</div>
 		</div>
 		<div class="soon-first">
 			<div class="soon-brand">

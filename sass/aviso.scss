@@ -30,6 +30,22 @@
             font: 500 16px $rale;
             margin: .5em 0;
         }
+        .terms-a{
+            color: #333;
+            font-weight: 500;
+            display: block
+        }
+        .terms-p{
+            width: 100%;
+            text-align: center
+        }
+        .terms-li{
+            list-style: none
+        }
+        .terms-hash{
+            display: block;
+            text-align: center
+        }
     }
 }
 

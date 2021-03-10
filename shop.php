@@ -12,7 +12,7 @@ include("./php/conexion.php");
 	
 	<link rel="icon shortcut" href="./img/logo.png">
 	<link rel="stylesheet" href="css/popup.css"> 
-	<link rel="stylesheet" href="css/shop.css?20.0"> 
+	<link rel="stylesheet" href="css/shop.css?22.0"> 
 	<link rel="preload" href="fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="fontawesome-free/css/all.min.css"></noscript>
 	<link rel="preload" href="css/jquery.range.css" as="style" onload="this.onload=null;this.rel='stylesheet'">

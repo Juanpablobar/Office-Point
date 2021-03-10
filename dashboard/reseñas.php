@@ -3,7 +3,7 @@ session_start();
 include '../php/conexion.php';
 include '../layouts/icons.php';
 if(!isset($_SESSION['datos_login'])){
-  header('Location: ../');
+  header('Location: ../login.php');
 }
 $arregloUsuario = $_SESSION['datos_login'];
 if($arregloUsuario['nivel'] != 'cliente'){

@@ -47,7 +47,7 @@ include ('./php/conexion.php');
 				<a href="login">Iniciar Sesión</a>
 				<a href="notice-of-privacy">Aviso de Privacidad</a>
 				<a href="privacy-policy">Política de Privacidad</a>
-				<a href="terms-and-conditions">Términos y Condiciones</a>
+				<a href="conditions-of-use">Términos y Condiciones</a>
 			</div>
 			<div class="footer-links-item">
 				<h1>Boletín</h1>

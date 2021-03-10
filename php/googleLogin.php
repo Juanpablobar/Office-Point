@@ -1,6 +1,6 @@
 <?php
 require_once './google-api/vendor/autoload.php';
-
+session_start();
 // init configuration
 $clientID = '1007307748626-8d67t19k3aqkoeunfq2qsfec8i7gk4gi.apps.googleusercontent.com';
 $clientSecret = 'pMigrUlWudd8PqkkAM2BfphW';
@@ -29,7 +29,6 @@ if (isset($_GET['code'])) {
 	include './conexion.php';
    		$respuesta = $conexion->query("select * from usuarios where 	correo='".$email."'")or die($conexion->error);
 	 	if(mysqli_num_rows($respuesta) == 0){
-		$pass= $_POST['password'];
 		$conexion->query("insert into usuarios (nombre,correo,contraseña,nivel, metodo)
 		values(
 		'".$name."',
@@ -39,9 +38,22 @@ if (isset($_GET['code'])) {
 		'Gmail'
 		)
 		")or die($conexion->error);
-			header('Location: ../dashboard/');		
-		}else{
-			$datos_usuario = mysqli_fetch_row($resultado);
+		$datos_usuario = mysqli_fetch_row($respuesta);
+		$nombre = $name;
+		$id_usuario = $datos_usuario[0];
+		$email = $email;
+		$nivel = 'cliente';
+		$metodo = 'Gmail';
+		$_SESSION['datos_login']= array(
+		'nombre'=>$nombre,
+		'id'=>$id_usuario,
+		'correo'=>$email,
+		'nivel'=>$nivel,
+		'metodo'=>$metodo
+		);
+		header("Location: ../dashboard/");
+	}else{
+			$datos_usuario = mysqli_fetch_row($respuesta);
 			$nombre = $datos_usuario[1];
 			$id_usuario = $datos_usuario[0];
 			$email = $datos_usuario[2];
@@ -54,7 +66,7 @@ if (isset($_GET['code'])) {
 			'nivel'=>$nivel,
 			'metodo'=>$metodo
 			);
-				header('Location: ../dashboard/');
+			header("Location: ../dashboard/");
 		}
 }
 
