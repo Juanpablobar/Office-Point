@@ -1,0 +1,193 @@
+
+<?php
+include './conexion.php';
+include '../layouts/icons.php';
+if (isset($_POST['price_range'])) {
+    $part = explode(',', $_POST['price_range']);
+    ?>
+<?php
+if(isset($_GET['orderby'])){
+    $cuantos = mysqli_fetch_assoc($resultado2);
+ if($_GET['orderby'] == 'lowerprice'){
+     $order = 'precio Asc';
+ }elseif($_GET['orderby'] == 'higherprice') {
+     $order = 'precio desc';
+ }elseif($_GET['orderby'] == 'last') {
+     $order = 'id desc';
+ }elseif($_GET['orderby'] == 'higherdiscount') {
+     $order = 'descuento desc';
+ }elseif($_GET['orderby'] == 'newer') {
+     $order = 'nuevo desc';
+ }else{
+     $order = 'id Asc';
+     }
+}else{
+ $order = 'id Asc';
+}
+    $betweenPrice = "'".$part[0]."' and '".$part[1]."'" ;
+    $wherePrice = "and precio between ".$betweenPrice." or " ;
+    if(isset($_GET['search'])){
+    if($_GET['search'] != ''){
+    $resultado = $conexion ->query("select * from productos
+    where 
+    nombre like '%".$_GET['search']."%'
+    ".$wherePrice."
+    categoria like '%".$_GET['search']."%'
+    ".$wherePrice."
+    subcategoria like '%".$_GET['search']."%' 
+    ".$wherePrice."
+    tag1 like '%".$_GET['search']."%' 
+    ".$wherePrice."
+    tag2 like '%".$_GET['search']."%'
+    ".$wherePrice."
+    tag3 like '%".$_GET['search']."%'
+    and precio between ".$betweenPrice." 
+    order by id")or die($conexion -> error); 
+
+    }else{
+        $resultado2 = $conexion ->query("select count(*) id from productos order by ".$order);
+        $resultado = $conexion ->query("select * from productos where precio between ".$betweenPrice." order by ".$order);
+        $q = mysqli_fetch_assoc($resultado2);
+        }
+    }else{
+    $resultado2 = $conexion ->query("select count(*) id from productos order by ".$order);
+    $resultado = $conexion ->query("select * from productos where precio between ".$betweenPrice." order by ".$order);
+    $q = mysqli_fetch_assoc($resultado2);
+
+    }			 ?>
+     <?php
+                   if ($resultado->num_rows > 0) {
+                       while ($fila = $resultado->fetch_assoc()) {
+                           $postID = $fila['id']; ?>
+		<div class="item-shop">
+			<div class="item-shop-cont">
+			<div class="item-shop-prev">
+					<div class="item-shop-img">
+						<img src="img/<?php echo $fila['img2']; ?>">
+						<div class="item-shop-hide">
+							<div class="item-shop-hide-top">
+								<div class="item-shop-hide-a"><a href="wishlist?id=<?php echo $fila['id']; ?>" title="Agregar a la lista de deseos"><?php echo $heart; ?></a></div>
+								<div class="item-shop-hide-a"><a href="shop?search=<?php echo $fila['categoria'] ?>" title="Buscar productos similares"><?php echo $loupe; ?></a></div>
+							</div>
+							<div class="item-shop-hide-bottom">
+								<div class="item-shop-hide-a"><a href="cart?id=<?php echo $fila['id']; ?>&cant=1" title="Agregar al carrito"><?php echo $bag; ?></a></div>
+							</div>
+						</div>
+						<?php
+                        if ($fila['nuevo'] == 'si') {
+                            echo '<div class="item-shop-new">
+							<span>New</span>
+						</div>';
+                        } else {
+                            echo '';
+                        }
+                    
+                           if ($fila['descuento'] > 0) {
+                               echo '<div class="item-shop-discounts">
+							<span>-'.$fila['descuento'].'%</span>
+						</div>';
+                           } else {
+                               echo '';
+                           } ?>
+					</div>
+					<div class="item-shop-text-list">
+					<a href="shop-single?id=<?php echo $fila['id']; ?>"><?php echo $fila['nombre']; ?></a>
+					<h3><?php echo substr($fila['descripcion'],0,100); ?>...</h3>
+					</div>
+					<div class="item-shop-text">
+						<a href="shop-single?id=<?php echo $fila['id']; ?>"><?php echo $fila['nombre']; ?></a>
+						<?php
+                                $percent = round($fila['descuento']/100*$fila['precio']);
+                           if ($fila['descuento'] > 0) {
+                               echo '<h2 class="item-shop-h2-first">$'.$fila['precio'].'.00</h2>';
+                               echo '<h2 class="item-shop-h2-second	" style="color:#ff6363">$'.($fila['precio'] - $percent).'.00</h2>';
+                           } else {
+                               echo '<h2>$'.$fila['precio'].'.00</h2>';
+                           } ?>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php } ?>
+		<?php
+        if (isset($_GET['search'])) {
+            if ($_GET['search'] != '') {
+                echo '';
+            } else {
+                ?>
+           <div class="shop-button-charge">
+            <button type="button" class="load-more" data-lastid="<?php echo $postID; ?>"><i class="fa fa-spinner"></i> CARGAR MÁS
+               </button>
+			   </div>
+			   <?php
+            }
+        } ?>
+		<?php
+                   }else{ ?>
+					  <h2 class="empty">No se encontraron resultados, prueba buscando de nuevo</h2>
+					  <?php
+					   $resultado = $conexion ->query("select * from productos order by id limit 12");
+                   if ($resultado->num_rows > 0) {
+                       while ($fila = $resultado->fetch_assoc()) {
+                           $postID = $fila['id']; ?>
+		<div class="item-shop">
+			<div class="item-shop-cont">
+			<div class="item-shop-prev">
+					<div class="item-shop-img">
+						<img src="img/<?php echo $fila['img2']; ?>">
+						<div class="item-shop-hide">
+							<div class="item-shop-hide-top">
+								<div class="item-shop-hide-a"><a href="wishlist?id=<?php echo $fila['id']; ?>" title="Agregar a la lista de deseos"><?php echo $heart; ?></a></div>
+								<div class="item-shop-hide-a"><a href="shop?search=
+								<?php echo $fila['categoria']; ?>
+								" title="Buscar productos similares"><?php echo $loupe; ?></a></div>
+							</div>
+							<div class="item-shop-hide-bottom">
+								<div class="item-shop-hide-a"><a href="cart?id=<?php echo $fila['id']; ?>&cant=1" title="Agregar al carrito"><?php echo $bag; ?></a></div>
+							</div>
+						</div>
+						<?php
+                        if ($fila['nuevo'] == 'si') {
+                            echo '<div class="item-shop-new">
+							<span>New</span>
+						</div>';
+                        } else {
+                            echo '';
+                        }
+                    
+                           if ($fila['descuento'] > 0) {
+                               echo '<div class="item-shop-discounts">
+							<span>-'.$fila['descuento'].'%</span>
+						</div>';
+                           } else {
+                               echo '';
+                           } ?>
+					</div>
+					<div class="item-shop-text-list">
+					<a href="shop-single?id=<?php echo $fila['id']; ?>"><?php echo $fila['nombre']; ?></a>
+					<h3><?php echo substr($fila['descripcion'], 0, 100); ?>...</h3>
+					</div>
+					<div class="item-shop-text">
+						<a href="shop-single?id=<?php echo $fila['id']; ?>"><?php echo $fila['nombre']; ?></a>
+						<?php
+                                $percent = round($fila['descuento']/100*$fila['precio']);
+                           if ($fila['descuento'] > 0) {
+                               echo '<h2 class="item-shop-h2-first">$'.$fila['precio'].'.00</h2>';
+                               echo '<h2 class="item-shop-h2-second	" style="color:#ff6363">$'.($fila['precio'] - $percent).'.00</h2>';
+                           } else {
+                               echo '<h2>$'.$fila['precio'].'.00</h2>';
+                           } ?>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php
+                       } ?>
+           <div class="shop-button-charge">
+            <button type="button" class="load-more" data-lastid="<?php echo $postID; ?>"><i class="fa fa-spinner"></i> CARGAR MÁS
+               </button>
+			   </div>
+		<?php } } ?>
+
+<?php
+} ?>

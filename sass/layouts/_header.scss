@@ -1,0 +1,311 @@
+.header{
+	position: fixed !important;
+	z-index: 101;
+}
+header{         
+	@include initial;       
+	nav{
+		@include initial;
+		height: 6em;      
+		display: flex;
+		align-items: center;
+		-webkit-box-shadow: 0px 1px 1px 0px rgba(170, 170, 170, 0.25);
+		-moz-box-shadow:    0px 1px 1px 0px rgba(170, 170, 170, 0.25);
+		box-shadow:         0px 1px 1px 0px rgba(170, 170, 170, 0.25);		
+		.nav-toggle{
+			width: 5%;
+			@include flex;
+			a{
+				cursor: pointer;  
+				span{
+					width: 22px; 
+					height: 2px !important;
+					margin-bottom: 4px;
+					display: block;
+					background: #666;       
+				}
+			}  
+		}               
+		.nav-brand{
+			@include flex;
+			width: 23%;     
+			justify-content: flex-start;
+			margin-left: 2%;  
+			img{
+				width: 5em;    
+			}
+		}       
+		.nav-links{
+			width: 40%;
+			@include flex;
+			a{
+				color: #666; 
+				padding: 1em;    
+				display: block;
+				font-size: 13.5px;    
+				font-weight: 600;  
+				font-family: $lato;
+				&::after{
+					width: 0%;
+					height: 2px;
+					background: $c2;
+					content: '';
+					display: block;  
+					transition: .3s all;        
+				} 
+				&:hover{
+					color: $c2;
+				}
+				&:hover::after{
+					width: 100%;  
+				}
+			}
+			.nav-a{
+				color: $c2;
+				&::after{
+					width: 100%;
+					height: 2px;
+					background: $c2;
+					content: '';
+					display: block;  
+					transition: .3s all;        
+				} 
+			} 
+		}  
+		.nav-icons{
+			width: 30%;
+			@include flex;
+			.nav-search{
+				@include flex; 
+				padding: .75em;
+				input{
+					border: 0;
+					outline: none;
+					padding: 1em; 
+					width: 8.25em;   
+					position: relative;
+					font-size: 13.5px;    
+					font-weight: 400;  
+					font-family: $lato;
+					color: #666;
+				}
+				button{
+					border: 0;
+					outline: none;
+					@include flex;
+					background: transparent;
+					cursor: pointer;
+					color: #666;
+					svg{
+						width: 19px !important;
+						height: 19px !important;
+					}
+				}
+			}
+			a{
+				@include flex;
+				position: relative;
+				padding: .75em;
+				svg{
+					width: 20px !important; 
+					height: 20px !important;
+					fill: #666 !important;
+					
+				}
+				span{
+					display: block;
+					color: white;
+					background: $c2;
+					border-radius: 10em;
+					font-size: 10px;
+					width: 15px;
+					height: 15px;
+					@include flex;
+					position: absolute;
+					right: .5em;
+					bottom: .5em;
+				}
+				&:nth-child(2) span{
+					right: .65em;
+				}
+			}
+			h1{
+				font-size: 12px;
+				line-height: 20px;
+				color: #666;
+				@include flex;
+				font-weight: 600;
+				margin-left: 1em;
+				a{
+					display: block;
+					color: $c2;
+				}
+			}
+		}
+		.nav-search-responsive{
+			display: none;
+			width: 60%;
+			form{
+				width: 100%;
+				@include flex;
+				div{
+					width: 100%;
+					position: relative;
+					border: 2px solid $c1;
+					border-radius: 10em;
+					padding: 0;
+					input{
+						padding: 0 5%;
+						width: 90%;
+						display: block;
+						font: 500 14px $rale;
+						color: #333;
+						outline: none;
+						background: #e6e6e6;
+						border-radius: 10em;
+						border: 0;
+						height: 3em;
+						&:focus{
+							background: white;
+						}
+					}
+					button{
+						border: 0;
+						outline: none;
+						height: 3.2em;
+						background: $c1;
+						position: absolute;
+						top: 0;
+						right: -1px;
+						border-radius: 10em;
+						padding: 0 1.5em;
+						cursor: pointer;
+						svg{
+							width: 16px;
+							color: white;
+							display: block;
+						}
+					}
+				}
+			}
+		}
+		.nav-toggle-responsive{
+			width: 20%;
+			display: none;
+			height: 100%;
+			margin-right: 0%;
+			a{
+				width: auto;
+				display: block;
+				cursor: pointer;
+				span{
+					height: 4px;
+					width: 30px;
+					margin-bottom: 5px;
+					background: $c1;
+					display: block;
+				}
+			}
+		}
+	}
+}
+.sidebar-second-black{
+	display: none;
+	position: fixed;
+	left: 0;   
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,.5);
+	z-index: 99;
+}    
+.sidebar-second{
+	transition: .4s all;
+	transform: translate(100%);
+}
+.sidebar-second2{
+	transition: .4s all;
+	transform: translate(0%);
+}
+.sidebar-second,.sidebar-second2{
+	display: none; 
+	position: fixed;
+	overflow-y: auto;
+	top: 5em;
+	right: 0;
+	width: 27em;
+	z-index: 100;
+	height: 100%;   
+	background: #e6e6e6;    
+	.sidebar-second-item{  
+		width: 100%;
+		border-top: 1px solid #ccc;
+		&:hover{
+			background: #ddd;
+		}
+		a{  
+			font: 700 18px $rale;
+			padding: 1em 5%;
+			line-height: 22px;
+			text-transform: uppercase;  
+			color: #444;
+			display: flex; 
+			width: 90%;            
+			svg{
+				width: 18px;     
+			}
+			i, svg{
+				margin-right: .75em;
+			} 
+			span{
+				display: block;
+				font: 400 11px $lato;
+				color: white;
+				background: $c1;
+				border-radius: 10em;
+				height: 20px;
+				width: 20px;
+				@include flex;      
+				position: relative;
+				top: -1em;
+				right: -.5em;
+			}
+		}          
+	}  
+} 
+     
+@keyframes search{
+	0%{
+		width: 500%;
+		position: relative;
+		right: 450%;
+		background: white;
+	}
+	99%{
+		width: 0%; 
+		right: 0;
+		background: white;
+	}
+	100%{
+		z-index: -1;
+		width: 0%; 
+		right: 0;
+		background: white;
+	}
+}
+@keyframes search2{
+	0%{
+		width: 0%;
+		z-index: -1;
+		right: 0;
+	}
+	100%{
+		width: 500%; 
+		z-index: 1; 
+		background: white;
+		border: 1px solid #eee;
+		position: relative;
+		right: 450%; 
+	}   
+}    
+
+@import 'sidebar';   

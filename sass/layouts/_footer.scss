@@ -1,0 +1,161 @@
+@import 'pre-footer';
+
+.pre-footer-newsletter{
+	background: #e6e6e6;
+	width: 90%;
+	@include margin;
+	display: none;
+	h1{
+		font: 700 28px $rale;
+		color: #000;
+	}
+	h2{
+		font: 600 16px $rale;
+		color: #000;
+	}
+	.pre-footer-newsletter-input{
+		width: 100%;
+		position: relative;
+		margin-top: 1em;
+		input{
+			border: 2px solid $c1;
+			outline: none;
+			padding: 0 3%;  
+			border-radius: 10em;
+			background: #e6e6e6;
+			font: 600 15px $lato;
+			width: 94%;
+			height: 45px;
+		}         
+		button{
+			position: absolute;
+			right: -3px;
+			top: 0;
+			background: $c1;
+			border-radius: 10em;
+			height: 48px;
+			width: 48px;    
+			outline: none; 
+			color: white;  
+			border: 0;
+			font-size: 18px;
+			cursor: pointer;
+		}     
+	}
+}  
+
+footer{
+	@include initial;
+	margin-top: 5em;   
+	.footer{
+		@include initial;
+		padding-bottom: 1em;
+		.footer-links{
+			@include margin;
+			width: 80%;
+			display: flex;
+			.footer-links-item{
+				width: 100%;
+				text-align: left;
+				&:nth-child(1){
+					width: 120%;
+					h2,a{
+						margin-bottom: .75em;   
+					}
+				}  
+				&:nth-child(2),&:nth-child(3){
+					width: 90%;
+				}
+				h1{
+					font: 700 20px $rale;
+					margin-bottom: 1.25em;
+					color: #353535;
+				}
+				h2, a{
+					display: block;
+					font: 600 14px $rale;
+					color: #666;
+					line-height: 20px;
+					margin-bottom: 1.25em;
+				}  
+				h2{
+					display: flex;   
+					word-break: break-all;
+					a{
+						font-family: $open;
+					} 
+				}              
+				a{
+					&:hover{
+						color: #333;
+					}
+				}
+				.footer-input{
+					width: 100%;
+					border-radius: 10em;
+					position: relative;
+					margin-top: 3em;
+					input{
+						border: 0;
+						border-radius: 10em;
+						padding: 0 5%;
+						outline: none;
+						border: 1px solid #ccc;
+						width: 90%;
+						height: 45px;
+					}
+					button{
+						display: block;
+						position: absolute;
+						top: 0px;
+						right: -2px;
+						background: $c2;
+						color: white;
+						border: 0;
+						outline: none;
+						@include flex;
+						border-radius: 10em;
+						width: 45px;
+						height: 45px;
+						font-size: 1.25em;
+						cursor: pointer
+					}
+				}
+			}
+		}
+		.footer-last{
+			width: 85%;
+			margin-top: 3em;
+			@include margin;
+			display: flex;
+			align-items: center;
+			padding: 1em 0;
+			border-top: 1px solid #ddd;
+			.footer-last-text{
+				width: 70%;
+				h3{
+					font: 500 16px $rale;
+					color: #333;
+					a{
+						color: #999
+					}
+				}
+			}
+			.footer-last-cards{
+			width: 30%;
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
+			padding-right: 8em;
+				.footer-last-cards-img{
+					img{
+						margin: 0 .25em;
+					}
+				}
+				.footer-last-cards-icons{
+					display: none;
+				}
+			}
+		}
+	}
+}

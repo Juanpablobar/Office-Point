@@ -1,0 +1,15 @@
+{
+  "name": "office-Point",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "limpiacss": "purgecss --css ./fontawesome-free/css/all.min.css --content *.php --output ./css/" //Solo te falta ejecutarlo
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "purgecss": "^4.0.0"
+  }
+}

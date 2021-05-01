@@ -1,0 +1,61 @@
+
+@import 'dashboard-layouts';
+
+.contact-icons{
+	width: 85%;
+	@include margin;
+	@include flex;
+	justify-content: space-between;
+	margin-top: 4em;
+	.contact-icons-item{
+		width: 100%;
+		text-align: center;
+		span{
+			width: 100%;
+			@include flex;
+			svg{
+				width: 2em !important;
+				color: $c2;
+			}
+		}
+		h1{
+			font: 700 22px $rale;
+			color: #333;
+			line-height: 32px;
+			margin-top: 1.2em;
+			margin-bottom: .5em;
+		}
+		a{
+			font: 400 16px $lato;
+			color: #666;
+			line-height: 22px;
+            display: block;
+		}
+        button{
+            margin-top: 1em;
+        }
+	}
+}
+
+@media screen and (max-width:1125px){
+    .contact-icons{
+        width:100%;
+    }
+}
+
+@media screen and (max-width:800px){
+    .contact-icons{
+        display:grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 40px;
+    }
+}
+
+@media screen and (max-width:400px){
+    .contact-icons{
+        display:block;
+        .contact-icons-item{
+            margin-bottom: 2em
+        }
+    }
+}

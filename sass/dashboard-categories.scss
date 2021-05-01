@@ -1,0 +1,103 @@
+@import 'dashboard-layouts';
+
+.categories{
+    width: 95%;
+    padding: 4em 0;
+    padding-bottom: 7em;
+    @include margin;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 50px 30px;
+    .categories-item{
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        height: auto;
+        .categories-cont{
+            position: relative;
+            height: 25em;
+        .categories-img{
+            width: 100%;
+            height: 25em;
+            @include flex;
+            img{
+                width: cover;
+                height: 25em;
+                @include margin;
+                transition: .5s all !important;
+            }
+        }
+        .categories-shadow{
+            box-shadow: -1px -200px 116px -51px rgba(0,0,0,0.75) inset;
+            -webkit-box-shadow: -1px -200px 116px -51px rgba(0,0,0,0.75) inset;
+            -moz-box-shadow: -1px -200px 116px -51px rgba(0,0,0,0.75) inset;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9;
+        }
+        .categories-button{
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 11;
+            button{
+                margin: .5em;
+                
+            }
+        }
+        .categories-text{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            padding: 1em;
+            z-index: 10;
+            a{
+                font: 700 28px $rale;
+                color: white;
+                line-height: 37px;
+                text-transform: capitalize;
+                &:hover{
+                    color: #fff !important;
+                }
+            }
+            h2{
+                font: 400 14px $rale;
+                color: #fff;
+                line-height: 24px;
+            }
+        }
+    }
+    .categories-collapse{
+        position: relative !important;
+        width: 100%;
+        a{
+            i{
+                font-size: 12px !important;
+                margin-left: .5em !important;
+            }
+        }
+    }
+    }
+}
+
+@media screen and (max-width:900){
+    .categories{
+		width: 85%;
+		grid-template-columns: repeat(2,1fr);
+	}
+}
+
+@media screen and (max-width:700px){
+    .categories{
+		width: 95%;
+	}
+}
+
+@media screen and (max-width:600px){
+    .categories{
+		grid-template-columns: 1fr;
+	}
+}

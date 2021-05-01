@@ -1,0 +1,68 @@
+@import 'layouts';
+
+.error{
+	width: 85%;
+	@include margin;
+	text-align: center;
+	@include flex;
+	.error-content{
+		padding: 5em 0;
+		img{
+			width: 30em;
+			display: block;
+			margin-left: 50%;
+			transform: translate(-50%);
+			&:nth-child(2){
+				width: 13em;
+				margin-top: 2em;
+			}
+		}
+		h2{
+			font: 700 23px $rale;
+			color: #454545;
+			line-height: 30px;
+		}
+		h3{
+			font: 500 16px $rale;
+			color: #666;
+			line-height: 22px;
+			margin-top: 1em;
+			margin-bottom: 3em;
+		}
+		a{
+			font: 700 14px $rale;
+			color: white;
+			background: $c2;
+			border-radius: 10em;
+			padding: 1em 4em;
+			&:hover{
+				background: #e45959;
+			}
+		}
+	}
+}
+
+
+@media screen and (max-width:550px){
+	.error{
+		.error-content{
+			img:nth-child(1){
+				width: 100%;
+			} 
+			img:nth-child(2){
+				width: 45%;
+			}
+			h2{
+				font: 700 19px $rale;
+				line-height: 28px;
+			}
+			h3{
+				font: 500 14px $rale;
+				line-height: 20px;
+			}
+			a{
+				font: 700 13px $rale;
+			}
+		}
+	}
+}            

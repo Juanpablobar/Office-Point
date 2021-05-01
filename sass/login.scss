@@ -1,0 +1,187 @@
+@import 'layouts/reset';
+
+@import 'layouts/reload';    
+
+@import 'layouts/scroll';
+
+.login{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	position: relative;
+	height: 100vh;
+	display: flex;
+	justify-content: center; 
+	.login-first{
+		width: 30em;
+		position: absolute;
+		padding-top: 1em;
+		z-index: 100;
+		padding-bottom: 2em;
+		background: white;
+		left: 0;  
+		.login-cont{  
+			width: 70%;
+			@include margin;
+			text-align: center;
+			img{
+				width: 5em;
+			}
+			h1{
+				font: 800 30px $rale;
+				color: #444;
+				line-height: 40px; 
+				margin-top: .75em; 
+			}
+			form, .form-login{
+				width: 100%;
+				.login-input-item{
+					text-align: left;  
+					width: 100%;
+					margin-bottom: 1em;
+					h2{
+						font: 500 14px $rale;
+						color: #666;
+						line-height: 20px;
+					}
+					h3{
+						font: 500 14px $rale;
+						color: $c2;
+						line-height: 20px;  
+						margin-top: 0; 
+					}
+					input{
+						outline: none;
+						border: 2px solid #e9e9e9;
+						padding: 1em 3%;
+						font: 500 14px $rale;
+						width: 94%;
+						border-radius: .25em;
+						margin-top: -.5em;  
+						color: #666;    
+						&:active, &:focus{
+							border: 2px solid $c2;
+						}
+					}
+					.login-input-second{
+						display: flex;
+						justify-content: space-between;
+						a{
+						font: 500 14px $rale;
+						color: $c2;
+						line-height: 20px;
+						@include flex;
+						}
+					}
+					&:nth-child(2){
+					}
+				}
+				button{
+					outline: none;
+					border: 0;
+					background: $c2;
+					color: white;
+					font: 800 13px $lato;
+					padding: 1em 4em;
+					border-radius: .25em;
+					cursor: pointer;
+					display: block;
+					width: 100%;
+				}
+			}
+			h3{
+				font: 400 18px $rale;  
+				color: #666;
+				margin: 1em 0; 
+			}
+			.button-facebook, .button-google{
+				display: block;
+				background: #4267b2; 
+				height: 3em;
+				display: flex;
+				align-items: center;     
+				border-radius: .5em; 
+				text-align: center;
+				h2{
+					font: 800 13px $lato;
+					color: white;
+					line-height: 20px;  
+					text-align: center;
+					width: 100%;
+					text-align: center;
+				}
+				img{
+					width: 3em;
+				}
+			}
+			.button-google{
+				margin-top: 1em;
+				background: #4285f4;
+			}
+			h4{
+				font: 400 14px $lato;
+				color: #777;
+				line-height: 22px;
+				a{
+					color: $c2;
+					padding-bottom: 3em;
+				}
+			}
+		}
+	}
+	.login-second{
+		width: 65%;
+		background-image: url(../img/login%208.webp);
+		height: 100%;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-blend-mode: color;
+		background-color: rgba(0,0,0,.4);
+		position: fixed;
+		top: 0;
+		right: 0;
+	}
+	.register-second{
+		width: 65%;
+		background-image: url(../img/login%206.webp) !important;
+		height: 100%;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-blend-mode: color;
+		background-color: rgba(0,0,0,.4);
+		position: fixed;
+		top: 0;
+		right: 0;
+	}
+}
+
+@media screen and (max-width:700px){
+	.login{
+		display: block;    
+		.login-first{
+			width: 100%;
+			padding-top: 3em;
+			.login-cont{
+				width: 70%;
+			}
+		}
+		.login-second, .register-second{ 
+			width: 100%;
+			height: 40vh;
+			position: relative;
+		}
+	}
+}            
+
+@media screen and (max-width:500px){
+	.login{
+		.login-first{
+			.login-cont{
+				width: 90%;
+			}
+		}
+	}
+}                  

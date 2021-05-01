@@ -1,0 +1,19 @@
+.index-block{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1em;
+    padding: 1em;
+    margin-top: 1em;
+}
+
+@media screen and (max-width:700px){
+    .index-block{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width:500px){
+    .index-block{
+        display: block;
+    }
+}

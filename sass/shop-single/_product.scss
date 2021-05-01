@@ -1,0 +1,250 @@
+.single-product{
+	width: 85%;
+	@include margin;
+	@include flex;
+	.single-product-img{    
+		width: 52%;
+		position: relative;
+		.owl-carousel{
+			.owl-item{
+				width: 100%;
+				position: relative;
+				z-index: 9;     
+				a{
+					width: 90%;
+					display: block;
+				}    
+				.heart-hide{
+					display: none;   
+					position: absolute;
+					top: 0;
+					right: 1em;
+					z-index: 10;    
+					padding: 1em;    
+					a{
+						display: block;
+						cursor: pointer;
+						svg{
+							width: 26px;
+							color: $c1;
+						}
+					}
+				}
+			}
+		}   
+		.single-product-img-links{
+			width: 100%;
+			@include flex;
+			justify-content: flex-start;
+			margin-top: .5em;
+			a{
+				width: 7em;
+				display: block;
+				margin: 0 .5em;
+				img{
+					width: 100%;
+				}
+			}
+		}
+	}
+	.single-product-text{
+		width: 48%;
+		position: relative;
+		.single-product-span{
+			display: flex;
+			justify-content: flex-start;
+			align-items: center; 
+			margin-top: -1em;
+			h1{
+				font: 800 28px $rale;
+				line-height: 35px;
+				color: #222;
+				margin-right: .5em;
+			}
+			.item-shop-new{
+				span{  
+					background: #6aba63;     
+					border-radius: 10em;
+					height: 40px;
+					width: 40px;
+					color: white;   
+					display: block;  
+					@include flex; 
+					font: 400 14px $lato;  
+					position: relative;
+					transform: rotate(10deg);    
+				}
+			}  
+			.item-shop-discounts{
+				span{ 
+					background: $c2;        
+					border-radius: 10em;
+					height: 40px;
+					width: 40px;
+					color: white;   
+					display: block;  
+					@include flex; 
+					font: 400 14px $lato;  
+					transform: rotate(10deg);    
+				}
+			} 
+		}  
+		.single-product-stars{
+			@include flex;
+			width: 100%;
+			justify-content: flex-start;
+			margin-top: -1.5em;
+			.single-product-stars-icons{
+				display: flex;
+				align-items: center;
+				margin-right: 1em;
+				svg{
+					display: block;
+					width: 1em;
+					margin: 0 .05em;
+					color: #fdba0e
+				}
+			}
+			h2{
+				font: 600 16px $lato;
+				color: $c2;
+				line-height: 30px;
+			}
+		}
+		.single-if-discount{
+			width: 100%;
+			margin-bottom: 2em;   
+			display: flex;
+			align-items: center;     
+			justify-content: flex-start;   
+			h3,a{     
+				font: 500 34px $roboto;
+				line-height: 46px;
+				color: $c2;
+				margin-top: 0em;
+				width: 100%;       
+				display: block;    
+				margin-bottom: 0;   
+			}
+			a{
+				color: #bbb;   
+				text-decoration: line-through;   
+				font-size: 25px;  
+				margin: 0;    
+				width: 5em;   
+			} 
+		}
+		h4{
+			font: 600 16px $rale;
+			color: #666;
+			line-height: 24px;
+			margin-top: -1em;
+		}
+		form{
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+			margin-top: 3em;
+			.input-group{
+				@include flex;
+				input,button{
+					outline: none;
+					border: 0;
+					background: #f5f5f5;
+					text-align: center;
+					font: 400 17px $roboto;
+					color: #666;
+					width: 50px;
+					height: 50px;  
+					padding: 0;
+					line-height: 0;
+				}
+				button{
+					cursor: pointer;
+					margin: 0;
+					&:hover{
+						background: #eee;
+					}
+				}
+			}
+			button{
+				outline: none;
+				border: 0;
+				height: 50px;
+				line-height: 0;
+				width: 50px;
+				font: 600 14px $lato;
+				text-align: center;
+				cursor: pointer;
+				text-transform: uppercase;
+				@include flex;
+				&:nth-child(3){
+					margin: 0 .75em;
+					background: $c2;
+					color: white;
+					width: 15em;
+					&:hover{
+						background: #e45959;  
+					}
+				}
+				&:nth-child(4){
+					background: #f5f5f5;
+					color: #666;
+					&:hover{
+						background: #eee;
+					}
+				}
+			}
+			.disabled{
+				background: #f5f5f5 !important;
+				color: #666 !important;   
+			} 
+		}
+		.single-text-desc{
+			width: 100%;
+			@include flex;    
+			justify-content: flex-start;
+			margin: 1em 0;
+			h5{
+				font: 800 15px $rale;
+				color: #333;
+				line-height: 22px;
+				margin: 0;
+				width: 30%;
+			}
+			h6{
+				font: 700 15px $lato;
+				color: #888;
+				line-height: 22px;
+				margin: 0;
+			}
+			.single-social{
+				@include flex;
+				a{
+					display: block;
+					padding: 0 1em;
+					i{
+						color: #999
+					}
+					&:nth-child(1):hover i{
+						color: #3b5998;
+					}
+					&:nth-child(2):hover i{
+						color: #3fcdfd;
+					}
+					&:nth-child(3):hover i{
+						color: #fe0000;
+					}
+					&:nth-child(4):hover i{
+						color: #24cc63;
+					}
+				}
+			}
+		}    
+		.single-text-desc1{
+			border-top: 2px solid #f4f4f4;
+			padding-top: 2.5em;
+			margin-top: 2.5em;
+		}
+	}
+}                                                                         

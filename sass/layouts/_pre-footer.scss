@@ -1,0 +1,42 @@
+.pre-footer{
+	width: 100%;
+	position: relative;
+	background: #f5f5f5;
+	padding: 1.5em 0;   
+	margin-bottom: -3em;  
+	.pre-footer-cont{
+		width: 85%;
+		@include margin;
+		display: grid;
+		grid-template-columns: repeat(4,1fr);
+		grid-column-gap: 15px;
+		.pre-footer-item{
+			width: 100%;
+			@include flex;
+			.pre-footer-icon{
+				margin-right: 1em;  
+				span{
+					@include flex;
+					svg{
+						width: 35px;
+						color: $c2 !important;
+					}
+				}
+			}
+			.pre-footer-text{
+				h1{
+					font: 700 16px $rale;
+					color: #333;
+					line-height: 20px;
+					margin-bottom: 0;
+				}
+				h2{
+					font: 400 14px $rale;
+					color: #666;
+					line-height: 18px;
+					margin-top: .25em;
+				}
+			}
+		}
+	} 
+}                                       

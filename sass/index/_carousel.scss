@@ -1,0 +1,97 @@
+.index-carousel{
+	width: 100%;
+	position: relative;
+	.owl-carousel{
+		width: 100%;
+		height: 100%;
+		.item{
+			width: 100%;
+			position: relative;
+			.item-img{
+				width: 100%;
+				img{
+					width: 100%;  
+					&:nth-child(2){
+						display: none;
+					}
+				}
+			}                         
+			.item-text{  
+				position: absolute;  
+				top: 10em;  
+				width: 80%;
+				display: flex;
+				margin-left: 10%;
+				margin-right: 10%; 
+				.item-text-align{  
+					width: 49%;                                     
+					display: block;
+					position: relative;
+					span{
+						padding: .5em 2em;
+						font: 400 13px $rale;
+						line-height: 20px;  
+						text-transform: uppercase;
+					}
+					h1{
+						font: 700 40px $rale;
+						line-height: 50px; 
+					}   
+					h2{
+						font: 300 14px $rale;
+						line-height: 25px;
+						width: 100%;        
+						margin-top: -.5em;   
+						margin-bottom: 4em;   
+					}        
+					a{
+  						border-width: 2px;
+						border-style: solid;
+						border-radius: 10em;  
+						padding: 1em 3em; 
+						font: 400 13px $rale;  
+						letter-spacing: 1px;   
+						cursor: pointer;
+						text-transform:uppercase;
+					}  
+				}  
+			}     
+			.izquierda{
+				justify-content: flex-start!important;       
+			}
+			.derecha{
+				justify-content: flex-end!important;
+				text-align: right !important;
+				h1{
+					text-align: right !important;
+					margin-left: 25% !important
+				}
+			}
+			.centro{
+				justify-content: center !important;       
+                text-align: center !important;
+                h1{
+                    margin-left: auto !important;
+                    margin-right: auto !important;
+                }
+			}
+		}      
+		.owl-nav{
+			position: absolute;
+			top: 0;
+			@include flex;    
+			height: 100%;
+			width:100%;
+			justify-content: space-between;  
+			clip-path: polygon(0% 46%, 0% 62%, 7% 63%, 7% 46%, 91% 46%, 91% 59%, 100% 60%, 100% 45%);
+			.owl-next,.owl-prev{
+				position: relative;
+				width: 1em;
+				font-size: 3em; 
+				height: 100%;
+				@include flex;
+				
+			}
+		}
+	}
+} 

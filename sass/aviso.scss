@@ -1,0 +1,53 @@
+@import 'layouts';
+
+.aviso{
+    width: 60%;
+    @include margin;
+    padding: 4em 0;
+    div{
+        font: 500 16px $rale;
+        line-height: 30px;
+        color: #000;
+        a{
+            font: 700 16px $rale;
+            color: #111;
+            list-style: 30px;
+        }
+        .especial-a{
+            font: 500 16px $rale;
+            color: blue;
+        }
+        li{
+            list-style-type: disc;
+            padding-left: 3em;
+        }
+        .privacy-li{
+            list-style: none;
+        }
+        .privacy-a{
+            display: block;
+            color: blue;
+            font: 500 16px $rale;
+            margin: .5em 0;
+        }
+        .terms-a{
+            color: #333;
+            font-weight: 500;
+            display: block
+        }
+        .terms-p{
+            width: 100%;
+            text-align: center
+        }
+        .terms-li{
+            list-style: none
+        }
+        .terms-hash{
+            display: block;
+            text-align: center
+        }
+    }
+}
+
+
+@import 'responsive';

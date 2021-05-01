@@ -1,0 +1,329 @@
+@import 'layouts';
+
+
+
+.checkout{
+    width: 85%;
+    @include margin;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    .checkout-first{
+        width: 65%;
+        padding-bottom: 5em;
+        .checkout-edit{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: .75em 0 !important;
+            border-bottom: 1px solid #eee;
+            align-items: flex-end;
+            h1{
+                border-bottom: 0;
+                padding: 0;
+                margin: 0;
+            }
+            a{
+                font: 500 13px $rale;
+                color: #666;
+                line-height: 24px;
+                margin: 0;
+                display: block;
+                }
+        }
+        h1{
+            font: 800 25px $rale;
+            color: #333;
+            line-height: 38px;
+            padding: .5em 0;
+            border-bottom: 1px solid #eee;
+        }
+        .checkout-inputs{
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-column-gap: 25px !important;
+            .checkout-inputs-item{
+                grid-column: span 2;
+                &:nth-child(1),&:nth-child(2),&:nth-child(8),&:nth-child(9){
+                    grid-column: span 1 !important;
+                }
+                &:nth-child(4){
+                    input{
+                        &:nth-child(2){
+                            margin-bottom: 1em;
+                        }
+                    }
+                }
+                h2{
+                    font: 600 16px $rale;
+                    line-height: 30px;
+                    color: #333 !important;
+                    margin: 1em 0;
+                    a{
+                        color: $c2;
+                    }
+                }
+                h3{
+                    font: 500 14px $rale;
+                    color: #333;
+                    line-height: 30px;
+                    a{
+                        color: $c2;
+                    }
+                }
+                h4{
+                    font: 500 14px $rale;
+                    color: #333;
+                    line-height: 30px;
+                    a{
+                        color: $c2;
+                        &:nth-child(1){
+                            text-transform: capitalize;
+                        }
+                    }
+                }
+                .email_h4{
+                    color: $c2;
+                }
+                input{
+                    width: 95%;
+                    padding: 1em 2.5%;
+                    color: #333;
+                    border: 1px solid #eee;
+                    outline: none;
+                    border-radius: .25em;
+                    font-family: $rale;
+                }
+                label{
+                    font: 600 14px $rale;
+                    color: #333;
+                    line-height: 30px;
+                }
+                .checkout-label{
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    padding-top: 1em;
+                    margin-bottom: -.5em;
+                    .label1{
+                        width: 15px;
+                        height: 15px;
+                        cursor: pointer;
+                        background: #fff;
+                        border-radius: 4px;
+                        border: 1px solid #ccc;
+                        margin-right: .75em;
+                        position: relative;
+                        &::after {
+                            content: '';
+                            width: 7px;
+                            height: 3px;
+                            position: absolute;
+                            top: 3px;
+                            left: 3px;
+                            border: 3px solid #fcfff4;
+                            border-top: none;
+                            border-right: none;
+                            background: transparent;
+                            opacity: 0;
+                            -webkit-transform: rotate(-45deg);
+                                    transform: rotate(-45deg);
+                          }
+                    }
+                    input[type='checkbox']{
+                        display: none;
+                        &:checked + .label1::after{
+                            opacity: 1 !important;
+                          }    
+                        &:checked + .label1{
+                            background-color: $c2 !important;
+                            border: 1px solid $c2;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .checkout-second{
+        width: 32.5%;
+        background: #f5f5f5;
+        border-radius: .25em;
+        padding: 1em 0;
+        padding-bottom: 2em;
+        .checkout-second-address{
+            width:80%;
+            @include margin;
+            margin-bottom:1em;
+            .checkout-second-address-edit{
+                display: flex;
+                justify-content: space-between;
+                padding: .5em 0;
+                border-bottom: 1px solid #ccc;
+                align-items: center;
+                h1{
+                    font: 800 25px $rale;
+                    color: #333;
+                    line-height: 38px;
+                    margin: 0;
+                }
+                a{
+                    font: 600 12px $rale;
+                    color: $c2;
+                }
+            }
+            .checkout-second-address-item{
+                width: 100%;
+                h3{
+                    font: 600 14px $rale;
+                    color: #333;
+                    line-height: 28px;
+                    margin-bottom: 0;
+                    &:nth-child(2),&:nth-child(3){
+                        margin-top:.5em;
+                    }
+                    a{
+                        color: #666;
+                        font-family: $lato;
+                    }
+                }
+            }
+        }
+        .checkout-second-cont{
+            width: 80%;
+            @include margin;
+            h1{
+                font: 800 25px $rale;
+                color: #333;
+                line-height: 38px;
+                padding: .5em 0;
+                border-bottom: 1px solid #ccc;
+                margin-top: 0;
+            }
+            .checkout-second-products{
+                width: 100%;
+                padding: .5em 0;
+                border-bottom: 1px solid #ccc;
+                margin: 0;
+                &:nth-child(2){
+                    padding-top: 0;
+                }
+                .checkout-second-products-item{
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    h2{
+                        font: 700 15px $rale;
+                        line-height: 30px;
+                        color: #333 !important;
+                        margin: 0em 0;
+                        p{
+                            font-family: $lato;
+                            font-size: 16px;
+                            color: $c2;
+                            margin-top: .5em;
+                            line-height: 0;
+                            font-weight: 600;
+                            font-style: italic;
+                            letter-spacing: .75px;
+                            text-decoration: underline;
+                        }
+                    }   
+                    h3{
+                        font: 500 15px $rale;
+                        color: #333;
+                        line-height: 30px;
+                        margin: .25em 0;
+                        position: relative;
+                        span{
+                            background: $c2;
+                            color: white;
+                            font: 500 10px $lato;
+                            border-radius: 10em;
+                            width: 15px;
+                            height: 15px;
+                            position: absolute;
+                            top: .5em;
+                            left: -1.75em;
+                            @include flex;
+                        }
+                    } 
+                    h4{
+                        font: 600 15px $lato;
+                        color: #333;
+                        line-height: 30px;
+                        margin: 0;
+                    }    
+                    .total{
+                        color: $c2;
+                        font-size: 17px;
+                    }
+                }
+            }
+            .checkout-second-checkbox{
+                width: 100%;
+                display: flex;
+                align-items: center;
+                padding-top: 1.5em;
+                label{
+                    font-size: 14px;
+                    font-weight: 600;
+                }
+                .label1{
+                    width: 12px;
+                    height: 12px;
+                    cursor: pointer;
+                    background: #fff;
+                    border-radius: 4px;
+                    border: 1px solid #ccc;
+                    margin-right: .5em;
+                    position: relative;
+                    &::after {
+                        content: '';
+                        width: 5px;
+                        height: 2px;
+                        position: absolute;
+                        top: 3px;
+                        left: 2px;
+                        border: 3px solid #fcfff4;
+                        border-top: none;
+                        border-right: none;
+                        background: transparent;
+                        opacity: 0;
+                        -webkit-transform: rotate(-45deg);
+                                transform: rotate(-45deg);
+                      }
+                }
+                input[type='checkbox']{
+                    display: none;
+                    &:checked + .label1::after{
+                        opacity: 1 !important;
+                      }    
+                    &:checked + .label1{
+                        background-color: $c2 !important;
+                        border: 1px solid $c2;
+                    }
+                }
+            }
+            button{
+                outline: none;
+                border: 0;
+                background: $c2;
+                color: white;
+                text-transform: uppercase;
+                font: 600 12px $lato;
+                letter-spacing: 1px;
+                padding: 1em 0;
+                display: block;
+                width: 100%;
+                margin-top: 2em;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+
+
+@import 'responsive';

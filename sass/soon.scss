@@ -1,0 +1,409 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+$pop: 'Poppins';
+
+@mixin margin{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+@mixin centrado{
+	margin-left: 50%;
+	transform: translate(-50%);
+}
+
+@mixin initial{
+	width: 100%;
+	display: block;
+	position: relative;
+}
+
+@mixin flex{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+*{
+	transition: .3s all;
+}
+html{
+	width: 100%;
+	height: 100%;
+}
+body{
+	margin: 0;
+	padding: 0;
+	font-family: $pop; 
+	min-height: 100%
+}
+a{
+	text-decoration: none;  
+}
+li{
+	list-style: none;
+}
+
+@import 'layouts/reload';    
+
+@import 'layouts/scroll';
+         
+.success-mail{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;   
+	z-index: 101;
+	background: rgba(0,0,0,.5);
+	div{
+		width: 50%;
+		background: white;
+		padding: 2em 2em 3em 2em;
+		border-radius: .25em;
+		margin: 0 auto;
+		margin-top: 3em;  
+		#close{      
+			width: 25px;  
+			text-align: center;
+			display: block;  
+			margin-left: auto;
+			cursor: pointer;
+			&:hover{  
+				background: #ddd;   
+				i{
+				}
+			}
+			i{
+				color: #000;   
+			}    
+		}
+		h1{
+			color: #666;
+			font: 400 16px 'Poppins'
+		}
+	} 
+}         
+ 
+.soon{
+	background: #fff;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;  
+	.soon-first, .soon-second{
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;  
+	}                                    
+	.soon-first{
+		clip-path: polygon(0% 0%, 51% 0%, 29% 100%, 0% 100%);
+		z-index: 100;
+		background: white;
+		.soon-brand{
+			width: 45%;
+			margin-left: 5%;
+			margin-top: 2em;
+			img{
+				width: 5em; 
+			}
+		}        
+		h1{
+			width: 27%;
+			margin-left: 5%;
+			margin-top: 1em;
+			font: 400 24px $pop;
+			line-height: 36px;
+			color: #555;
+			a{
+				font-weight: bold
+			}
+		}
+		form{
+			margin-left: 5%;
+			width: 27%;
+			margin-top: 2em; 
+			input, button{
+				display: block;
+				width: 90%;
+				outline: none;
+				border: 2px solid #e6e6e6;
+				padding: .75em 5%;
+				font: bold 15px 'Lato';
+				line-height: 23px;
+				color: #555;
+				margin-bottom: 1em;
+				border-radius: .25em;
+				transition: .3s all;
+				&:active, &:focus{
+					border: 2px solid #814090
+				}
+			}
+			button{
+				background: #814090;
+				color: white;
+				cursor: pointer;
+				border: 0;
+				line-height: 30px;
+				width: 100%;
+				&:hover{
+					background: #555;
+				}
+			}
+		}
+		.buttons{
+			margin-left: 5%;
+			display: flex;
+			align-items: center;
+			margin-top: 5em;   
+			a{
+				display: block;
+				border-radius: 10em;
+				width: 40px;
+				height: 40px;
+				background: #3b5998;
+				display: flex;
+				justify-content: center;
+				align-items: center;   
+				font-size: 1.25em;
+				color: white;
+				margin-right: .5em;  
+				&:hover{
+					background: #666 !important;
+				}
+				&:nth-child(2){
+					background: #af3589;
+				}
+			}
+		}
+	}    	 
+	.soon-second{
+		background-image: url(../img/soon.jpg);
+		background-repeat: no-repeat;
+		background-size: 50em;
+		background-position: right bottom;
+		background-color: rgba(0,0,0,.8);
+		background-blend-mode: color;
+		z-index: 99;
+		.clock{
+			width: 40%;
+			margin-left: 60%;
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			#countdown{
+				display: block;
+				position: relative;
+				.clock-prev{
+					display: flex;
+					justify-content: center;
+					align-items: center;
+				}  
+				.clock-prev{
+					float: left;
+					width: 160px; 
+					height:160px;
+					color: white;
+					text-align: center;
+					border-radius: 10em;
+					margin-bottom: 1em;
+					margin-left: 4%;  
+					border: 1px solid rgba(255,255,255,0.3);
+					h1{
+						font: bold 40px 'Lato';
+						line-height: 40px;
+						color: #fff;
+						margin-top: 0;
+					}
+					h2{
+						font: 400 12px 'Lato';
+						line-height: 12px;  
+						margin-top: -1.5em;  
+					}
+				}
+			}
+		}
+	}    
+}
+
+
+@media screen and (max-width:1125px){
+	.soon-first{
+		clip-path: polygon(0% 0%, 57% 0%, 35% 100%, 0% 100%) !important;
+		}  
+}                                  
+
+@media screen and (max-width:1000px){
+.soon{
+	.soon-first, .soon-second{
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;  
+	}                                
+	.soon-first{
+		clip-path: polygon(0% 0%, 0% 0%, 275em 100%, 0% 100%) !important;
+		z-index: 100;
+		top: 60%;      
+		.soon-brand{
+			width: 37em;
+			margin-top: 8em;
+			margin-left: auto;
+			margin-right: auto;
+		}  
+		h1{
+			width: 25em;
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 2em;
+		}
+		form{
+			margin-left: auto;
+			margin-right: auto;
+			width: 37em;
+			margin-top: 3em; 
+		}
+		.buttons{
+			margin-left: auto;
+			margin-right: auto;
+			display: flex;
+			align-items: center;
+			margin-top: 5em; 
+			width: 37em;
+			padding-bottom: 3em;
+		}
+	}              	      
+	.soon-second{
+		background-size: 100%;
+		background-position: top;
+		.clock{
+			width: 40%;
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: -6em;
+		}
+	}    
+}
+}                              
+         
+@media screen and (max-width:925px){
+.soon{
+	.soon-first, .soon-second{
+	}                                
+	.soon-first{
+		clip-path: polygon(0% 0%, 0% 0%, 330em 100%, 0% 100%) !important;
+		z-index: 100;
+		top: 65%;      
+		padding-bottom: 5em;
+	}              	      
+}
+}                               
+    
+@media screen and (max-width:890px){
+.soon{
+	.soon-second{
+		.clock{
+			width: 41%;
+		}
+	}    
+}
+}      
+       
+@media screen and (max-width:868px){
+.soon{
+	.soon-first{
+		top: 100%;
+		margin-top: -8em;   
+		.soon-brand{
+			margin-top: 3em !important;   
+		}
+	}            
+	.soon-second{
+		background-size: 65em;
+		background-position: right bottom;
+		background-color: rgba(0,0,0,.8);
+		background-blend-mode: color;
+		.clock{ 
+			width: 100%; 
+			margin-top: -2.5% !important;  
+			padding-bottom: 0em !important;
+			.clock-prev{
+				margin-left: 0 !important;
+				margin-right: 0 !important;
+				float: none !important;
+				width: 115px !important; 
+				height:115px !important;
+				h1{
+					font-size: 30px !important
+				}
+			}
+		}
+	}    
+}    
+}               
+                
+@media screen and (max-width:700px){
+	.soon-first{
+		top: 100%;
+		margin-top: -15% !important;   
+		.soon-brand{
+			margin-top: 3em !important;   
+		}
+	}            
+}
+
+@media screen and (max-width:630px){
+.soon{
+	.soon-first{
+		.soon-brand{
+			width: 90%;
+		}  
+		h1{
+			width:90%;
+		}
+		form{
+			width: 90%;
+		}
+		.buttons{
+			width: 90%;
+		}
+	}              	      
+}
+}                              
+   
+@media screen and (max-width:600px){
+	.success-mail{
+		display: flex;
+		justify-content: center;
+		align-items: center;  
+		div{
+			width: 80% !important; 
+		}
+	}
+}
+  
+@media screen and (max-width:355px){
+.soon{
+	.soon-first{
+		.soon-brand{
+			width: 90%;
+		}  
+		h1{
+			width:90%;
+		}
+		form{
+			width: 90%;
+		}
+		.buttons{
+			width: 90%;
+		}
+	}              	      
+}
+}                              
+            

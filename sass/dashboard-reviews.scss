@@ -1,0 +1,96 @@
+@import 'dashboard-layouts';
+
+.single-description-reviews{
+    width: 98%;
+    @include flex;
+    margin-top: 2em;
+    justify-content: flex-start;
+    margin-bottom: 2em;
+    margin-right: auto;
+    margin-left: auto;
+    .single-description-img{
+        width: 6%;
+        span{
+            width: 50px;
+            height: 50px;
+            background: #eee;
+            color: #bbb;
+            text-transform: uppercase;
+            font-size: 19px;
+            display: block;
+            border-radius: 10em;
+            @include flex;
+            line-height: 0 !important;
+        }  
+    } 
+    .single-description-text{
+        width: 94%;
+        .single-descriptions-text-sub{
+            @include flex;
+            justify-content: space-between;
+            margin-bottom:1em;
+            .single-descriptions-name{
+                h3{
+                    font: 300 17px $lato;
+                    line-height: 25px;
+                }
+            }
+            .single-descriptions-stars{
+                @include flex;
+                svg{
+                    width: 1em;
+                    display: block;
+                    color: #fdba0e
+                }
+            }
+        }
+        .single-descriptions-comment{
+            h3{
+                font: 400 17px $rale;
+                line-height: 25px;
+                margin-top: -.5em;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:600px){
+    .single-description-reviews{
+        .single-description-img{
+            width: 15% !important;
+            span{
+                margin-top: -3em;
+            }
+        } 
+        .single-description-text{
+            width: 85% !important;
+            .single-descriptions-text-sub{
+                .single-descriptions-name{
+                    h3{
+                        font: 300 15px $lato;
+                        line-height: 23px;
+                    }
+                }
+            }        
+            .single-descriptions-comment{
+                h3{
+                    font: 400 15px $rale;
+                    line-height: 23px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:400px){
+    .single-description-reviews{
+        .single-description-img{
+            width: 20% !important;
+            margin-top: -4em;
+        } 
+        .single-description-text{
+            width: 80% !important;
+        }
+    }
+
+}

@@ -1,0 +1,69 @@
+.month-products{
+    width: 100%;
+    padding: 3em 0;
+    .month-products-cont{
+        width: 100%;
+        @include flex;
+        margin-top: 3em;
+        position: relative;
+        .month-products-item{
+            width: 100%;
+            position: relative;
+            img{
+                width: 100%;
+            }
+        }
+        .month-products-circle{
+            position: absolute;
+            top: 1em;
+            width: 325px;
+            height: 325px;
+            background: white;
+            border-radius: 100%;
+            left: calc(50% - 162.5px);
+            h2,h3,a,span{
+                font-family: $rale;
+                color: #333;
+                text-align: center !important;
+                @include margin;
+            }
+            span{
+                background-color: $c2;
+                color: white;
+                font-size: 10px;
+                text-transform: uppercase;
+                display: block;
+                margin-top: 4em;
+                width: 50%;
+                padding: .5em 0;
+            }
+            h2{
+                font-size: 25px;
+                font-weight: 600;
+                margin-top: 1em;
+            }
+            h3{
+                font-size: 14px;
+                font-weight: 500;
+                line-height: 25px;
+                margin-top: 1em;
+                width: 90%;
+            }
+            a{
+                text-align: center;
+                padding: 1em 1em;
+                border: 1px solid $c2;
+                border-radius: 10em;
+                display: block;
+                width: 10em;
+                font-size: 12px;
+                transition: .3s all;
+                margin-top: 2em;
+                &:hover{
+                    background: $c2;
+                    color: white;
+                }
+            }
+        }
+    }
+}
