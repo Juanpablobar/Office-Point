@@ -11,13 +11,13 @@ if($arregloUsuario['nivel'] != 'cliente'){
 }
 $resultado = $conexion->query("
 select * from
-ventas where id_usuario='".$arregloUsuario['id']."'")or die($conexion->error);
-
+ventas where id_usuario='".$arregloUsuario['id']."' order by id_venta desc")or die($conexion->error)
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Office Point | Dashboard</title>
@@ -26,7 +26,7 @@ ventas where id_usuario='".$arregloUsuario['id']."'")or die($conexion->error);
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 
    <link rel="icon shortcut" href="../../img/logo.png">
-    <link rel="stylesheet" href="../css/dashboard-reviews.css">
+    <link rel="stylesheet" href="../css/dashboard-pedidos.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
@@ -81,8 +81,75 @@ ventas where id_usuario='".$arregloUsuario['id']."'")or die($conexion->error);
             </div>';
         }else {
           while ($fila = mysqli_fetch_array($resultado)) {
+            $resultado2 = $conexion->query("
+            select * from
+            direcciones_ventas where id_venta='".$fila[0]."'")or die($conexion->error);
+            $fila2 = mysqli_fetch_array($resultado2);
+
+            $resultado3 = $conexion->query("
+            select * from
+            productos_venta where id_venta='".$fila[0]."'")or die($conexion->error);
             ?>
-            
+            <div class='pedidos'>
+            <?php
+            $fecha = $fila[3];
+            $fecha = explode(',',$fecha);
+            $fecha = $fecha[0].','.$fecha[1];
+            ?>
+              <h3 class='fecha'>Fecha: <a><?php echo $fecha; ?></a></h3>
+              <div class="ready" id="ready">
+                    <div class="ready-first">
+                        <h1>Datos de Compra</h1>
+                    </div>
+                    <div class="ready-cont ready-compra">
+                        <h3>Identificador de Compra: <a>#<?php echo $fila[0]; ?></a></h3>                        
+                        <h3 class='status'>Estatus de Compra: 
+                        <?php
+                          if($fila[4] == 'pendiente_envio'){
+                            echo '<a>Envío en proceso</a>'; 
+                          } else if($fila[4] == 'pendiente_pago'){
+                            echo '<a>Pendiente de Pago</a><br><a style="font-size:12px;font-weight:500">Si ya has realizado tu pago y aún no se aprueba tu compra, puedes ponerte en contacto al siguiente número de <a style="color:#009DE1;font-size:12px;font-weight:500" href="https://wa.link/s61nrc">Whatsapp</a></a>';
+                          } else {
+                            echo '<a>Compra Finalizada</a>';
+                          }
+                        ?>
+                        </h3>
+                        <div class="ready-first">
+                          <h1>Productos</h1>
+                        </div>
+                        <?php
+                          while ($fila3 = mysqli_fetch_array($resultado3)) {
+                            $resultado4 = $conexion->query("
+                            select * from
+                            productos where id='".$fila3[2]."'")or die($conexion->error);
+                            $fila4 = mysqli_fetch_array($resultado4)
+                        ?>
+                        <div class='ready-products'>
+                              <h3>Nombre: <a><?php echo $fila4[1] ?></a></h3>
+                              <h3>Cantidad: <a><?php echo $fila3[3] ?></a></h3>
+                              <h3>Costo: <a>$<?php echo $fila3[5] ?>.00</a></h3>
+                        </div>
+                        <?php
+                          } ?>
+                        <h3>Total: <a>$<?php echo $fila[2]; ?>.00</a><br><a style='font-size:12px'>Incluyendo envío, descuentos y cupones</a></h3>
+                    </div>
+                    <div class="ready-first">
+                        <h1>Datos de Envío</h1>
+                    </div>
+                    <div class="ready-cont">
+                        <h3>A nombre de: <a><?php echo $fila2[3].' '.$fila2[4]; ?></a></h3>
+                        <h3>Con dirección: <a><?php echo $fila2[6].', '.$fila2[7].' '.$fila2[10].', '.$fila2[8].', '.$fila2[9].', '.$fila2[5] ?></a></h3>
+                        <h3>Datos de contacto: <a><?php echo $fila2[11].', '.$fila2[12]; ?></a></h3>
+                        <?php
+                        if($fila2[13] === ''){
+                          echo '';
+                        } else {
+                        ?>
+                        <h3>Notas: <a><?php echo $fila2[13]; ?></a></h3>
+                        <?php } ?>
+                    </div>
+              </div>
+            </div>
     <?php
         } } ?>
     <!-- /.content -->

@@ -23,7 +23,7 @@ if($query->num_rows > 0){
 			<div class="item-shop-cont">
 			<div class="item-shop-prev">
 					<div class="item-shop-img">
-						<img src="img/<?php echo $fila['img2']; ?>">
+						<img src="img/<?php echo $fila['img']; ?>">
 						<div class="item-shop-hide">
 							<div class="item-shop-hide-top">
 								<div class="item-shop-hide-a"><a href="wishlist?id=<?php echo $fila['id']; ?>" title="Agregar a la lista de deseos"><?php echo $heart; ?></a></div>

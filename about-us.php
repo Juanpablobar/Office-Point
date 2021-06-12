@@ -126,4 +126,3 @@ include './php/conexion.php';
 <script src="js/up3.js" defer></script>
 </body>
 </html>
- 

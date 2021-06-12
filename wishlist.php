@@ -26,7 +26,7 @@ if(isset($_SESSION["wishlist"])){
         $res    = $conexion->query("select * from productos where id=".$_GET["id"])or die($conexion->error);
         $fila = mysqli_fetch_row($res);
         $nombre = $fila[1];
-        $imagen = $fila[7];
+        $imagen = $fila[6];
         $precio = $fila[2];
         $stock = $fila[10];
         $arregloNuevo = array(
@@ -53,7 +53,7 @@ if(isset($_SESSION["wishlist"])){
         $res    = $conexion->query("select * from productos where id=".$_GET["id"])or die($conexion->error);
         $fila = mysqli_fetch_row($res);
         $nombre = $fila[1];
-        $imagen = $fila[7];
+        $imagen = $fila[6];
         $precio = $fila[2];
         $stock = $fila[10];
         $arreglo[] = array(

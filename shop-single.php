@@ -86,6 +86,11 @@ if( isset($_GET["id"])){
 					<a href="wishlist?id=<?php echo $fila[0]; ?>"><?php echo $heart ?></a>
 				</div>
 			</div>
+			<?php
+			if($fila[7] == ''){
+				echo '';
+			} else {
+			?>
 			<div class="owl-item" data-hash="two">
 				<a data-fancybox="gallery" data-type="image" rel="group1" href="img/<?php echo $fila[7]; ?>" data-caption="<?php echo $fila[1]; ?>">
 				<img src="img/<?php echo $fila[7]; ?>">
@@ -94,6 +99,12 @@ if( isset($_GET["id"])){
 					<a href="wishlist?id=<?php echo $fila[0]; ?>"><?php echo $heart ?></a>
 				</div>
 			</div>
+			<?php } ?>
+			<?php
+			if($fila[8] == ''){
+				echo '';
+			} else {
+			?>
 			<div class="owl-item" data-hash="three">
 				<a data-fancybox="gallery" data-type="image" rel="group1" href="img/<?php echo $fila[8]; ?>" data-caption="<?php echo $fila[1]; ?>">
 				<img src="img/<?php echo $fila[8]; ?>">
@@ -102,11 +113,27 @@ if( isset($_GET["id"])){
 					<a href="wishlist?id=<?php echo $fila[0]; ?>"><?php echo $heart ?></a>
 				</div>
 			</div>
+			<?php } ?>
 		</div>
 		<div class="single-product-img-links">
 			<a href="#one"><img src="img/<?php echo $fila[6]; ?>"></a>
+			<?php
+			if($fila[7] == ''){
+				echo '';
+			} else {
+                ?>
 			<a href="#two"><img src="img/<?php echo $fila[7]; ?>"></a>
+			<?php
+            } ?>
+			<?php
+			if($fila[8] == ''){
+				echo '';
+			} else {
+                ?>
+
 			<a href="#three"><img src="img/<?php echo $fila[8]; ?>"></a>
+			<?php
+            } ?>
 		</div>
 	</div>
 	<div class="single-product-text">
@@ -343,7 +370,6 @@ if( isset($_GET["id"])){
 						or
 						tag3 like '%".$fila[18]."%' 
 						order by rand() limit 8")or die($conexion -> error); 
-						echo $fila[19];
 			while($fila = mysqli_fetch_array($resultado)){
 			?>
 		<div class="owl-item">
@@ -351,7 +377,7 @@ if( isset($_GET["id"])){
 				<div class="item-shop-cont">
 				<div class="item-shop-prev">
 						<div class="item-shop-img">
-							<img src="img/<?php echo $fila[7]; ?>">
+							<img src="img/<?php echo $fila[6]; ?>">
 							<div class="item-shop-hide">
 								<div class="item-shop-hide-top">
 									<div class="item-shop-hide-a"><a href="wishlist?id=<?php echo $fila[0]; ?>&cant=1" title="Agregar a la lista de deseos"><?php echo $heart; ?></a></div>
@@ -407,7 +433,7 @@ if( isset($_GET["id"])){
 				<div class="item-shop-cont">
 				<div class="item-shop-prev">
 						<div class="item-shop-img">
-							<img src="img/<?php echo $fila[7]; ?>">
+							<img src="img/<?php echo $fila[6]; ?>">
 							<div class="item-shop-hide">
 								<div class="item-shop-hide-top">
 									<div class="item-shop-hide-a"><a href="wishlist?id=<?php echo $fila[0]; ?>&cant=1" title="Agregar a la lista de deseos"><?php echo $heart; ?></a></div>
@@ -478,7 +504,6 @@ if( isset($_GET["id"])){
 	nav: false,
 	URLhashListener: true,
 	smartSpeed: 0,
-	startPosition: 2
 	});
     $('.owl-carousel2').owlCarousel({
     loop:false,

@@ -177,7 +177,7 @@ include("./php/conexion.php");
 			?>
 			<div class="shop-recents-item">
 				<div class="shop-recents-img">
-					<img src="/img/<?php echo $fila27['img2'] ?>" alt="<?php echo $fila27['nombre'] ?>" title="<?php echo $fila27['nombre'] ?>">
+					<img src="/img/<?php echo $fila27['img'] ?>" alt="<?php echo $fila27['nombre'] ?>" title="<?php echo $fila27['nombre'] ?>">
 				</div>
 				<div class="shop-recents-text">
 					<a href="shop-single?name=<?php echo $fila27['nombre'] ?>&id=<?php echo $fila27['id'] ?>"><?php echo $fila27['nombre'] ?></a>
@@ -239,7 +239,7 @@ include("./php/conexion.php");
 			<div class="item-shop-cont">
 			<div class="item-shop-prev">
 					<div class="item-shop-img">
-						<img src="img/<?php echo $fila['img2']; ?>">
+						<img src="img/<?php echo $fila['img']; ?>">
 						<div class="item-shop-hide">
 							<div class="item-shop-hide-top">
 								<div class="item-shop-hide-a"><a href="wishlist?id=<?php echo $fila['id']; ?>" title="Agregar a la lista de deseos"><?php echo $heart; ?></a></div>
@@ -308,7 +308,7 @@ include("./php/conexion.php");
 			<div class="item-shop-cont">
 			<div class="item-shop-prev">
 					<div class="item-shop-img">
-						<img src="img/<?php echo $fila['img2']; ?>">
+						<img src="img/<?php echo $fila['img']; ?>">
 						<div class="item-shop-hide">
 							<div class="item-shop-hide-top">
 								<div class="item-shop-hide-a"><a href="wishlist?id=<?php echo $fila['id']; ?>" title="Agregar a la lista de deseos"><?php echo $heart; ?></a></div>

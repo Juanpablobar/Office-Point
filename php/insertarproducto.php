@@ -17,8 +17,14 @@ if(isset($_POST['nombre']) && isset($_POST['precio']) && isset($_POST['envio']) 
 	$nombrefinal2 = time().'.'.$extension2;
 	$nombrefinal3 = time().'.'.$extension3;
 	
-	if($extension== 'jpg' || $extension == 'png' || $extension == 'jpge' || $extension== 'webp' || $extension == 'svg' && ($extension2== 'jpg' || $extension2 == 'png' || $extension2 == 'jpge' || $extension2 == '' || $extension2== 'webp' || $extension2 == 'svg') && ($extension3== 'jpg' || $extension3 == 'png' || $extension3 == 'jpge' || $extension3== 'webp' || $extension3 == 'svg' || $extension3 == '')){
+	if($extension== 'jpg' || $extension == 'png' || $extension == 'jpge' || $extension== 'webp' || $extension == 'svg' || ($extension2== 'jpg' || $extension2 == 'png' || $extension2 == 'jpge' || $extension2== 'webp' || $extension2 == 'svg') || ($extension3== 'jpg' || $extension3 == 'png' || $extension3 == 'jpge' || $extension3== 'webp' || $extension3 == 'svg')){
 		if(move_uploaded_file($_FILES['imagen1']['tmp_name'], $carpeta.$nombrefinal) || move_uploaded_file($_FILES['imagen2']['tmp_name'], $carpeta.$nombrefinal2) || move_uploaded_file($_FILES['imagen3']['tmp_name'], $carpeta.$nombrefinal3)){
+			if($_POST['imagen2'] == ''){
+				$nombrefinal2 = '';
+			}
+			if($_POST['imagen3'] == ''){
+				$nombrefinal3 = '';
+			}
 			$conexion->query("insert into productos
 			(nombre,precio,descuento,tiempo_descuento,nuevo,img,img2,img3,descripcion,stock,dimensiones,peso,descripcion_amplia,materiales,informacion_amplia,tag1,tag2,tag3,categoria,subcategoria,envio) values(
 			'".$_POST['nombre']."',

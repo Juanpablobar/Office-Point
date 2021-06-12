@@ -109,12 +109,116 @@ session_start();
 </div>
 
 <div class="index-shop">
-	<h1>Lo Más Vendidos</h1>
+	<h1>Los Más Vendidos</h1>
 	<h2>Encuentra los productos TOP a los mejores precios en office Point</h2>
 	
 	<div class="index-shop-items">
 	       <?php
-                   $resultado = $conexion ->query("select * from productos order by id DESC limit 8"); 
+                   $resultado = $conexion ->query("select * from productos order by id ASC limit 8"); 
+
+				   $resultado300 = $conexion ->query("select * from cantidad_vendidos");
+				   $resultado500 = $conexion ->query("select * from cantidad_vendidos order by id_producto desc limit 8");
+				   $fila500 = mysqli_fetch_array($resultado500);
+
+				   $resultado600 = $conexion ->query("select cantidad_vendidos.vendidos");
+				   
+
+				   $totalVendidos = mysqli_num_rows($resultado300);
+
+                   if ($totalVendidos >= 8) {
+					while($fila = mysqli_fetch_array($resultado600)){
+                       ?>
+					<div class="item-shop">
+					<div class="item-shop-cont">
+					<div class="item-shop-prev">
+							<div class="item-shop-img">
+								<img src="img/<?php echo $fila[6]; ?>">
+								<div class="item-shop-hide">
+									<div class="item-shop-hide-top">
+										<div class="item-shop-hide-a"><a href="wishlist?id=<?php echo $fila[0]; ?>&cant=1" title="Agregar a la lista de deseos"><?php echo $heart; ?></a></div>
+										<div class="item-shop-hide-a"><a href="shop?search=<?php echo $fila['categoria'] ?>" title="Buscar productos similares"><?php echo $loupe; ?></a></div>
+									</div>
+									<div class="item-shop-hide-bottom">
+										<div class="item-shop-hide-a"><a href="cart?id=<?php echo $fila[0]; ?>&cant=1" title="Agregar al carrito"><?php echo $bag; ?></a></div>
+									</div>
+								</div>
+								<?php
+                                $fecha = date("Y-m-d");
+                       if ($fila[4] < $fecha || $fila[4] == 0) {
+                           $update = $conexion ->query("UPDATE productos SET descuento='0' WHERE id=".$fila[0])or die($conexion->error);
+                       } else {
+                           $date = $fila[4];
+                           echo "<div class='item-shop-clock' id='countdown".$fila[0]."'>
+								<script>
+								var end".$fila[0]." = new Date('".$date." 11:59 PM'); 
+		
+									var _second = 1000;
+									var _minute = _second * 60;
+									var _hour = _minute * 60;
+									var _day = _hour * 24;
+									var timer;
+		
+									function showRemaining() {
+										var now = new Date();
+										var distance = end".$fila[0]." - now;
+										if (distance < 0) {
+		
+											clearInterval(timer);
+											document.getElementById('countdown".$fila[0]."').remove();
+											return;
+										}
+										var days = Math.floor(distance / _day);
+										var hours = Math.floor((distance % _day) / _hour);
+										var minutes = Math.floor((distance % _hour) / _minute);
+										var seconds = Math.floor((distance % _minute) / _second);
+		
+										document.getElementById('countdown".$fila[0]."').innerHTML = 
+											'<div><h1>' + days + '</h1><h2>DÍAS</h2></div> : ';
+										document.getElementById('countdown".$fila[0]."').innerHTML += 
+											'<div><h1>' + hours + '</h1><h2>HORAS</h2></div> : ';
+										document.getElementById('countdown".$fila[0]."').innerHTML += 
+											'<div><h1>' + minutes + '</h1><h2>MINS</h2></div> :';
+										document.getElementById('countdown".$fila[0]."').innerHTML +=
+											'<div><h1>' + seconds + '</h1><h2>SECS</h2></div>';
+									}
+		
+									timer = setInterval(showRemaining, 1000);
+																</script> 
+										</div>";
+                       }
+                            
+                       if ($fila[5] == 'si') {
+                           echo '<div class="item-shop-new">
+									<span>New</span>
+								</div>';
+                       } else {
+                           echo '';
+                       }
+                            
+                       if ($fila[3] > 0) {
+                           echo '<div class="item-shop-discounts">
+									<span>-'.$fila[3].'%</span>
+								</div>';
+                       } else {
+                           echo '';
+                       } ?>
+							</div>
+							<div class="item-shop-text">
+								<a href="shop-single?name=<?php echo $fila[1]; ?>&id=<?php echo $fila[0]; ?>"><?php echo $fila[1]; ?></a>
+								<?php
+                                        $percent = round($fila[3]/100*$fila[2]);
+                       if ($fila[3] > 0) {
+                           echo '<h2 class="item-shop-h2-first">$'.$fila[2].'.00</h2>';
+                           echo '<h2 class="item-shop-h2-second	" style="color:#ff6363">$'.($fila[2] - $percent).'.00</h2>';
+                       } else {
+                           echo '<h2>$'.$fila[2].'.00</h2>';
+                       } ?>
+							</div>
+						</div>
+					</div>
+				</div>
+				<?php
+                   } } else {
                 
                 while($fila = mysqli_fetch_array($resultado)){
                 ?>
@@ -208,7 +312,7 @@ session_start();
 				</div>
 			</div>
 		</div>
-		<?php } ?>
+		<?php } }?>
 	</div>
 </div>
 

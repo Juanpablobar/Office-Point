@@ -106,7 +106,7 @@ include '../php/conexion.php';
                    <?php
                    $resultado2 = $conexion->query("
                    select * from
-                   ventas where status='finalizada'")or die($conexion->error);
+                   ventas where visto='false'")or die($conexion->error);
                    $fila2 = mysqli_num_rows($resultado2);
                    if ($fila2 > 0) {
                        echo $fila2;

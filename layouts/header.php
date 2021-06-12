@@ -3,7 +3,7 @@ error_reporting(0);
 include './php/conexion.php';
 $archivo_actual = basename($_SERVER["PHP_SELF"]); //Regresa el nombre del archivo actual
 
-switch($archivo_actual) //Valido en que archivo estoy para generar mi CSS de selección
+switch($archivo_actual)
  {
 	 case "index2.php":
 	 $a = "class='nav-a'";
@@ -189,10 +189,12 @@ include './layouts/icons.php';
 let header = document.getElementById('header-a')
 
 if(sessionStorage.getItem('final') === null){
-	header.append('$' + sessionStorage.getItem('total'))
-} else if(sessionStorage.getItem('final') !== null) {
-	header.append('$' + sessionStorage.getItem('final'))
+	if(sessionStorage.getItem('total') === null){
+		header.append('$0')
+	} else{
+		header.append('$' + sessionStorage.getItem('total'))
+	}
 } else {
-	header.append('$0')
+	header.append('$' + sessionStorage.getItem('final'))
 }
 </script>

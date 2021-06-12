@@ -85,7 +85,7 @@ if(!isset($_SESSION['datos_login'])){
                    ?>
 
                 </h3>
-                <p>Nuevos Pedidos</p>
+                <p>Pedidos Pendientes de Envío</p>
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>
@@ -101,7 +101,7 @@ if(!isset($_SESSION['datos_login'])){
                 <?php
                    $resultado2 = $conexion->query("
                    select * from
-                   ventas where status='finalizada'")or die($conexion->error);
+                   ventas where status='finalizada' or status='pendiente_envio'")or die($conexion->error);
                    $fila2 = mysqli_num_rows($resultado2);
                    if ($fila2 > 0) {
                        echo $fila2;
